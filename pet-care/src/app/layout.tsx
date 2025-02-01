@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col mx-auto  max-w-full sm:max-w-[50%]`}
       >
         <header className="bg-blue-400 text-white p-4 flex justify-center">
           <h1 className="text-xl font-bold">PetCare</h1>
