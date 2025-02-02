@@ -12,3 +12,7 @@ body {
     --radius: 0.5rem;
   }
 }
+
+.mainStyle {
+  @apply flex flex-col items-center justify-center flex-grow w-full min-h-screen p-8;
+}
