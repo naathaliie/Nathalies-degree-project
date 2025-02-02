@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import TopBar from "./components/TopBar";
+import NavBar from "./components/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,13 +31,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col mx-auto w-full  
          3xl:w-3/4`}
       >
-        <header className="bg-blue-400 text-white p-4 flex justify-center">
-          <h1 className="text-2xl font-bold">PetCare</h1>
+        <header className="flex flex-col justify-center items-center h-28">
+          <TopBar />
+          <NavBar />
         </header>
 
         <main className="flex-grow">{children}</main>
 
-        <footer className="bg-gray-800 text-white p-4 text-center">
+        <footer className=" bg-petCare-darkBlue text-white p-4 text-center">
           <p>
             &copy; {new Date().getFullYear()} PetCare. Alla rättigheter
             förbehållna.
