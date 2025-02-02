@@ -4,11 +4,11 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
+  background-color: white;
 }
 
 @layer base {
   :root {
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
 }
