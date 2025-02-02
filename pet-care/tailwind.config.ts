@@ -15,6 +15,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        petCare: {
+          mainBlue: "#4da6ff",
+          darkBlue: "#005ab3",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
