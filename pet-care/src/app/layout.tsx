@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PetCare - Din partner för husdjursvård",
-  description: "PetCare hjälper dig att hålla ditt husdjur friskt och lyckligt. Planera veterinärbesök, få expertråd och hantera ditt husdjurs dagliga behov enkelt.",
+  description:
+    "PetCare hjälper dig att hålla ditt husdjur friskt och lyckligt. Planera veterinärbesök, få expertråd och hantera ditt husdjurs dagliga behov enkelt.",
 };
 
 export default function RootLayout({
@@ -25,16 +26,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col mx-auto  max-w-full sm:max-w-[50%]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col mx-auto w-full  
+         3xl:w-3/4`}
       >
         <header className="bg-blue-400 text-white p-4 flex justify-center">
-          <h1 className="text-xl font-bold">PetCare</h1>
+          <h1 className="text-2xl font-bold">PetCare</h1>
         </header>
 
         <main className="flex-grow">{children}</main>
 
         <footer className="bg-gray-800 text-white p-4 text-center">
-          <p>&copy; {new Date().getFullYear()} PetCare. Alla rättigheter förbehållna.</p>
+          <p>
+            &copy; {new Date().getFullYear()} PetCare. Alla rättigheter
+            förbehållna.
+          </p>
         </footer>
       </body>
     </html>
