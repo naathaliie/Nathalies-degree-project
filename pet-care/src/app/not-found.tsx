@@ -1,12 +1,13 @@
 import React from "react";
 import GoBackBtn from "./components/GoBackBtn";
+import "./globals.css";
 
 const NotFoundPage = () => {
   return (
-    <main className="flex flex-col items-center justify-center flex-grow w-full min-h-screen bg-gray-200 p-8">
+    <div className="mainStyle">
       <h1>Hoppsan sidan hittades inte</h1>
       <GoBackBtn />
-    </main>
+    </div>
   );
 };
 
