@@ -3,6 +3,8 @@ import type { Metadata } from "next";
  */import "./globals.css";
 import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
+import StoreProvider from "./StoreProvider";
+import { User, UsersState } from "../../types/types";
 
 /* const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +22,11 @@ export const metadata: Metadata = {
     "PetCare hjälper dig...",
 };
 
+const initialUsers: User[] = [
+      { id: '1', username: 'Alice', email: 'alice@example.com', isLoggedIn: false },
+      { id: '2', username: 'Bob', email: 'bob@example.com', isLoggedIn: true },
+    ];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+        <StoreProvider users={initialUsers}>
       <body
         className=" antialiased min-h-screen flex flex-col mx-auto w-full
          3xl:w-3/4"
@@ -45,6 +53,7 @@ export default function RootLayout({
           </p>
         </footer>
       </body>
+      </StoreProvider>
     </html>
   );
 }
