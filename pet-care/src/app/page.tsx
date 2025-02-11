@@ -3,11 +3,8 @@ import ProductCard from "./components/productCard";
 
 export default function HomePage() {
   return (
-    <main>
-      <h1>Hello world!</h1>
-      {/* Använd Link istället för en a-tagg */}
-      <Link href="/users">Users</Link>
-      <ProductCard />
+    <main className="HomePage flex flex-col justify-center items-center min-h-[70vh]">
+     <h1 className="text-6xl text-petCare-darkBlue">Välkommen till PetCare</h1>
     </main>
   );
 }
