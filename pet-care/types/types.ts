@@ -3,10 +3,31 @@ export interface User {
     username: string
     email: string
     isLoggedIn: boolean
+    pets: Pet[]
   }
 
 export interface UsersState {
     users: User[]
   }
 
-/*****UserState*****/
+/*****User*****/
+
+export interface AuthState {
+    currentUser: User;
+  }
+
+/*****CurrentUser*****/
+
+export interface Pet {
+  id: string;
+  name: string;
+  breed: string;
+  age: number;
+  ownerId: string;
+}
+
+export interface PetsState {
+    pets: Pet[]
+}
+/*****Pet*****/
+
