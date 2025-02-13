@@ -8,7 +8,7 @@ const UsersPage = () => {
 
   return (
     <>
-      <div className="LogInPage flex min-h-[70vh] flex-col items-center">
+      <div className="LogInPage flex min-h-[70vh] flex-col items-center ">
         <div className=" bg-petCare-mainBlue bg-opacity-25 w-full h-36 flex flex-col justify-center mb-5">
           <div className="ml-10">
             <h1 className=" text-xl font-semibold sm:text-3xl md:text-5xl">
