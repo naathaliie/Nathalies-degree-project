@@ -5,6 +5,7 @@ import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
 import StoreProvider from "./StoreProvider";
 import { User } from "../../types/types";
+import MyPageNav from "./components/MyPageNav";
 
 /* const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,7 +67,10 @@ export default function RootLayout({
             <NavBar />
           </header>
 
-          <main className="flex-grow  min-h-screen">{children}</main>
+          <main className="flex-grow  min-h-screen">
+            <MyPageNav />
+            {children}
+          </main>
 
           <footer className=" bg-petCare-darkBlue text-white p-4 text-center">
             <p>
