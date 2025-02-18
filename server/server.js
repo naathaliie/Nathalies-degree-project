@@ -1,9 +1,16 @@
-import express from "express"
+import Express from "express"
+import { ConnectToDB } from "./routes/userRouter";
 
-const app = express()
+const app = Express()
 const port = 3003
 
-app.use(express.json())//Middleware för att parsa inkommande JSON-data
+app.use(Express.json())//Middleware för att parsa inkommande JSON-data
+
+//Koppla upp mot databasen för ALLA resurser
+app.use("*", async (req, res, next) => {
+    await ConnectToDB();
+    next();
+});
 
 app.get("/", (req, res) => {
     res.send("Hello world, det fungerar yeey!") //Skickar ett enkelt svar på GET
