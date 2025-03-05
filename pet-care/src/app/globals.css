@@ -5,13 +5,136 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
+
+   /* PetCare färger för light mode */
+   --petCare-myWhite: #FCFCFC;
+   --petCare-coal: #484446;
+   --petCare-sapphireTeal-dark: #166E7F;
+   --petCare-sapphireTeal-main: #1E92A9;
+   --petCare-sapphireTeal-light: #84BECA;
+   --petCare-sapphireTeal-superLight: #84BECA;
 }
 
 @layer base {
+    /*Bestämmer default fonten*/
+    * {
+       @apply font-sans;
+    }
+
   :root {
-    --radius: 0.5rem;
+  --background: #f0f0f0; /* Ljusa bakgrundsfärgen */
+  --foreground: #333333; /* Ljusa textfärgen */
+  --radius: 10px; /* Global border-radius */
+  }
+
+  body {
+
+    @apply text-black /*Bestämmer färg för all text i bodyn*/
+  }
+
+
+  /* Dark mode KOMMER JAG ANVÄNDA DETTA????????????*/
+@media (prefers-color-scheme: dark) {
+    :root {
+      --background: #121212; /* Mörk bakgrundsfärg */
+      --foreground: #ffffff; /* Mörk textfärg */
+
+      /* PetCare färger för dark mode */
+      --petCare-mainBlue: #1e92a9;
+      --petCare-darkBlue: #004082;
+      --petCare-myWhite: #FCFCFC;
+      --petCare-coal: #484446;
+      --petCare-sapphireTeal-dark: #0e4c56;
+      --petCare-sapphireTeal-main: #1E92A9;
+      --petCare-sapphireTeal-light: #84BECA;
+      --petCare-sapphireTeal-superLight: #84BECA;
+    }
   }
 }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500; /* Medium weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Italic.ttf') format('truetype');
+    font-weight: 400; /* Regular weight */
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-MediumItalic.ttf') format('truetype');
+    font-weight: 500; /* Medium weight */
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-BoldItalic.ttf') format('truetype');
+    font-weight: 700; /* Bold weight */
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Light.ttf') format('truetype');
+    font-weight: 300; /* Light weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-LightItalic.ttf') format('truetype');
+    font-weight: 300; /* Light weight */
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100; /* Thin weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-ThinItalic.ttf') format('truetype');
+    font-weight: 100; /* Thin weight */
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Black.ttf') format('truetype');
+    font-weight: 900; /* Black weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-BlackItalic.ttf') format('truetype');
+    font-weight: 900; /* Black weight */
+    font-style: italic;
+  }
 
 .mainStyle {
   @apply flex flex-col items-center justify-center flex-grow w-full min-h-[80%];

@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary:"bg-petCare-darkBlue text-zinc-50 shadow hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90",
+        primary:"bg-petCare-sapphireTeal-dark text-zinc-50 shadow hover:bg-[#105361] dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90",
         default:
           "bg-zinc-900 text-zinc-50 shadow hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90",
         destructive:

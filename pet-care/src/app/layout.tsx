@@ -72,7 +72,7 @@ export default function RootLayout({
             {children}
           </main>
 
-          <footer className=" bg-petCare-darkBlue text-white p-4 text-center">
+          <footer className=" bg-petCare-sapphireTeal-dark text-white p-4 text-center">
             <p>
               &copy; {new Date().getFullYear()} PetCare. Alla rättigheter
               förbehållna.

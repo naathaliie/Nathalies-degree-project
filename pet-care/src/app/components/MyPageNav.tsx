@@ -17,7 +17,7 @@ const MyPageNav = () => {
   return (
     <>
       {currentUser.isLoggedIn && (
-        <nav className="NavBar w-full p-2 flex justify-center bg-blue-400 text-white">
+        <nav className="NavBar w-full p-2 flex justify-center bg-petCare-sapphireTeal-light text-white">
           <div className=" flex items-center">
             <div className="self-center">
               <p className="text-xs">inloggad:{currentUser.username}</p>

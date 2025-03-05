@@ -22,7 +22,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="TopBar w-full h-2/3 flex items-center justify-between px-7 text-petCare-darkBlue xl:w-4/5 p-4">
+    <div className="TopBar w-full h-2/3 flex items-center justify-between px-7 text-petCare-sapphireTeal-dark xl:w-4/5 p-4">
       <div>
         <Link href={"/"}>
           <Image src={logo} alt="logo-image" className="w-[40%] h-[40%]" />
@@ -33,7 +33,7 @@ const TopBar = () => {
           <div>
             <Link
               href={"/users/"}
-              className="flex flex-col items-center active:text-petCare-mainBlue"
+              className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
             >
               <UserCircleIcon className="size-6" />
               <p>Mina sidor</p>
@@ -44,7 +44,7 @@ const TopBar = () => {
           <div>
             <Link
               href={"/login"}
-              className="flex flex-col items-center active:text-petCare-mainBlue"
+              className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
             >
               <UserIcon className="size-6 " />
               <p>Logga in</p>
@@ -54,7 +54,7 @@ const TopBar = () => {
           <Link
             href={"/"}
             onClick={() => handleLogOut()}
-            className="flex flex-col items-center active:text-petCare-mainBlue"
+            className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
           >
             <ArrowRightStartOnRectangleIcon className="size-6 " />
             <p>Logga ut</p>
@@ -62,7 +62,7 @@ const TopBar = () => {
         )}
         <Link
           href={"/contactUs"}
-          className="flex flex-col items-center active:text-petCare-mainBlue"
+          className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
         >
           <PhoneIcon className="size-6" />
           <p>Kontakta oss</p>

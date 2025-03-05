@@ -13,7 +13,7 @@ app.use("*", async (req, res, next) => {
     next();
 });
 
-//Få tillgång till alla endpoints
+//Få tillgång till alla endpoints/rutter
 app.use("/users", userRouter())
 
 app.listen(port, ()=>{

@@ -18,7 +18,7 @@ const LoginForm = () => {
         if (passwordRef.current) passwordRef.current.value = "";
     }
   return (
-    <form onSubmit={submit} className="FormContainer flex flex-col gap-5 bg-zinc-100 border-2 border-petCare-darkBlue rounded-md p-10 sm:w-[40%] ">
+    <form onSubmit={submit} className="FormContainer flex flex-col gap-5 bg-zinc-100 border-2 border-petCare-sapphireTeal-dark rounded-md p-10 sm:w-[40%] ">
         <div className="flex flex-col gap-3">
             <label htmlFor="useName">Användarnamn:</label>
             <input ref={userNameRef} name="userName" type="email" className='h-8 text-lg'/>

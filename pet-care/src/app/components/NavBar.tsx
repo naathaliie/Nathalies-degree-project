@@ -11,7 +11,7 @@ const NavBar = () => {
     "Alternativ 5",
   ];
   return (
-    <nav className="NavBar w-full h-1/3 flex justify-center bg-petCare-darkBlue text-white">
+    <nav className="NavBar w-full h-1/3 flex justify-center bg-petCare-sapphireTeal-dark text-white">
       <div className=" flex items-center">
         <ul className="flex gap-5">
           {navItems.map((item, index) => {
