@@ -1,14 +1,20 @@
 import Mongoose from "mongoose";
 
-// Definiera ett schema för användaren
+// Definiera ett schema för ett husdjur
 const petSchema = new Mongoose.Schema({
-    _id: { type: String, required: true, unique: true },
-    name: { type: String, required: true},  // Minst 6 tecken för användarnamn
-    species: { type: String },
-    breed: { type: String, required: true},
-    age: { type: String, required: true},
+    ownerId: { type: Mongoose.Schema.Types.ObjectId, ref: "User", required: true},// Referens till användarens ID
+    dateOfRegistration: { type: Date, required: true},
+    name: { type: String, required: true},
+    species: { type: String, required: true},
+    breed: { type: String, required: true },
+    sex: { type: String, required: true},
+    birthday: { type: String, required: true},
     description: { type: String},
-    ownerId: { type: String, required: true, ref: "User" } // Referens till användarens ID
+    healthInfo: {
+        type: [Mongoose.Schema.Types.ObjectId],
+        ref: "HealthInfo",  // Ref till den modell som healthInfo använder
+        default: [], // Gör att det är en tom array om inget skickas med
+    },
 })
 
 // Skapa en Mongoose-modell för användaren baserat på schemat

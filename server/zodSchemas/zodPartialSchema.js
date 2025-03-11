@@ -1,4 +1,4 @@
-import { zodTestSchema } from './zodTestSchema.js';  // Importera det ursprungliga schemat
+import { zodTestSchema } from './zedTestSchema.js';  // Importera det ursprungliga schemat
 
 // Skapa ett partiellt schema från det ursprungliga Zod-schemat
 export const zodPartialTestSchema = zodTestSchema.partial();  // Alla fält blir valfria
