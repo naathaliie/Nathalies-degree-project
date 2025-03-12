@@ -7,9 +7,9 @@ export const zodUserSchema = z.object({
     password: z.string().min(1, "Password is required"),
     dateOfRegistration: z.string()
     .refine((val) => !isNaN(Date.parse(val)), {
-        message: "Date must be a valid date string (YYYY-MM-DD or ISO 8601)",
+      message: "Date must be a valid date string (YYYY-MM-DD or ISO 8601)",
     })
-    .transform((val) => new Date(val)), //konverterar stäng till Date för fatum
+    .transform((val) => new Date(val + "Z")), // Tvinga tolkning som UTC
     name: z.string().min(1, "Name is required"),
     surname: z.string().min(1, "Surname is required"),
     street: z.string().min(1, "Street is required"),
