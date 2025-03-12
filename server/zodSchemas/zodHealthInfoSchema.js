@@ -4,6 +4,7 @@ import { zodIDSchema } from "./zod-ID-schema.js";
 // Definiera ett schema för ett husdjurs helathInfo, id skapas automatiskt via mongoDB
 export const zodHealthInfoSchema = z.object({
     petId: zodIDSchema, //Måste vara ett giltigt mongoDB-ID
+    dateOfRegistration: z.string(),
     type: z.string().min(1, "Type of helatfInfo is required"),
     date: z.string()
     .refine((val) => !isNaN(Date.parse(val)), {

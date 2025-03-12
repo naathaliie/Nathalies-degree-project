@@ -8,8 +8,8 @@ const petSchema = new Mongoose.Schema({
     species: { type: String, required: true},
     breed: { type: String, required: true },
     sex: { type: String, required: true},
-    birthday: { type: String, required: true},
-    description: { type: String},
+    birthday: { type: Date, required: true},
+    description: { type: Array, default: []},
     healthInfo: {
         type: [Mongoose.Schema.Types.ObjectId],
         ref: "HealthInfo",  // Ref till den modell som healthInfo använder

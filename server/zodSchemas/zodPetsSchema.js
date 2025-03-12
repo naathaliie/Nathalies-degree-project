@@ -13,7 +13,11 @@ export const zodPetSchema = z.object({
     species: z.string().min(1, "Kind of species is required"),
     breed: z.string().min(1, "Breed is required"),
     sex: z.string().min(1, "Sex is required"),
-    birthday: z.number().optional(),
-    description: z.string().optional(),
-    healthInfo: z.array(zodIDSchema).optional().default([]),
+    birthday: z.string()
+    .refine((val) => !isNaN(Date.parse(val)), {
+        message: "Date must be a valid date string (YYYY-MM-DD or ISO 8601)",
+    })
+    .transform((val) => new Date(val)), //konverterar stäng till Date för fatum
+    description: z.array(z.string()).default([]),
+    healthInfo: z.array(zodIDSchema).default([]),
 });

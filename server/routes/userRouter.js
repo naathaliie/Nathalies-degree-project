@@ -23,7 +23,7 @@ export function userRouter(){
         // Skapa en ny användare (signup)
         router.post("/signup", async (req, res) => {
             //Hämta username från body
-            const { username, password, email, dateOfRegistration, name, surname, street, city, postalCode, phone, pets, orders, favourites, messages } = req.body
+            const { email, password, dateOfRegistration, name, surname, street, city, postalCode, phone, pets, orders, favorites, messages } = req.body
 
             // Validera först med Zod INNAN datan skickas till databasen
             const zodResult = zodUserSchema.safeParse(req.body);
@@ -37,12 +37,6 @@ export function userRouter(){
             }
 
             try {
-
-            // Kolla om användarnamnet redan finns
-            const existingUser = await userModel.findOne({ username });
-            if (existingUser) {
-                return res.status(409).json({ message: "Användarnamnet är redan taget" });
-            }
 
             // Kolla om epostadressen redan finns
             const existingEmail = await userModel.findOne({ email });
@@ -63,9 +57,8 @@ export function userRouter(){
 
             // Skapa en ny användare
             const newUser = await userModel.create({
-                username,
-                password,
                 email,
+                password,
                 dateOfRegistration,
                 name,
                 surname,
@@ -75,7 +68,7 @@ export function userRouter(){
                 phone,
                 pets,
                 orders,
-                favourites,
+                favorites,
                 messages
             });
 

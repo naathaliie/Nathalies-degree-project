@@ -25,7 +25,7 @@ export function healthInfoRouter(){
         // Skapa en ny användare (signup)
         router.post("/new", async (req, res) => {
             //Hämta username från body
-            const { petId, type, date, notes, place } = req.body
+            const { petId, dateOfRegistration, type, date, notes, place } = req.body
 
             // Validera först med Zod INNAN datan skickas till databasen
             const zodResult = zodHealthInfoSchema.safeParse(req.body);
@@ -50,6 +50,7 @@ export function healthInfoRouter(){
             // Skapa en ny healthInfo
             const newHealthInfo = await healthInfoModel.create({
                 petId,
+                dateOfRegistration,
                 type,
                 date,
                 notes,
