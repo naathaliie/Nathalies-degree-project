@@ -12,7 +12,7 @@ const UsersPage = () => {
         <div className=" bg-petCare-sapphireTeal-main bg-opacity-25 w-full h-36 flex flex-col justify-center mb-5">
           <div className="ml-10">
             <h1 className=" text-xl font-semibold sm:text-3xl md:text-5xl">
-              Välkommen {currentUser.username}!
+              Välkommen {currentUser.name}!
             </h1>
             <h3 className="text-sm md:text-xl">
               Här kan du se dina husdjur, lägga till ett nytt husdjur och följa
@@ -23,8 +23,8 @@ const UsersPage = () => {
         <div>
           <p>Dina registrerade husdjur</p>
           <ul>
-            {currentUser.pets.map((pet) => {
-              return <li key={pet.id}>{pet.name}</li>;
+            {currentUser.pets?.map((pet) => {
+              return <li key={pet._id}>{pet.name}</li>;
             })}
           </ul>
         </div>
