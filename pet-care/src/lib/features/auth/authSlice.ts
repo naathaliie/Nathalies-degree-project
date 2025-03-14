@@ -3,11 +3,19 @@ import { AuthState, User } from "../../../../types/types";
 
 const initialState: AuthState = {
     currentUser: {
-        id: '',
-        username: '',
-        email: '',
-        isLoggedIn: false,
+        _id: '',
+        password: '',
+        dateOfRegistration: '',
+        name: '',
+        surname: '',
+        street: '',
+        city: '',
+        postalCode: '',
+        phone: '',
         pets: [],
+        orders: [],
+        favorites: [],
+        messages: [],
     }
   };
 
@@ -17,20 +25,36 @@ const initialState: AuthState = {
     reducers: {
       setCurrentUser: (state, action: PayloadAction<User>) => {
         state.currentUser = {
-            id: action.payload.id,
-            username: action.payload.username,
-            email: action.payload.email,
-            isLoggedIn: true,
+            _id: action.payload._id,
+            password: action.payload.password,
+            dateOfRegistration: new Date(action.payload.dateOfRegistration).toISOString(), // Konvertera till ISO-sträng innan lagring
+            name: action.payload.name,
+            surname: action.payload.surname,
+            street: action.payload.street,
+            city: action.payload.city,
+            postalCode: action.payload.postalCode,
+            phone: action.payload.phone,
             pets: action.payload.pets,
+            orders: action.payload.orders,
+            favorites: action.payload.favorites,
+            messages: action.payload.messages,
         };
       },
       logout: (state) => { //logout: Återställer currentUser till null.
         state.currentUser = {
-            id: '',
-            username: '',
-            email: '',
-            isLoggedIn: false,
+            _id: '',
+            password: '',
+            dateOfRegistration: '',
+            name: '',
+            surname: '',
+            street: '',
+            city: '',
+            postalCode: '',
+            phone: '',
             pets: [],
+            orders: [],
+            favorites: [],
+            messages: [],
         };
       },
     },
