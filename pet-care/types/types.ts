@@ -2,17 +2,17 @@
 export interface User {
     _id: string
     password: string
-    dateOfRegistration: Date
+    dateOfRegistration: Date | string
     name: string
     surname: string
     street: string
     city: string
     postalCode: string
-    phone: string | undefined
-    pets: Pet[]
-    orders: any[] | undefined
-    favorites: any[] | undefined
-    messages: any[] | undefined
+    phone?: string | undefined
+    pets?: Pet[]
+    orders?: any[] | undefined
+    favorites?: any[] | undefined
+    messages?: any[] | undefined
   }
 
 export interface UsersState {
@@ -30,14 +30,14 @@ export interface AuthState {
 export interface Pet {
     _id: string
     ownerId: string
-    dateOfRegistration: Date
+    dateOfRegistration: Date | string
     name: string
     species: string
     breed: string
     sex: string
     birthday: Date
-    description: string[],
-    healthInfo: HealthInfo[]
+    description?: string[],
+    healthInfo?: HealthInfo[]
 }
 
 export interface PetsState {
