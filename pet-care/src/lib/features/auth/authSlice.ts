@@ -16,6 +16,8 @@ const initialState: AuthState = {
         orders: [],
         favorites: [],
         messages: [],
+        isLoggedIn: false
+
     }
   };
 
@@ -38,6 +40,7 @@ const initialState: AuthState = {
             orders: action.payload.orders,
             favorites: action.payload.favorites,
             messages: action.payload.messages,
+            isLoggedIn: true
         };
       },
       logout: (state) => { //logout: Återställer currentUser till null.
@@ -55,6 +58,7 @@ const initialState: AuthState = {
             orders: [],
             favorites: [],
             messages: [],
+            isLoggedIn: false
         };
       },
     },

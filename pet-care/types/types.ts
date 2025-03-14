@@ -23,7 +23,7 @@ export interface UsersState {
 
 /*****CurrentUser*****/
 export interface AuthState {
-    currentUser: User;
+    currentUser: User & {isLoggedIn: boolean};
   }
 
 /*****Pet*****/
