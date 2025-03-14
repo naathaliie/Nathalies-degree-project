@@ -22,34 +22,6 @@ export const metadata: Metadata = {
   description: "PetCare hjälper dig...",
 };
 
-const initialUsers: User[] = [
-  {
-    id: "1",
-    username: "Alice",
-    email: "alice@example.com",
-    isLoggedIn: false,
-    pets: [
-      {
-        id: "301",
-        name: "Lady",
-        breed: "Cocker spaniel",
-        age: 2,
-        ownerId: "1",
-      },
-      { id: "303", name: "Misse", breed: "Bondkatt", age: 7, ownerId: "1" },
-    ],
-  },
-  {
-    id: "2",
-    username: "Bob",
-    email: "bob@example.com",
-    isLoggedIn: true,
-    pets: [
-      { id: "302", name: "Lufsen", breed: "Blandras", age: 5, ownerId: "2" },
-    ],
-  },
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <StoreProvider users={initialUsers}>
+      <StoreProvider>
         <body
           className=" antialiased min-h-screen flex flex-col mx-auto w-full
          3xl:w-3/4"

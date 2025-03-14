@@ -1,33 +1,56 @@
+/*****User*****/
 export interface User {
-    id: string
-    username: string
-    email: string
-    isLoggedIn: boolean
+    _id: string
+    password: string
+    dateOfRegistration: Date
+    name: string
+    surname: string
+    street: string
+    city: string
+    postalCode: string
+    phone: string | undefined
     pets: Pet[]
+    orders: any[] | undefined
+    favorites: any[] | undefined
+    messages: any[] | undefined
   }
 
 export interface UsersState {
     users: User[]
+    loading: boolean
+    error: string | null
   }
 
-/*****User*****/
-
+/*****CurrentUser*****/
 export interface AuthState {
     currentUser: User;
   }
 
-/*****CurrentUser*****/
-
+/*****Pet*****/
 export interface Pet {
-  id: string;
-  name: string;
-  breed: string;
-  age: number;
-  ownerId: string;
+    _id: string
+    ownerId: string
+    dateOfRegistration: Date
+    name: string
+    species: string
+    breed: string
+    sex: string
+    birthday: Date
+    description: string[],
+    healthInfo: HealthInfo[]
 }
 
 export interface PetsState {
     pets: Pet[]
 }
-/*****Pet*****/
 
+/*****HealthInfo*****/
+
+export interface HealthInfo {
+    petId: string
+    dateOfRegistration: Date
+    type: "Veterinär" | "Pälsvård" | "Kurs"
+    date: Date
+    notes: string
+    place: string,
+}

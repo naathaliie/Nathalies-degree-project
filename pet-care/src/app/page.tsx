@@ -9,6 +9,7 @@ export default function HomePage() {
     <main className="HomePage">
         <HeroSection/>
      <h1 className="text-6xl text-petCare-sapphireTeal-dark">Välkommen till PetCare</h1>
+
     </main>
   );
 }

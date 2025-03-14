@@ -12,16 +12,17 @@ export function userRouter(){
         router.get("/", async (req, res) => {
             try {
             const data = await userModel.find({});
+            console.log("Du hämtade ut alla users med ett lyckat resultat från DB")
             res.status(200).send(data);
             } catch (error) {
             console.log("Det gick inte att hämta användare");
-            res.sendStatus(404);
+            res.sendStatus(500);
             res.end(); // Avslutar responsen
             }
         });
 
         // Skapa en ny användare (signup)
-        router.post("/signup", async (req, res) => {
+        router.post("/new", async (req, res) => {
             //Hämta username från body
             const { email, password, dateOfRegistration, name, surname, street, city, postalCode, phone, pets, orders, favorites, messages } = req.body
 

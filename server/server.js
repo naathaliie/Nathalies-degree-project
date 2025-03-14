@@ -1,4 +1,5 @@
 import Express from "express"
+import cors from 'cors'
 import { userRouter } from "./routes/userRouter.js";
 import { petRouter } from "./routes/petRouter.js";
 import { messageRouter } from "./routes/messageRouter.js"
@@ -8,6 +9,13 @@ import { healthInfoRouter } from "./routes/healtInfoRouter.js";
 
 const app = Express()
 const port = 3003
+
+//För att kunna hämta data från frontend
+app.use(cors({
+    origin: 'http://localhost:3000', // Tillåt anrop från frontend
+    methods: 'GET,POST,PUT,DELETE', // Tillåt dessa HTTP-metoder
+    allowedHeaders: 'Content-Type,Authorization' // Tillåt dessa headers
+  }));
 
 app.use(Express.json())//Middleware för att parsa inkommande JSON-data
 
