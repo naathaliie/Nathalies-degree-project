@@ -12,29 +12,27 @@ import { useRouter } from "next/navigation";
 import { getUsers } from "@/api/users";
 
 const LogInPage = () => {
-    const router = useRouter()
-
     const currentUser = useSelector((state: RootState)=>state.auth.currentUser)
     const choosenUser = useRef<User | null>(null)
-
+    const router = useRouter()
 
 
     const dispatch = useAppDispatch();
-    const users = useSelector((state: RootState) => state.users.users)
+    const users = useSelector((state: RootState) => state.users.users) //Hämta users från storen
 
+
+    const setLoggedInUser = (user:User) => {
+       dispatch(setCurrentUser(user))
+       router.push("/users")
+    }
+
+    //useEffect är som onMounted, körs en gång när komponenten monteras och sedan varje gång users.length förändras
     useEffect(() => {
         if (users.length === 0) {
             dispatch(getUsers()); // Hämta användarna vid sidladdning
         }
 
       }, [dispatch, users.length]);
-
-    console.log("test", users)
-
-    const setLoggedInUser = (user:User) => {
-       dispatch(setCurrentUser(user))
-       router.push("/users")
-    }
 
 
   return (
