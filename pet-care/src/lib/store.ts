@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './features/users/usersSlice'
 import authReducer from './features/auth/authSlice'
+import petReducer from './features/pets/petsSlice'
 
 
 export const makeStore = () => {
@@ -8,6 +9,7 @@ export const makeStore = () => {
     reducer: {
         users: userReducer,
         auth: authReducer,
+        pets: petReducer,
     }
   })
 }

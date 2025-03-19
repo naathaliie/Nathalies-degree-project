@@ -42,6 +42,8 @@ export interface Pet {
 
 export interface PetsState {
     pets: Pet[]
+    loading: boolean
+    error: string | null
 }
 
 /*****HealthInfo*****/
