@@ -1,10 +1,30 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
+import { getPets } from "@/api/pets";
+import { useAppDispatch } from "@/lib/hooks";
 
 const UsersPage = () => {
+  const dispatch = useAppDispatch();
   const currentUser = useSelector((state: RootState) => state.auth.currentUser);
+  const allPets = useSelector((state: RootState) => state.pets.pets)
+  console.log("Vilka husdjur får vi ut?", allPets)
+
+  const currentUsersPets = allPets.filter((p) => {
+     if (p.ownerId === currentUser._id) {
+        return p
+    }
+  })
+  console.log("Nuvarande användares husdjur: ", currentUsersPets )
+
+  //Hämta alla husdjur när komponenten monteras
+  useEffect(() => {
+   if (allPets.length === 0) {
+               dispatch(getPets()); // Hämta användarna vid sidladdning
+           }
+
+         }, [dispatch, allPets.length]);
 
   return (
     <>
@@ -23,7 +43,7 @@ const UsersPage = () => {
         <div>
           <p>Dina registrerade husdjur</p>
           <ul>
-            {currentUser.pets?.map((pet) => {
+            {currentUsersPets?.map((pet) => {
               return <li key={pet._id}>{pet.name}</li>;
             })}
           </ul>
