@@ -24,7 +24,7 @@ export function userRouter(){
         // Skapa en ny användare (signup)
         router.post("/new", async (req, res) => {
             //Hämta username från body
-            const { email, password, dateOfRegistration, name, surname, street, city, postalCode, phone, pets, orders, favorites, messages } = req.body
+            const { email, password, dateOfRegistration, ssn, name, surname, street, city, postalCode, phone, pets, orders, favorites, messages } = req.body
 
             // Validera först med Zod INNAN datan skickas till databasen
             const zodResult = zodUserSchema.safeParse(req.body);
@@ -61,6 +61,7 @@ export function userRouter(){
                 email,
                 password,
                 dateOfRegistration,
+                ssn,
                 name,
                 surname,
                 street,

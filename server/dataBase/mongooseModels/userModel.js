@@ -5,6 +5,7 @@ const userSchema = new Mongoose.Schema({
   email: { type: String, required: true, unique: true},
   password: { type: String, required: true},
   dateOfRegistration: { type: Date, required: true},
+  ssn: { type: String, required: true, match: /^\d{4}-\d{2}-\d{2}$/ }, // YYYY-MM-DD
   name: { type: String, required: true},
   surname: { type: String, required: true},
   street: { type: String, required: true},
