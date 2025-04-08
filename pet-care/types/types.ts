@@ -30,14 +30,14 @@ export interface AuthState {
 
 /*****Pet*****/
 export interface Pet {
-    _id: string
+    _id?: string //Skapas först när man skickat in till DB och finns inte innan
     ownerId: string
     dateOfRegistration: Date | string
     name: string
     species: string
     breed: string
     sex: string
-    birthday: Date | string
+    birthday?: Date | string
     description?: string[],
     healthInfo?: HealthInfo[]
 }
@@ -48,20 +48,6 @@ export interface PetsState {
     error: string | null
 }
 
-export interface PartialPetFirst {
-    name: string
-    species: string
-    breed: string
-    sex: string
-    birthday: Date | string
-}
-
-export interface PartialPetSecond {
-    ownerId: string
-    dateOfRegistration: Date | string
-    description?: string[],
-    healthInfo?: HealthInfo[]
-}
 
 /*****HealthInfo*****/
 

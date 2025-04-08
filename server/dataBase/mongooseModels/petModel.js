@@ -8,7 +8,7 @@ const petSchema = new Mongoose.Schema({
     species: { type: String, required: true},
     breed: { type: String, required: true },
     sex: { type: String, required: true},
-    birthday: { type: Date, required: true},
+    birthday: { type: Date, required: true}, //GÖR OPTIONAL?
     description: { type: Array, default: []},
     healthInfo: {
         type: [Mongoose.Schema.Types.ObjectId],

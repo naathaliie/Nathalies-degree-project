@@ -17,11 +17,7 @@ const initialState: PetsState = {
     reducers: { /* Det som behöver sparas lokalt */
      addPet: (state, action: PayloadAction<Omit<Pet, 'id'>>) => {
            const newPet: Pet = {
-             id: uuidv4(), // Enkel id-generering
-             name: action.payload.name,
-             breed: action.payload.breed,
-             age: action.payload.age,
-             ownerId: action.payload.ownerId
+
            }
            state.pets.push(newPet)
          },
@@ -33,6 +29,7 @@ const initialState: PetsState = {
         removePet: (state, action: PayloadAction<{id: string}>) => {
            state.pets = state.pets.filter(pet => pet.id !== action.payload.id)
          },
+        //HÄR VILL JAG KUNNA SPARA VILKET DJUR MAN KLICKAT PÅ
     },
     //ExtraReducers för hantering mot DB
       extraReducers: (builder) => {
