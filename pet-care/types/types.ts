@@ -44,10 +44,12 @@ export interface Pet {
 
 export interface PetsState {
     pets: Pet[]
+    selectedPet: SelectedPet
     loading: boolean
     error: string | null
 }
 
+export type SelectedPet = "Hund" | "Katt" | "Häst" | "Smådjur" | null;
 
 /*****HealthInfo*****/
 

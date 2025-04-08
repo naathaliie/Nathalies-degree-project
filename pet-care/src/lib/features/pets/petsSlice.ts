@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Pet, PetsState } from "../../../../types/types";
+import { Pet, PetsState, SelectedPet } from "../../../../types/types";
 import { v4 as uuidv4 } from "uuid"; // Importera v4-metoden från uuid för att generera unika id:n
 import { getPets } from "@/api/pets";
 
 
 const initialState: PetsState = {
     pets: [],
+    selectedPet: null,
     loading: false,
     error: null
 
@@ -21,6 +22,9 @@ const initialState: PetsState = {
            }
            state.pets.push(newPet)
          },
+         addSelectedPet: (state, action:PayloadAction<SelectedPet>) => {
+            state.selectedPet = action.payload
+         },
          /* updatePet: (state, action: PayloadAction<{ id: string}>) => {
            const pet = state.pets.find(pet => pet.id === action.payload.id)
            if (pet) {
@@ -28,8 +32,10 @@ const initialState: PetsState = {
          }, */
         removePet: (state, action: PayloadAction<{id: string}>) => {
            state.pets = state.pets.filter(pet => pet.id !== action.payload.id)
+
          },
         //HÄR VILL JAG KUNNA SPARA VILKET DJUR MAN KLICKAT PÅ
+
     },
     //ExtraReducers för hantering mot DB
       extraReducers: (builder) => {
@@ -49,6 +55,6 @@ const initialState: PetsState = {
       },
   });
 
-export const { addPet} = petsSlice.actions;
+export const { addPet, addSelectedPet} = petsSlice.actions;
 
 export default petsSlice.reducer;

@@ -2,17 +2,31 @@
 import { Button } from "@/components/ui/button";
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { UseDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addSelectedPet } from "@/lib/features/pets/petsSlice";
+import { SelectedPet } from "../../../types/types";
+
 
 const HeroSection = () => {
-  const pets = ["Hund", "Katt", "Häst", "Smådjur"];
+  const pets: SelectedPet[] = ["Hund", "Katt", "Häst", "Smådjur"]; // ska vara av typen selectedPet?
   const router = useRouter() // För att kunna navigera med routern
+  const dispatch = useDispatch()
 
-  const [selectedPet, setSelectedPet] = useState<string>("Hund");
 
-  const handleSelectedPet = (pet: string) => {
+  const [selectedPet, setSelectedPet] = useState<SelectedPet>(null);
+
+  const handleSelectedPet = (pet: SelectedPet) => {
     setSelectedPet(pet);
     console.log("Du valde: ", selectedPet)
   };
+
+  const handleRegistrate = () => {
+    //Skicka valt husdjur till slicen
+    dispatch(addSelectedPet(selectedPet))
+    router.push("/users/new")
+    setSelectedPet(null) // Rensar
+  }
 
   return (
     <div className="HeroSection bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 w-full pt-10 pb-10 pl-16 pr-16 text-petCare-sapphireTeal-dark">
@@ -44,7 +58,7 @@ const HeroSection = () => {
           variant={"primary"}
           size={"lg"}
           className="font-bold text-xl shadow-md shadow-gray-400"
-          onClick={() => {router.push("/users/new")}}
+          onClick={() => handleRegistrate()}
         >
           Registrera
         </Button>
