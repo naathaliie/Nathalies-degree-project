@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import "../globals.css";
 import LoginForm from "../components/LoginForm";
 import { useSelector } from "react-redux";
+import { useAppSelector } from "@/lib/hooks";
 import { User } from "../../../types/types";
 import { Button } from "@/components/ui/button";
 import { RootState } from "@/lib/store";
@@ -16,9 +17,9 @@ const LogInPage = () => {
     const choosenUser = useRef<User | null>(null)
     const router = useRouter()
 
-
+useAppSelector
     const dispatch = useAppDispatch();
-    const users = useSelector((state: RootState) => state.users.users) //Hämta users från storen
+    const users = useAppSelector((state) => state.users.users) //Hämta users från storen
 
 
     const setLoggedInUser = (user:User) => {
