@@ -1,9 +1,8 @@
 /*****User*****/
 export interface User {
-    _id: string
+    _id?: string
     password: string
     dateOfRegistration: Date | string
-    ssn: string
     name: string
     surname: string
     street: string
@@ -34,7 +33,7 @@ export interface Pet {
     ownerId: string
     dateOfRegistration: Date | string
     name: string
-    species: string
+    species: ChoosablePets | null
     breed: string
     sex: string
     birthday?: Date | string
@@ -44,12 +43,16 @@ export interface Pet {
 
 export interface PetsState {
     pets: Pet[]
-    selectedPet: SelectedPet
+    selectedPet: ChoosablePets | null
     loading: boolean
     error: string | null
 }
 
-export type SelectedPet = "Hund" | "Katt" | "Häst" | "Smådjur" | null;
+
+export const choosablePetsArray = ["Hund", "Katt", "Häst", "Smådjur"] as const; // Här lägger vi till fler djur vid behov
+
+export type ChoosablePets = typeof choosablePetsArray[number];
+
 
 /*****HealthInfo*****/
 
