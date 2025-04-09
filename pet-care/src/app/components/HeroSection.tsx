@@ -2,30 +2,30 @@
 import { Button } from "@/components/ui/button";
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { UseDispatch } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addSelectedPet } from "@/lib/features/pets/petsSlice";
-import { SelectedPet } from "../../../types/types";
+import { ChoosablePets, choosablePetsArray } from "../../../types/types";
+import { useAppDispatch } from "@/lib/hooks";
 
 
 const HeroSection = () => {
-  const pets: SelectedPet[] = ["Hund", "Katt", "Häst", "Smådjur"]; // ska vara av typen selectedPet?
   const router = useRouter() // För att kunna navigera med routern
   const dispatch = useDispatch()
 
+  const [selectedPet, setSelectedPet] = useState<ChoosablePets | null>(null);
 
-  const [selectedPet, setSelectedPet] = useState<SelectedPet>(null);
-
-  const handleSelectedPet = (pet: SelectedPet) => {
+  const handleSelectedPet = (pet: ChoosablePets) => {
     setSelectedPet(pet);
-    console.log("Du valde: ", selectedPet)
   };
 
   const handleRegistrate = () => {
     //Skicka valt husdjur till slicen
-    dispatch(addSelectedPet(selectedPet))
-    router.push("/users/new")
-    setSelectedPet(null) // Rensar
+    if (selectedPet) {
+      dispatch(addSelectedPet(selectedPet))
+        router.push("/users/new")
+        setSelectedPet(null) // Rensar
+    }
+    //Annars ett fel att man måste välja ett pet
   }
 
   return (
@@ -37,7 +37,7 @@ const HeroSection = () => {
         </p>
       </div>
       <div className="flex gap-2 mt-4">
-        {pets.map((pet, index) => {
+        {choosablePetsArray.map((pet, index) => {
           return (
             <Button
               key={index}
