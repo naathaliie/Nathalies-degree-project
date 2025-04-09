@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Pet, PetsState, SelectedPet } from "../../../../types/types";
+import { ChoosablePets, Pet, PetsState } from "../../../../types/types";
 import { v4 as uuidv4 } from "uuid"; // Importera v4-metoden från uuid för att generera unika id:n
 import { getPets } from "@/api/pets";
 
@@ -22,7 +22,7 @@ const initialState: PetsState = {
            }
            state.pets.push(newPet)
          },
-         addSelectedPet: (state, action:PayloadAction<SelectedPet>) => {
+         addSelectedPet: (state, action:PayloadAction<ChoosablePets>) => {
             state.selectedPet = action.payload
          },
          /* updatePet: (state, action: PayloadAction<{ id: string}>) => {
