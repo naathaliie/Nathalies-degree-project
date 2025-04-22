@@ -11,10 +11,6 @@ export const zodUserSchema = z.object({
       message: "Date must be a valid date string (YYYY-MM-DD or ISO 8601)",
     })
     .transform((val) => new Date(val + "Z")), // Tvinga tolkning som UTC
-  ssn: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, "SSN måste vara i formatet YYYY-MM-DD")
-    .min(1, "Social security number is required"),
   name: z.string().min(1, "Name is required"),
   surname: z.string().min(1, "Surname is required"),
   street: z.string().min(1, "Street is required"),

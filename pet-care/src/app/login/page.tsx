@@ -27,13 +27,11 @@ useAppSelector
        router.push("/users")
     }
 
-    //useEffect är som onMounted, körs en gång när komponenten monteras och sedan varje gång users.length förändras
+    //useEffect är som onMounted, körs en gång när komponenten monteras
     useEffect(() => {
-        if (users.length === 0) {
             dispatch(getUsers()); // Hämta användarna vid sidladdning
-        }
 
-      }, [dispatch, users.length]);
+      }, []);
 
 
   return (

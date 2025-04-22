@@ -1,6 +1,7 @@
 /*****User*****/
 export interface User {
-    _id?: string
+    _id?: string //Skapas först när man skickat in till DB och finns inte innan
+    email: string
     password: string
     dateOfRegistration: Date | string
     name: string
@@ -9,7 +10,7 @@ export interface User {
     city: string
     postalCode: string
     phone?: string | undefined
-    pets?: Pet[]
+    pets?: any[] | Pet[]
     orders?: any[] | undefined
     favorites?: any[] | undefined
     messages?: any[] | undefined
@@ -17,7 +18,10 @@ export interface User {
 
 export interface UsersState {
     users: User[]
-    loading: boolean
+    loading: {
+        getUsers: boolean,
+        postNewUser: boolean,
+    }
     error: string | null
   }
 
