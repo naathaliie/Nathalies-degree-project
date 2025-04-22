@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react'
-import ActionBtn from './ActionBtn';
+import ActionBtn from './ActionButton';
 
 const LoginForm = () => {
     let userNameRef = useRef<HTMLInputElement>(null)
@@ -26,7 +26,7 @@ const LoginForm = () => {
             <input ref={passwordRef} name="password" className='h-8 text-lg'/>
         </div>
         <div className=" self-center">
-            <ActionBtn title="Logga in"/>
+            {/* <ActionBtn title="Logga in"/> */}
         </div>
       </form>
   )
