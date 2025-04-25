@@ -1,16 +1,12 @@
 "use client";
-import React, { useEffect, useReducer, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import React, { useState } from "react";
+import { useAppDispatch } from "@/lib/hooks";
 import { User } from "../../../../types/types";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ErrorIcon from "@mui/icons-material/ErrorOutline";
-import DoneIcon from "@mui/icons-material/Done";
-import Button from "@mui/material/Button";
 import { RegisterUserSchema } from "@/zodSchemas/RegisterUserSchema";
 import SaveButton from "../Buttons/SaveButton";
-import { addNewUser, getTestUsers } from "@/lib/features/users/usersSlice";
+import { addNewUser } from "@/lib/features/users/usersSlice";
 import { v4 as uuidv4 } from "uuid";
-import { boolean } from "zod";
 
 const RegisterUserForm = () => {
   const dispatch = useAppDispatch();
