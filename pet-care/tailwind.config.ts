@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
-const defaultTheme = require('tailwindcss/defaultTheme')
-
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
   darkMode: ["class"],
@@ -11,28 +10,47 @@ export default {
   ],
   theme: {
     extend: {
-        fontFamily: {
-            sans: [
-              'Roboto',
-              'ui-sans-serif',
-              'system-ui',
-              '-apple-system',
-              'BlinkMacSystemFont',
-              'Segoe UI',
-              'Roboto',
-              'Helvetica Neue',
-              'Arial',
-              'Noto Sans',
-              'sans-serif',
-              'Apple Color Emoji',
-              'Segoe UI Emoji',
-              'Segoe UI Symbol',
-              'Noto Color Emoji',
-              ...defaultTheme.fontFamily.sans
-            ],
-            saira: ['Saira ExtraCondensed'],
-            roboto: ['Roboto']
+      animation: {
+        shake: "shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97)",
+      },
+      keyframes: {
+        shake: {
+          "10%, 90%": {
+            transform: "translate3d(-1px, 0, 0)",
           },
+          "20%, 80%": {
+            transform: "translate3d(2px, 0, 0)",
+          },
+          "30%, 50%, 70%": {
+            transform: "translate3d(-4px, 0, 0)",
+          },
+          "40%, 60%": {
+            transform: "translate3d(4px, 0, 0)",
+          },
+        },
+      },
+      fontFamily: {
+        sans: [
+          "Roboto",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        saira: ["Saira ExtraCondensed"],
+        roboto: ["Roboto"],
+      },
       screens: {
         "3xl": "2000px", // Ny breakpoint vid 2000px
       },
@@ -58,5 +76,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate"), require("daisyui")],
-
 } satisfies Config;
