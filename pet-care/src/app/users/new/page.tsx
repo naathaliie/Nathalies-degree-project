@@ -1,11 +1,11 @@
 "use client";
-import RegisterPetForm from "@/app/components/RegisterForms/RegisterPetForm";
-import RegisterUserForm from "@/app/components/RegisterForms/RegisterUserForm";
-import { Button } from "@/components/ui/button";
+import RegisterPetForm from "@/app/components/Forms/RegisterPetForm";
+import RegisterUserForm from "@/app/components/Forms/RegisterUserForm";
 import { RootState } from "@/lib/store";
 import React from "react";
 import { useSelector } from "react-redux";
 import { choosablePetsArray } from "../../../../types/types";
+import RegistrationTabPanel from "@/app/components/RegistrationTabPanel";
 
 const NewUserPage = () => {
   const currentSelectedPet = useSelector(
@@ -29,28 +29,7 @@ const NewUserPage = () => {
       </div>
 
       <div className="FormBox m-10 p-10 bg-petCare-myWhite">
-        <div className="flex flex-col gap-10 md:flex-row justify-evenly">
-          <div className="md:w-1/2">
-            <h1 className=" text-2xl font-bold mb-5">Uppgifter om dig</h1>
-            <RegisterUserForm />
-          </div>
-          <div className="md:w-1/2">
-            <h1 className=" text-2xl font-bold mb-5">
-              Uppgifter om ditt husdjur
-            </h1>
-            <RegisterPetForm />
-          </div>
-        </div>
-        <div className="mt-7 flex justify-center">
-          <Button
-            variant={"primary"}
-            size={"lg"}
-            className="font-bold text-xl shadow-md shadow-gray-400"
-            onClick={() => console.log("hej")}
-          >
-            Registrera
-          </Button>
-        </div>
+        <RegistrationTabPanel />
       </div>
     </div>
   );

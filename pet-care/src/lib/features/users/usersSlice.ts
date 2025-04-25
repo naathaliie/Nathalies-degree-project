@@ -5,6 +5,7 @@ import { stat } from "fs";
 
 const initialState: UsersState = {
   users: [],
+  draftUser: null,
   loading: {
     getUsers: false,
     postNewUser: false,
@@ -22,6 +23,12 @@ const usersSlice = createSlice({
     },
     getTestUsers: (state) => {
       state.users;
+    },
+    setDraftUser: (state, action: PayloadAction<User>) => {
+      state.draftUser = action.payload;
+    },
+    getDraftUser: (state) => {
+      state.draftUser;
     },
     addNewUser: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
@@ -61,6 +68,12 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setUsers, getTestUsers, addNewUser } = usersSlice.actions;
+export const {
+  setUsers,
+  getTestUsers,
+  addNewUser,
+  setDraftUser,
+  getDraftUser,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

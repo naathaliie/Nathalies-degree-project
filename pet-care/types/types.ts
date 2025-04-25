@@ -14,6 +14,7 @@ export interface User {
 
 export interface UsersState {
   users: User[];
+  draftUser: User | null;
   loading: {
     getUsers: boolean;
     postNewUser: boolean;

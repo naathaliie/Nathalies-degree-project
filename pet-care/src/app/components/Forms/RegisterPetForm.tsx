@@ -115,20 +115,14 @@ const RegisterPetForm = () => {
           </select>
           {errors.gender && <p className="text-red-500">{errors.gender}</p>}
         </div>
+        <SaveButton
+          icon={<FavoriteIcon />}
+          label="Registrera"
+          state={SaveButtonState}
+          setState={setSaveButtonState}
+          onClick={submit}
+        />
       </form>
-      <SaveButton
-        icon={<FavoriteIcon />}
-        label="Registrera"
-        state={SaveButtonState}
-        setState={setSaveButtonState}
-        onClick={submit}
-      />
-      <ul>
-        Alla djur
-        {allPets.map((p, i) => {
-          return <li key={i}>{p.name}</li>;
-        })}
-      </ul>
     </div>
   );
 };
