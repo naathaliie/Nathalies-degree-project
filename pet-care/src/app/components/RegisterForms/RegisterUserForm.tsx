@@ -1,23 +1,23 @@
 "use client";
-import React, { useReducer, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { User } from "../../../../types/types";
-import { postNewUser } from "@/api/users";
-import Favorite from "@mui/icons-material/Favorite";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ErrorIcon from "@mui/icons-material/ErrorOutline";
+import DoneIcon from "@mui/icons-material/Done";
 import Button from "@mui/material/Button";
 import { RegisterUserSchema } from "@/zodSchemas/RegisterUserSchema";
-import ActionButton from "../ActionButton";
+import SaveButton from "../Buttons/SaveButton";
+import { addNewUser, getTestUsers } from "@/lib/features/users/usersSlice";
+import { v4 as uuidv4 } from "uuid";
+import { boolean } from "zod";
 
 const RegisterUserForm = () => {
-  const users = useAppSelector((state) => state.users.users);
-  /* const isLoading = useAppSelector((state) => state.users.loading.postNewUser); */
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const selectedPet = useAppSelector((state) => state.pets.selectedPet);
   const dispatch = useAppDispatch();
+  const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
 
-  //Validering
+  //Validering av inputfält
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [nameInput, setNameInput] = useState("");
@@ -27,12 +27,13 @@ const RegisterUserForm = () => {
   const [cityInput, setCityInput] = useState("");
   const [phoneInput, setPhoneInput] = useState("");
 
-  //Validering på inputfälten!?
   const submit = (e: React.FormEvent) => {
     e.preventDefault(); //Stoppar att sidan laddas om
+    setErrors({}); // Töm gamla fel BÖR DENNA LIGGA LÄNGST UPP I SUBMIT?
 
     //Fält som skall valideras
-    const formData = {
+    const newUser: User = {
+      _id: uuidv4(),
       email: emailInput,
       password: passwordInput,
       name: nameInput,
@@ -42,11 +43,10 @@ const RegisterUserForm = () => {
       city: cityInput,
       phone: phoneInput,
     };
-
-    const validation = RegisterUserSchema.safeParse(formData);
+    //Validera
+    const validation = RegisterUserSchema.safeParse(newUser);
 
     if (!validation.success) {
-      // Om fel: sätt felmeddelanden
       const newErrors: { [key: string]: string } = {};
       validation.error.errors.forEach((error) => {
         if (error.path[0]) {
@@ -54,37 +54,14 @@ const RegisterUserForm = () => {
         }
       });
       setErrors(newErrors);
+      setSaveButtonState(false);
       return;
     }
 
-    // Om ingen fel: fortsätt skapa användare
-    setErrors({}); // Töm gamla fel
-
-    //Logik för att skapa ny användare
-    const newUser: User = {
-        ...formData,
-        dateOfRegistration: new Date().toISOString(), // För att få dagens datum
-        pets: [],
-        messages: [],
-        favorites: [],
-        orders: [],
-      };
-    //skicka till db
-
-    console.log("Detta skickas till db", newUser);
-     dispatch(postNewUser(newUser));
-
-     /* postNewUser() */
-
+    console.log("Detta är den nya användaren", newUser);
+    dispatch(addNewUser(newUser));
+    setSaveButtonState(true);
   };
-
-  const postNewUser = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-        setIsLoading(false)
-
-    }, 500);
-  }
 
   return (
     <div className="RegisterUserForm">
@@ -98,8 +75,7 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setEmailInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.email}</p>}
-
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
           </div>
           <div>
             <p className=" text-lg font-bold">Lösenord</p>
@@ -108,8 +84,9 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setPasswordInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.password}</p>}
-
+            {errors.password && (
+              <p className="text-red-500">{errors.password}</p>
+            )}
           </div>
         </div>
 
@@ -124,8 +101,7 @@ const RegisterUserForm = () => {
                 setNameInput(e.target.value);
               }}
             />
-              {errors.email && <p className="text-red-500">{errors.name}</p>}
-
+            {errors.name && <p className="text-red-500">{errors.name}</p>}
           </div>
           <div>
             <p className=" text-lg font-bold">Efternamn</p>
@@ -134,8 +110,7 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setSurnameInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.surname}</p>}
-
+            {errors.surname && <p className="text-red-500">{errors.surname}</p>}
           </div>
 
           <div>
@@ -145,8 +120,7 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setAdressInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.street}</p>}
-
+            {errors.street && <p className="text-red-500">{errors.street}</p>}
           </div>
           <div>
             <p className=" text-lg font-bold">Postnummer</p>
@@ -155,8 +129,9 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setPostalCodeInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.postalCode}</p>}
-
+            {errors.postalCode && (
+              <p className="text-red-500">{errors.postalCode}</p>
+            )}
           </div>
           <div>
             <p className=" text-lg font-bold">Stad</p>
@@ -165,8 +140,7 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setCityInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.city}</p>}
-
+            {errors.city && <p className="text-red-500">{errors.city}</p>}
           </div>
           <div>
             <p className=" text-lg font-bold">Telefonnummer</p>
@@ -175,13 +149,17 @@ const RegisterUserForm = () => {
               type="text"
               onChange={(e) => setPhoneInput(e.target.value)}
             />
-              {errors.email && <p className="text-red-500">{errors.phone}</p>}
-
+            {errors.phone && <p className="text-red-500">{errors.phone}</p>}
           </div>
-          <p>{isLoading.toString()}</p>
         </div>
-        <ActionButton icon={<Favorite/>} label="Test" onClick={submit} loading={isLoading}></ActionButton>
-        <ActionButton icon={<Favorite/>} label="NYTEST" onClick={postNewUser} loading={isLoading}></ActionButton>
+        {/* Fortsätt här, skicka in och ändra knappens färg vid error och success? och sedan petForm */}
+        <SaveButton
+          icon={<FavoriteIcon />}
+          label="Test"
+          state={saveButtonState}
+          setState={setSaveButtonState}
+          onClick={submit}
+        ></SaveButton>
       </form>
     </div>
   );

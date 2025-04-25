@@ -16,11 +16,11 @@ const MyPageNav = () => {
 
   return (
     <>
-      {currentUser.isLoggedIn && (
+      {currentUser?.isLoggedIn && (
         <nav className="NavBar w-full p-2 flex justify-center bg-petCare-sapphireTeal-light text-white">
           <div className=" flex items-center">
             <div className="self-center">
-              <p className="text-xs">inloggad:{currentUser.username}</p>
+              <p className="text-xs">inloggad:{currentUser?.name}</p>
             </div>
 
             <ul className="flex gap-5">

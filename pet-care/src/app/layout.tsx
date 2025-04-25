@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-/* import { Geist, Geist_Mono } from "next/font/google";
- */ import "./globals.css";
+import "./globals.css";
 import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
 import StoreProvider from "./StoreProvider";
 import { User } from "../../types/types";
 import MyPageNav from "./components/MyPageNav";
-
-/* const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-}); */
+import GetMockData from "./components/GetMockData";
 
 export const metadata: Metadata = {
   title: "PetCare",
@@ -30,6 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StoreProvider>
+        {/* För att hämta all mockdata */}
+        <GetMockData />
         <body
           className=" antialiased min-h-screen flex flex-col mx-auto w-full
          3xl:w-3/4"

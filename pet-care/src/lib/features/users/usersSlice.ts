@@ -1,53 +1,66 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { User, UsersState } from '../../../../types/types'
-import { getUsers, postNewUser } from '../../../api/users'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User, UsersState } from "../../../../types/types";
+import { getUsers, postNewUser } from "../../../api/users";
+import { stat } from "fs";
 
 const initialState: UsersState = {
-    users: [],
-    loading: {
-        getUsers: false,
-        postNewUser: false,
-    },
-    error: null
-}
+  users: [],
+  loading: {
+    getUsers: false,
+    postNewUser: false,
+  },
+  error: null,
+};
 
 const usersSlice = createSlice({
-  name: 'users',
+  name: "users",
   initialState,
-  reducers: {/* Det som behöver sparas lokalt */},
+  reducers: {
+    /* Det som behöver sparas lokalt */
+    setUsers: (state, action: PayloadAction<User[]>) => {
+      state.users = action.payload;
+    },
+    getTestUsers: (state) => {
+      state.users;
+    },
+    addNewUser: (state, action: PayloadAction<User>) => {
+      state.users.push(action.payload);
+    },
+  },
   //ExtraReducers för hantering mot DB
   extraReducers: (builder) => {
     builder
-    //GET users
-    .addCase(getUsers.pending, (state) => {
+      //GET users
+      .addCase(getUsers.pending, (state) => {
         state.loading.getUsers = true;
       })
-    .addCase(getUsers.fulfilled, (state, action) => {
+      .addCase(getUsers.fulfilled, (state, action) => {
         state.loading.getUsers = false;
         state.users = action.payload;
       })
-    .addCase(getUsers.rejected, (state, action) => {
+      .addCase(getUsers.rejected, (state, action) => {
         state.loading.getUsers = false;
-        state.error = action.error.message || 'Ett fel uppstod vid hämtning av användare';
+        state.error =
+          action.error.message || "Ett fel uppstod vid hämtning av användare";
       })
-    //POST newUser
-    .addCase(postNewUser.pending, (state) => {
-        state.loading.postNewUser = true
-    })
-    .addCase(postNewUser.fulfilled, (state, action) => {
-       setTimeout(() => {
-        state.loading.postNewUser = false
-        state.users.push(action.payload)
-       }, 2500);
-    })
-    .addCase(postNewUser.rejected, (state, action) => {
-        state.loading.postNewUser = false
-        state.error = action.error.message || 'Ett fel uppstod vid nyskapande av användare'
-    })
-
+      //POST newUser
+      .addCase(postNewUser.pending, (state) => {
+        state.loading.postNewUser = true;
+      })
+      .addCase(postNewUser.fulfilled, (state, action) => {
+        setTimeout(() => {
+          state.loading.postNewUser = false;
+          state.users.push(action.payload);
+        }, 2500);
+      })
+      .addCase(postNewUser.rejected, (state, action) => {
+        state.loading.postNewUser = false;
+        state.error =
+          action.error.message || "Ett fel uppstod vid nyskapande av användare";
+      });
   },
-})
+});
 
-export const {  } = usersSlice.actions
+export const { setUsers, getTestUsers, addNewUser } = usersSlice.actions;
 
-export default usersSlice.reducer
+export default usersSlice.reducer;

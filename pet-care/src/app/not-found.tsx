@@ -1,5 +1,5 @@
 import React from "react";
-import GoBackBtn from "./components/GoBackBtn";
+import GoBackBtn from "./components/Buttons/GoBackBtn";
 import "./globals.css";
 
 const NotFoundPage = () => {
