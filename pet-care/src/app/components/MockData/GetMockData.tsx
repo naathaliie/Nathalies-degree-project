@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "@/lib/hooks";
 import { setUsers } from "@/lib/features/users/usersSlice";
-import { mockPets, mockUsers } from "../../data/mockdata";
 import { setPets } from "@/lib/features/pets/petsSlice";
+import { mockPets, mockUsers } from "@/data/mockdata";
 
 //Komponent endast för att sätta mockdatan vid uppstart av app
 export default function GetMockData() {

@@ -3,9 +3,8 @@ import "./globals.css";
 import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
 import StoreProvider from "./StoreProvider";
-import { User } from "../../types/types";
 import MyPageNav from "./components/MyPageNav";
-import GetMockData from "./components/GetMockData";
+import GetMockData from "./components/MockData/GetMockData";
 
 export const metadata: Metadata = {
   title: "PetCare",
