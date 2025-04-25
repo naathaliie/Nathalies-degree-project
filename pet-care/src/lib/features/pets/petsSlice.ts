@@ -20,22 +20,15 @@ const petsSlice = createSlice({
     getTestPets: (state) => {
       state.pets;
     },
-    addPet: (state, action: PayloadAction<Omit<Pet, "id">>) => {
-      const newPet: Pet = {};
-      state.pets.push(newPet);
+    addNewPet: (state, action: PayloadAction<Pet>) => {
+      state.pets.push(action.payload);
     },
-    addSelectedPet: (state, action: PayloadAction<ChoosablePets>) => {
+    setSelectedPet: (state, action: PayloadAction<ChoosablePets>) => {
       state.selectedPet = action.payload;
     },
-    /* updatePet: (state, action: PayloadAction<{ id: string}>) => {
-           const pet = state.pets.find(pet => pet.id === action.payload.id)
-           if (pet) {
-           }
-         }, */
     removePet: (state, action: PayloadAction<{ id: string }>) => {
       state.pets = state.pets.filter((pet) => pet.id !== action.payload.id);
     },
-    //HÄR VILL JAG KUNNA SPARA VILKET DJUR MAN KLICKAT PÅ
   },
   //ExtraReducers för hantering mot DB
   extraReducers: (builder) => {
@@ -55,6 +48,6 @@ const petsSlice = createSlice({
   },
 });
 
-export const { addPet, addSelectedPet, setPets } = petsSlice.actions;
+export const { addNewPet, setSelectedPet, setPets } = petsSlice.actions;
 
 export default petsSlice.reducer;
