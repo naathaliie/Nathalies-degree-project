@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { addSelectedPet } from "@/lib/features/pets/petsSlice";
+import { setSelectedPet } from "@/lib/features/pets/petsSlice";
 import { ChoosablePets, choosablePetsArray } from "../../../types/types";
 import { ToggleButtonGroup, ToggleButton, Button } from "@mui/material";
 import ArrowForward from "@mui/icons-material/ArrowForward";
@@ -11,20 +11,20 @@ import { ForwardIcon } from "@heroicons/react/24/solid";
 const HeroSection = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [selectedPet, setSelectedPet] = useState<ChoosablePets | null>(null);
+  const [pet, setPet] = useState<ChoosablePets | null>(null);
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newSelection: ChoosablePets
   ) => {
-    setSelectedPet(newSelection);
+    setPet(newSelection);
   };
 
   const handleRegistration = () => {
-    if (selectedPet) {
-      dispatch(addSelectedPet(selectedPet));
+    if (pet) {
+      dispatch(setSelectedPet(pet));
       router.push("/users/new");
-      setSelectedPet(null); // Rensar
+      setPet(null); // Rensar
     }
   };
 
@@ -38,21 +38,21 @@ const HeroSection = () => {
       </div>
       <div className="flex gap-2 mt-4">
         <ToggleButtonGroup
-          value={selectedPet}
+          value={pet}
           exclusive
           onChange={handleChange}
           className="bg-petCare-sapphireTeal-dark"
         >
-          {choosablePetsArray.map((pet, i) => {
+          {choosablePetsArray.map((p, i) => {
             return (
               <ToggleButton
                 key={i}
-                value={pet}
+                value={p}
                 className={`${
-                  selectedPet === pet && "!bg-petCare-sapphireTeal-light"
+                  pet === p && "!bg-petCare-sapphireTeal-light"
                 } !text-petCare-myWhite !font-bold rounded-sm !text-sm`}
               >
-                {pet}
+                {p}
               </ToggleButton>
             );
           })}
@@ -60,15 +60,15 @@ const HeroSection = () => {
       </div>
 
       <div className="mt-5">
-        {selectedPet && (
+        {pet && (
           <Button
             endIcon={<ArrowForward />}
             variant="contained"
             size="large"
             className={`${
-              selectedPet ? "!bg-petCare-sapphireTeal-dark " : "bg-slate-300"
+              pet ? "!bg-petCare-sapphireTeal-dark " : "bg-slate-300"
             } !font-bold !text-lg`}
-            disabled={!selectedPet}
+            disabled={!pet}
             onClick={handleRegistration}
           >
             Registrera
