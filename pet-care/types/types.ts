@@ -28,13 +28,12 @@ export interface AuthState {
 
 /*****Pet*****/
 export interface Pet {
-  _id?: string;
+  _id: string;
   ownerId: string;
   name: string;
   species: ChoosablePets | null;
   breed: string;
   gender: string;
-  birthday: Date | string;
 }
 
 export interface PetsState {
