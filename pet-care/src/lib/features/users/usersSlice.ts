@@ -30,6 +30,9 @@ const usersSlice = createSlice({
     getDraftUser: (state) => {
       state.draftUser;
     },
+    deleteDraftUser: (state) => {
+      state.draftUser = null;
+    },
     addNewUser: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
     },
@@ -74,6 +77,7 @@ export const {
   addNewUser,
   setDraftUser,
   getDraftUser,
+  deleteDraftUser,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

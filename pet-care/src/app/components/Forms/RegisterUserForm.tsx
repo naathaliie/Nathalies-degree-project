@@ -5,11 +5,7 @@ import { User } from "../../../../types/types";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import { RegisterUserSchema } from "@/zodSchemas/RegisterUserSchema";
 import SaveButton from "../Buttons/SaveButton";
-import {
-  addNewUser,
-  getDraftUser,
-  setDraftUser,
-} from "@/lib/features/users/usersSlice";
+import { setDraftUser } from "@/lib/features/users/usersSlice";
 import { v4 as uuidv4 } from "uuid";
 //setSuccessAddNewUser kan skickas med om man från föräldrakomponenten vill veta om en ny user sparades eller inte
 //Skapa i så fall nedan i föräldra komponenten
@@ -28,11 +24,11 @@ const RegisterUserForm = ({ setSuccessAddNewUser }: RegisterUserFormProps) => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const [nameInput, setNameInput] = useState(draftUser ? draftUser.name : "");
+  const [nameInput, setNameInput] = useState("");
   const [surnameInput, setSurnameInput] = useState("");
   const [adressInput, setAdressInput] = useState("");
   const [postalCodeInput, setPostalCodeInput] = useState("");
-  const [cityInput, setCityInput] = useState(draftUser ? draftUser.city : "");
+  const [cityInput, setCityInput] = useState("");
   const [phoneInput, setPhoneInput] = useState("");
 
   const submit = (e: React.FormEvent) => {
@@ -89,6 +85,11 @@ const RegisterUserForm = ({ setSuccessAddNewUser }: RegisterUserFormProps) => {
       setCityInput(draftUser.city || "");
       setPhoneInput(draftUser.phone || "");
     }
+    return () => {
+      if (setSuccessAddNewUser) {
+        setSuccessAddNewUser(false);
+      }
+    };
   }, [draftUser]);
 
   return (
@@ -191,13 +192,12 @@ const RegisterUserForm = ({ setSuccessAddNewUser }: RegisterUserFormProps) => {
         {/* Nu måste man klicka på knappen för att fälten skall sparas, byta till att de sparas vid klick utanför? SELFSAVE? */}
         <SaveButton
           icon={<ArrowForward />}
-          label="Nästa"
+          label="Spara"
           state={saveButtonState}
           setState={setSaveButtonState}
           onClick={submit}
         ></SaveButton>
       </form>
-      {draftUser?.name ? "true" : "false"}
     </div>
   );
 };

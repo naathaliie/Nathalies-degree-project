@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ChoosablePets, Pet, PetsState } from "../../../../types/types";
 import { getPets } from "@/api/pets";
+import { act } from "react";
 
 const initialState: PetsState = {
   pets: [],
+  draftPet: null,
   selectedPet: null,
   loading: false,
   error: null,
@@ -19,6 +21,15 @@ const petsSlice = createSlice({
     },
     getTestPets: (state) => {
       state.pets;
+    },
+    setDraftPet: (state, action: PayloadAction<Pet>) => {
+      state.draftPet = action.payload;
+    },
+    getDraftPet: (state) => {
+      state.draftPet;
+    },
+    deleteDraftPet: (state) => {
+      state.draftPet = null;
     },
     addNewPet: (state, action: PayloadAction<Pet>) => {
       state.pets.push(action.payload);
@@ -48,6 +59,13 @@ const petsSlice = createSlice({
   },
 });
 
-export const { addNewPet, setSelectedPet, setPets } = petsSlice.actions;
+export const {
+  addNewPet,
+  setSelectedPet,
+  setPets,
+  setDraftPet,
+  getDraftPet,
+  deleteDraftPet,
+} = petsSlice.actions;
 
 export default petsSlice.reducer;

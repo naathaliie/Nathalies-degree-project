@@ -39,6 +39,7 @@ export interface Pet {
 
 export interface PetsState {
   pets: Pet[];
+  draftPet: Pet | null;
   selectedPet: ChoosablePets | null;
   loading: boolean;
   error: string | null;

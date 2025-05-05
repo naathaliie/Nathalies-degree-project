@@ -1,26 +1,30 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import {
   ChoosablePets,
   choosablePetsArray,
   Pet,
 } from "../../../../types/types";
-import { addNewPet, setSelectedPet } from "@/lib/features/pets/petsSlice";
+import { setDraftPet, setSelectedPet } from "@/lib/features/pets/petsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { RegisterPetSchema } from "@/zodSchemas/RegisterPetSchema";
 import SaveButton from "../Buttons/SaveButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import ArrowForward from "@mui/icons-material/ArrowForward";
 
-const RegisterPetForm = () => {
+type RegisterPetFormProps = {
+  setSuccessAddNewPet?: React.Dispatch<SetStateAction<boolean>>;
+};
+
+const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
   const selectedPet = useAppSelector((state) => state.pets.selectedPet);
-  const allPets = useAppSelector((state) => state.pets.pets);
+  const draftPet = useAppSelector((state) => state.pets.draftPet);
+  const draftUser = useAppSelector((state) => state.users.draftUser);
   const dispatch = useAppDispatch();
   const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
 
   //Validering av inputfälten
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [speciesInput, setSpeciesInput] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [breedInput, setBreedInput] = useState("");
   const [genderInput, setGenderInput] = useState("");
@@ -31,9 +35,9 @@ const RegisterPetForm = () => {
 
     const newPet: Pet = {
       _id: uuidv4(),
-      ownerId: "000",
+      ownerId: draftUser?._id || "000",
       name: nameInput,
-      species: speciesInput as ChoosablePets,
+      species: selectedPet || choosablePetsArray[0],
       breed: breedInput,
       gender: genderInput,
     };
@@ -49,18 +53,30 @@ const RegisterPetForm = () => {
       });
       setErrors(newErrors);
       setSaveButtonState(false);
+      if (setSuccessAddNewPet) {
+        setSuccessAddNewPet(false);
+      }
       return;
     }
 
-    dispatch(addNewPet(newPet));
+    dispatch(setDraftPet(newPet));
     setSaveButtonState(true);
+    if (setSuccessAddNewPet) {
+      setSuccessAddNewPet(true);
+    }
   };
 
-  //Sätter det valda husdjuret i listan som default
   useEffect(() => {
-    if (selectedPet) {
-      setSpeciesInput(selectedPet);
+    if (draftPet) {
+      setNameInput(draftPet.name || "");
+      setBreedInput(draftPet.breed || "");
+      setGenderInput(draftPet.gender || "");
     }
+    return () => {
+      if (setSuccessAddNewPet) {
+        setSuccessAddNewPet(false);
+      }
+    };
   }, [selectedPet]);
 
   return (
@@ -69,8 +85,8 @@ const RegisterPetForm = () => {
         <div>
           <p className=" text-lg font-bold">Typ av husdjur</p>
           <select
-            value={speciesInput}
-            onChange={(e) => setSpeciesInput(e.target.value)}
+            value={selectedPet || choosablePetsArray[0]}
+            onChange={(e) => setSelectedPet(e.target.value as ChoosablePets)}
             className=" border-2 border-petCare-sapphireTeal-dark"
           >
             {choosablePetsArray.map((pet, i) => {
@@ -88,6 +104,7 @@ const RegisterPetForm = () => {
           <input
             className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
             type="text"
+            value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
           {errors.name && <p className="text-red-500">{errors.name}</p>}
@@ -98,6 +115,7 @@ const RegisterPetForm = () => {
           <input
             className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
             type="text"
+            value={breedInput}
             onChange={(e) => setBreedInput(e.target.value)}
           />
           {errors.breed && <p className="text-red-500">{errors.breed}</p>}
@@ -107,6 +125,7 @@ const RegisterPetForm = () => {
           <p className=" text-lg font-bold">Kön</p>
           <select
             onChange={(e) => setGenderInput(e.target.value)}
+            value={genderInput}
             className=" border-2 border-petCare-sapphireTeal-dark"
           >
             <option value="">--Välj kön--</option>
@@ -116,8 +135,8 @@ const RegisterPetForm = () => {
           {errors.gender && <p className="text-red-500">{errors.gender}</p>}
         </div>
         <SaveButton
-          icon={<FavoriteIcon />}
-          label="Registrera"
+          icon={<ArrowForward />}
+          label="Spara "
           state={SaveButtonState}
           setState={setSaveButtonState}
           onClick={submit}
