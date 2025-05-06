@@ -3,6 +3,9 @@ import React, { useEffect } from "react";
 import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import Calendar from "../components/Calendar";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -21,24 +24,51 @@ const UsersPage = () => {
     <>
       {currentUser ? (
         <div className="LogInPage bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex min-h-[70vh] flex-col items-center ">
-          <div className=" bg-petCare-sapphireTeal-main bg-opacity-25 w-full h-36 flex flex-col justify-center mb-5">
+          <div className=" w-full h-36 flex flex-col justify-center mb-5 text-petCare-sapphireTeal-dark">
             <div className="ml-10">
               <h1 className=" text-xl font-semibold sm:text-3xl md:text-5xl">
                 Välkommen {currentUser?.name}!
               </h1>
               <h3 className="text-sm md:text-xl">
                 Här kan du se dina husdjur, lägga till ett nytt husdjur och
-                följa dina blablabla...
+                massor mer!
               </h3>
             </div>
           </div>
-          <div>
-            <p>Dina registrerade husdjur</p>
-            <ul>
-              {currentUsersPets?.map((pet) => {
-                return <li key={pet._id}>{pet.name}</li>;
-              })}
-            </ul>
+          <div className=" bg-petCare-myWhite rounded-lg p-10 m-20 w-3/4 h-auto grid gap-5 lg:gap-0 grid-flow-row lg:grid-flow-col lg:grid-cols-2 text-petCare-sapphireTeal-dark ">
+            <div className="flex flex-col gap-5">
+              <div>
+                <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
+                  Mina meddelanden
+                </h2>
+                <div className="flex gap-3 m-2"> meddelande 1</div>
+              </div>
+              <div>
+                <div className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
+                  Mina beställningar
+                </div>
+                <div className="flex gap-3 m-2"> beställning 1</div>
+              </div>
+              <div>
+                <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
+                  Dina registrerade husdjur
+                </h2>
+                <div className="flex gap-3 m-2">
+                  {currentUsersPets?.map((pet) => {
+                    return (
+                      <Avatar sx={{ backgroundColor: "purple" }} key={pet._id}>
+                        {pet.name[0]}
+                      </Avatar>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <Calendar />
+              </div>
+            </div>
           </div>
         </div>
       ) : (
