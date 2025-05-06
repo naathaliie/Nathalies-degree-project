@@ -14,6 +14,15 @@ export const mockUsers: User[] = [
     postalCode: "11122",
     phone: "0701234567",
     pets: ["11", "12"],
+    messages: [
+      {
+        title: "Välkommen",
+        subTitle: "Hej och varmt välkommen till oss på PetCare!",
+        message:
+          "Här kommer lite information som kan vara bra att känna till...",
+        sender: "PetCare",
+      },
+    ],
   },
   {
     _id: "1",
@@ -26,6 +35,15 @@ export const mockUsers: User[] = [
     postalCode: "41345",
     phone: "0702345678",
     pets: ["13"],
+    messages: [
+      {
+        title: "Välkommen",
+        subTitle: "Hej och varmt välkommen till oss på PetCare!",
+        message:
+          "Här kommer lite information som kan vara bra att känna till...",
+        sender: "PetCare",
+      },
+    ],
   },
   {
     _id: "2",
@@ -38,6 +56,15 @@ export const mockUsers: User[] = [
     postalCode: "21137",
     phone: "0703456789",
     pets: ["14", "15", "16"],
+    messages: [
+      {
+        title: "Välkommen",
+        subTitle: "Hej och varmt välkommen till oss på PetCare!",
+        message:
+          "Här kommer lite information som kan vara bra att känna till...",
+        sender: "PetCare",
+      },
+    ],
   },
 ];
 
@@ -50,7 +77,6 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Labrador",
     gender: choosablePetsArray[0],
-    birthday: new Date("2020-05-01").toISOString(),
   },
   {
     _id: "12",
@@ -59,7 +85,6 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[1],
     breed: "Siames",
     gender: "Hona",
-    birthday: new Date("2021-08-15").toISOString(),
   },
   {
     _id: "13",
@@ -68,7 +93,6 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Beagle",
     gender: "Hona",
-    birthday: new Date("2022-04-10").toISOString(),
   },
   {
     _id: "14",
@@ -77,7 +101,6 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Rottweiler",
     gender: "Hane",
-    birthday: new Date("2021-12-20").toISOString(),
   },
   {
     _id: "15",
@@ -86,7 +109,6 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[1],
     breed: "Maine Coon",
     gender: "Hona",
-    birthday: new Date("2022-01-10").toISOString(),
   },
   {
     _id: "16",
@@ -95,6 +117,5 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Pitbull",
     gender: "Hane",
-    birthday: new Date("2022-09-30").toISOString(),
   },
 ];

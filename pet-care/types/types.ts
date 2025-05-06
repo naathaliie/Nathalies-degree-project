@@ -10,6 +10,7 @@ export interface User {
   postalCode: string;
   phone?: string | undefined;
   pets?: string[]; //Husdjurets id
+  messages: Message[];
 }
 
 export interface UsersState {
@@ -20,6 +21,14 @@ export interface UsersState {
     postNewUser: boolean;
   };
   error: string | null;
+}
+
+/*****Message*****/
+export interface Message {
+  title: string;
+  subTitle?: string;
+  message: string;
+  sender: string;
 }
 
 /*****CurrentUser*****/
