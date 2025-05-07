@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User, UsersState } from "../../../../types/types";
 import { getUsers, postNewUser } from "../../../api/users";
-import { stat } from "fs";
 
 const initialState: UsersState = {
   users: [],
