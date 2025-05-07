@@ -46,6 +46,15 @@ const RegisterUserForm = ({ setSuccessAddNewUser }: RegisterUserFormProps) => {
       postalCode: postalCodeInput,
       city: cityInput,
       phone: phoneInput,
+      messages: [
+        {
+          title: "Välkommen",
+          subTitle: "Hej och varmt välkommen till oss på PetCare!",
+          message:
+            "Här kommer lite information som kan vara bra att känna till...",
+          sender: "PetCare",
+        },
+      ],
     };
     //Validera
     const validation = RegisterUserSchema.safeParse(newUser);
