@@ -22,6 +22,11 @@ export const mockUsers: User[] = [
           "Här kommer lite information som kan vara bra att känna till...",
         sender: "PetCare",
       },
+      {
+        title: "Glöm inte bort din rabatt på kloklipp",
+        message: "Glöm inte bort att använda din intjänade rabatt hos oss...",
+        sender: "Hundens Hälsa AB",
+      },
     ],
   },
   {
