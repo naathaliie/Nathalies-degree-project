@@ -4,6 +4,7 @@ import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
+import ArrowForward from "@mui/icons-material/ArrowForward";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -19,11 +20,15 @@ const UsersPage = () => {
     }
   });
 
+  const openMessage = (id: number) => {
+    alert("Här ska meddelande med id: " + id + " öppnas upp");
+  };
+
   return (
     <>
       {currentUser ? (
         <div className="LogInPage bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex min-h-[70vh] flex-col items-center ">
-          <div className=" w-full h-36 flex flex-col justify-center mb-5 text-petCare-sapphireTeal-dark">
+          <div className=" w-full h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
             <div className="ml-10">
               <h1 className=" text-xl font-semibold sm:text-3xl md:text-5xl">
                 Välkommen {currentUser.name}!
@@ -34,18 +39,34 @@ const UsersPage = () => {
               </h3>
             </div>
           </div>
-          <div className=" bg-petCare-myWhite rounded-lg p-10 m-20 w-3/4 h-auto grid gap-5 lg:gap-0 grid-flow-row lg:grid-flow-col lg:grid-cols-2 text-petCare-sapphireTeal-dark ">
+          <div className=" bg-petCare-myWhite rounded-lg p-10 m-2 w-3/4 h-auto grid gap-5 lg:gap-0 grid-flow-row lg:grid-flow-col lg:grid-cols-2 text-petCare-sapphireTeal-dark ">
             <div className="flex flex-col gap-5">
               <div>
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
                   Mina meddelanden
                 </h2>
-                <div className="flex gap-3 m-2">
-                  <ul>
-                    {currentUser.messages?.map((message, i) => {
-                      return <li key={i}>{message.title}</li>;
-                    })}
-                  </ul>
+                <div className="flex flex-col gap-3 m-2">
+                  {currentUser.messages?.map((message, i) => {
+                    return (
+                      <button
+                        key={i}
+                        className="grid grid-flow-col grid-cols-2 border-2 w-2/3 p-1 "
+                        onClick={() => openMessage(i)}
+                      >
+                        <div className="col-span-2 w-full text-start ">
+                          <p className=" truncate overflow-hidden whitespace-nowrap w-full font-bold ">
+                            {message.title}
+                          </p>
+                          <p className=" truncate overflow-hidden whitespace-nowrap w-full italic text-sm">
+                            Avsändare: {message.sender}
+                          </p>
+                        </div>
+                        <div className=" ">
+                          <ArrowForward />
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
               <div>
@@ -53,6 +74,7 @@ const UsersPage = () => {
                   Mina beställningar
                 </div>
                 <div className="flex gap-3 m-2"> beställning 1</div>
+                <div className="flex gap-3 m-2"> beställning 2</div>
               </div>
               <div>
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
