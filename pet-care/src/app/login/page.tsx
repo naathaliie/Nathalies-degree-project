@@ -19,6 +19,7 @@ const LogInPage = () => {
 
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state.users.users); //Hämta users från storen
+  console.log("users = ", users);
 
   const setLoggedInUser = (user: User) => {
     dispatch(setCurrentUser(user));

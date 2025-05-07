@@ -1,17 +1,16 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import Calendar from "../components/Calendar";
 
 const UsersPage = () => {
   const router = useRouter();
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
   );
+  console.log("currentUser = ", currentUser);
   const allPets = useAppSelector((state: RootState) => state.pets.pets);
 
   const currentUsersPets = allPets.filter((p) => {
@@ -27,7 +26,7 @@ const UsersPage = () => {
           <div className=" w-full h-36 flex flex-col justify-center mb-5 text-petCare-sapphireTeal-dark">
             <div className="ml-10">
               <h1 className=" text-xl font-semibold sm:text-3xl md:text-5xl">
-                Välkommen {currentUser?.name}!
+                Välkommen {currentUser.name}!
               </h1>
               <h3 className="text-sm md:text-xl">
                 Här kan du se dina husdjur, lägga till ett nytt husdjur och
@@ -41,7 +40,13 @@ const UsersPage = () => {
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
                   Mina meddelanden
                 </h2>
-                <div className="flex gap-3 m-2"> meddelande 1</div>
+                <div className="flex gap-3 m-2">
+                  <ul>
+                    {currentUser.messages?.map((message, i) => {
+                      return <li key={i}>{message.title}</li>;
+                    })}
+                  </ul>
+                </div>
               </div>
               <div>
                 <div className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
@@ -65,9 +70,7 @@ const UsersPage = () => {
               </div>
             </div>
             <div>
-              <div>
-                <Calendar />
-              </div>
+              <div>Här kommer en kalender</div>
             </div>
           </div>
         </div>
