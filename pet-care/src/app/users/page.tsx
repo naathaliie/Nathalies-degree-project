@@ -45,8 +45,8 @@ const UsersPage = () => {
     <>
       {currentUser ? (
         <div className="LogInPage bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex min-h-[70vh] flex-col items-center ">
-          <div className=" w-full h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
-            <div className="ml-10">
+          <div className=" w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
+            <div className="flex flex-col gap-2 ml-10">
               <h1 className=" text-xl font-semibold sm:text-3xl md:text-5xl">
                 Välkommen {currentUser.name}!
               </h1>
