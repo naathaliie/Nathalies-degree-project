@@ -32,6 +32,8 @@ const EditProfile = () => {
     setEdit(!edit);
   };
 
+  //Fortsätt med denna funktion så att man ser infon eller kan välja att redigera den
+
   return (
     <>
       {currentUser ? (
