@@ -35,6 +35,23 @@ const usersSlice = createSlice({
     addNewUser: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
     },
+    setMessageMarkAsRead:
+      /* Samma funktion är även på currentUser, ska du ändra här? Ändra där också */ (
+        state,
+        action: PayloadAction<{ userID: string; messageIndex: number }>
+      ) => {
+        //vi behöver skicka in användarID och vilket meddelande
+        const thisUser = state.users.find((user) => {
+          return user._id === action.payload.userID;
+        });
+        if (!thisUser) return;
+
+        const thisMessage = thisUser?.messages[action.payload.messageIndex];
+
+        if (!thisMessage) return;
+
+        thisMessage.isUnread = false;
+      },
   },
   //ExtraReducers för hantering mot DB
   extraReducers: (builder) => {
@@ -77,6 +94,7 @@ export const {
   setDraftUser,
   getDraftUser,
   deleteDraftUser,
+  setMessageMarkAsRead,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

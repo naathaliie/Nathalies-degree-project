@@ -29,6 +29,7 @@ export interface Message {
   subTitle?: string;
   message: string;
   sender: string;
+  isUnread: boolean;
 }
 
 /*****CurrentUser*****/

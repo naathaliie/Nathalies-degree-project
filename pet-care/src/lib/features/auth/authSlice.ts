@@ -29,9 +29,23 @@ const authSlice = createSlice({
       //logout: Återställer currentUser till null.
       state.currentUser = null;
     },
+    /* Samma funktion är även på currentUser, ska du ändra här? Ändra där också */
+    setMarkAsRead: (state, action: PayloadAction<number>) => {
+      if (state.currentUser) {
+        const index = action.payload;
+        if (state.currentUser.messages[index]) {
+          state.currentUser = {
+            ...state.currentUser,
+            messages: state.currentUser.messages.map((msg, i) =>
+              i === index ? { ...msg, isUnread: false } : msg
+            ),
+          };
+        }
+      }
+    },
   },
 });
 
-export const { setCurrentUser, logout } = authSlice.actions;
+export const { setCurrentUser, logout, setMarkAsRead } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,13 +1,17 @@
 "use client";
 import React from "react";
 import { RootState } from "@/lib/store";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
 import ArrowForward from "@mui/icons-material/ArrowForward";
+import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
+import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
+import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 
 const UsersPage = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
   );
@@ -20,8 +24,21 @@ const UsersPage = () => {
     }
   });
 
-  const openMessage = (id: number) => {
-    alert("Här ska meddelande med id: " + id + " öppnas upp");
+  const openMessage = (userID: string, messageIndex: number) => {
+    if (currentUser) {
+      console.log(
+        "Meddelandet först: ",
+        currentUser?.messages[messageIndex].isUnread
+      );
+      alert("Här ska meddelande med id: " + messageIndex + " öppnas upp");
+      //Nu tar vi bort markeringen från både currentUser och usern med samma id som currentUser. bra/dåligt???????
+      /*       dispatch(setMessageMarkAsRead({ userID, messageIndex }));
+       */ dispatch(setMarkAsRead(messageIndex));
+      console.log(
+        "Meddelandet sedan",
+        currentUser?.messages[messageIndex].isUnread
+      );
+    }
   };
 
   return (
@@ -51,7 +68,7 @@ const UsersPage = () => {
                       <button
                         key={i}
                         className="grid grid-flow-col grid-cols-2 border-2 w-2/3 p-1 "
-                        onClick={() => openMessage(i)}
+                        onClick={() => openMessage(currentUser._id, i)}
                       >
                         <div className="col-span-2 w-full text-start ">
                           <p className=" truncate overflow-hidden whitespace-nowrap w-full font-bold ">
@@ -62,6 +79,13 @@ const UsersPage = () => {
                           </p>
                         </div>
                         <div className=" ">
+                          <p>
+                            {message.isUnread ? (
+                              <MarkEmailUnreadIcon fontSize="small" />
+                            ) : (
+                              ""
+                            )}
+                          </p>
                           <ArrowForward />
                         </div>
                       </button>

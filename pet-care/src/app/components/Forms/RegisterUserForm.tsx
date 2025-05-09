@@ -53,6 +53,7 @@ const RegisterUserForm = ({ setSuccessAddNewUser }: RegisterUserFormProps) => {
           message:
             "Här kommer lite information som kan vara bra att känna till...",
           sender: "PetCare",
+          isUnread: true,
         },
       ],
     };

@@ -21,11 +21,13 @@ export const mockUsers: User[] = [
         message:
           "Här kommer lite information som kan vara bra att känna till...",
         sender: "PetCare",
+        isUnread: true,
       },
       {
         title: "Glöm inte bort din rabatt på kloklipp",
         message: "Glöm inte bort att använda din intjänade rabatt hos oss...",
         sender: "Hundens Hälsa AB",
+        isUnread: true,
       },
     ],
   },
@@ -47,6 +49,7 @@ export const mockUsers: User[] = [
         message:
           "Här kommer lite information som kan vara bra att känna till...",
         sender: "PetCare",
+        isUnread: true,
       },
     ],
   },
@@ -68,6 +71,7 @@ export const mockUsers: User[] = [
         message:
           "Här kommer lite information som kan vara bra att känna till...",
         sender: "PetCare",
+        isUnread: true,
       },
     ],
   },
