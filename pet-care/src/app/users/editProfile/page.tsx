@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { RootState } from "@/lib/store";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,8 @@ import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
 import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 import UpdateUserForm from "@/app/components/Forms/UpdateUserForm";
+import ErrorNeedToBeLoggedIn from "@/app/components/ErrorNeedToBeLoggedIn";
+import PetCareButton from "@/app/components/Buttons/PetCareButton";
 
 const EditProfile = () => {
   const router = useRouter();
@@ -18,11 +20,17 @@ const EditProfile = () => {
   );
   const allPets = useAppSelector((state: RootState) => state.pets.pets);
 
+  const [edit, setEdit] = useState<Boolean>(false);
+
   const currentUsersPets = allPets.filter((p) => {
     if (p.ownerId === currentUser?._id) {
       return p;
     }
   });
+
+  const toggleEdit = () => {
+    setEdit(!edit);
+  };
 
   return (
     <>
@@ -39,16 +47,26 @@ const EditProfile = () => {
             </div>
           </div>
           <div className=" bg-petCare-myWhite rounded-lg p-10 m-2 w-3/4 h-auto grid gap-5 lg:gap-0 grid-flow-row lg:grid-flow-col lg:grid-cols-2 text-petCare-sapphireTeal-dark ">
-            <div className="flex flex-col gap-5">
-              <UpdateUserForm />
-            </div>
+            {edit ? (
+              <div>Redigera</div>
+            ) : (
+              <div>
+                <div>
+                  <h1>inte redigera</h1>
+                </div>
+                <div>
+                  <PetCareButton
+                    label="Redigera"
+                    onClick={() => toggleEdit()}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ) : (
         <div>
-          {/* SNYGGA TILL! */}
-          <h1>Hoppsan, du behöver logga in för att se något här</h1>
-          <button onClick={() => router.push("/login")}>Logga in</button>
+          <ErrorNeedToBeLoggedIn />
         </div>
       )}
     </>

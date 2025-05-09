@@ -8,6 +8,7 @@ import ArrowForward from "@mui/icons-material/ArrowForward";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
 import { setMarkAsRead } from "@/lib/features/auth/authSlice";
+import ErrorNeedToBeLoggedIn from "../components/ErrorNeedToBeLoggedIn";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -122,9 +123,7 @@ const UsersPage = () => {
         </div>
       ) : (
         <div>
-          {/* SNYGGA TILL! */}
-          <h1>Hoppsan, du behöver logga in för att se något här</h1>
-          <button onClick={() => router.push("/login")}>Logga in</button>
+          <ErrorNeedToBeLoggedIn />
         </div>
       )}
     </>
