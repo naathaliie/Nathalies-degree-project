@@ -4,8 +4,9 @@ import ErrorIcon from "@mui/icons-material/ErrorOutline";
 import DoneIcon from "@mui/icons-material/Done";
 
 interface SaveButtonProps extends ButtonProps {
-  icon: React.ReactNode; // Valfri ikon
-  label: string; // Texten på knappen
+  icon?: React.ReactNode; // Valfri ikon
+  endIcon?: React.ReactNode; // Välj denna ikon om du har en label
+  label?: string; // Texten på knappen
   state: boolean | null;
   setState: React.Dispatch<SetStateAction<boolean | null>>;
 }
@@ -17,6 +18,7 @@ interface SaveButtonProps extends ButtonProps {
 
 const SaveButton: React.FC<SaveButtonProps> = ({
   icon,
+  endIcon,
   label,
   state,
   setState,
@@ -39,7 +41,13 @@ const SaveButton: React.FC<SaveButtonProps> = ({
   return (
     <Button
       endIcon={
-        state === true ? <DoneIcon /> : state === false ? <ErrorIcon /> : icon
+        state === true ? (
+          <DoneIcon />
+        ) : state === false ? (
+          <ErrorIcon />
+        ) : (
+          endIcon
+        )
       }
       variant="contained"
       size="large"
@@ -49,11 +57,12 @@ const SaveButton: React.FC<SaveButtonProps> = ({
           ? "!bg-green-500"
           : state === false
           ? "!bg-red-500 animate-shake"
-          : "!bg-petCare-sapphireTeal-dark"
-      } ${className} w-fit !font-bold  !text-white disabled:!bg-gray-400 disabled:!text-gray-200 `}
+          : "!bg-petCare-sapphireTeal-dark hover:!bg-petCare-sapphireTeal-main"
+      } ${className} w-fit !font-bold  !text-white disabled:!bg-gray-400 disabled:!text-gray-200`}
       {...props}
     >
-      {label}
+      {label ? label : ""}
+      {icon ? icon : ""}
     </Button>
   );
 };
