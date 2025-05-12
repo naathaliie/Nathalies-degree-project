@@ -22,7 +22,7 @@ const PetCareButton: React.FC<PetCareButtonProps> = ({
       variant="contained"
       size="large"
       loadingPosition="end"
-      className={`${className} !bg-petCare-sapphireTeal-dark w-fit !font-bold  !text-white disabled:!bg-gray-400 disabled:!text-gray-200 `}
+      className={`${className} !bg-petCare-sapphireTeal-dark hover:!bg-petCare-sapphireTeal-main w-fit !font-bold  !text-white disabled:!bg-gray-400 disabled:!text-gray-200 `}
       {...props}
     >
       {label}
