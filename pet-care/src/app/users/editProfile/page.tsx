@@ -1,22 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { RootState } from "@/lib/store";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/lib/hooks";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Avatar from "@mui/material/Avatar";
-import ArrowForward from "@mui/icons-material/ArrowForward";
-import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
-import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
-import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 import UpdateUserForm from "@/app/components/Forms/UpdateUserForm";
 import ErrorNeedToBeLoggedIn from "@/app/components/ErrorNeedToBeLoggedIn";
 import PetCareButton from "@/app/components/Buttons/PetCareButton";
 import SaveButton from "@/app/components/Buttons/SaveButton";
 
 const EditProfile = () => {
-  const router = useRouter();
-  const dispatch = useAppDispatch();
   const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
@@ -59,14 +51,15 @@ const EditProfile = () => {
                 <div>
                   {edit ? (
                     <div>
-                      <h1>Redigera</h1>
+                      <UpdateUserForm currentUser={currentUser} />
                       <PetCareButton
-                        label="Spara"
+                        label="Toggla tillbaka"
                         onClick={() => toggleEdit()}
                       />
                     </div>
                   ) : (
                     <div className="flex flex-col gap-2 lg:border-r-2">
+                      <h2 className="font-bold text-xl ">Personuppgifter</h2>
                       <div>
                         <h2 className="font-bold">Namn</h2>
                         <p>{currentUser.name}</p>
@@ -91,6 +84,9 @@ const EditProfile = () => {
                         <h2 className="font-bold">Telefonnummer</h2>
                         <p>{currentUser.phone}</p>
                       </div>
+                      <h2 className="font-bold text-xl mt-10">
+                        Inloggningsuppgifter
+                      </h2>
                       <div>
                         <h2 className="font-bold">Email</h2>
                         <p>{currentUser.email}</p>

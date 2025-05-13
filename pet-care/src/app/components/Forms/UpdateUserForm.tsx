@@ -13,9 +13,15 @@ import { v4 as uuidv4 } from "uuid";
 
 type UpdateUserFormProps = {
   setSuccessAddNewUser?: React.Dispatch<SetStateAction<boolean>>;
+  currentUser?: User;
 };
 
-const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
+//FORTSÄTT HÄR
+//HUR ska man spara sina uppdaterada uppgifter? Vilken knapp osv?
+const UpdateUserForm = ({
+  setSuccessAddNewUser,
+  currentUser,
+}: UpdateUserFormProps) => {
   const dispatch = useAppDispatch();
   const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
   const draftUser = useAppSelector((state) => state.users.draftUser);
@@ -46,16 +52,7 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
       postalCode: postalCodeInput,
       city: cityInput,
       phone: phoneInput,
-      messages: [
-        {
-          title: "Välkommen",
-          subTitle: "Hej och varmt välkommen till oss på PetCare!",
-          message:
-            "Här kommer lite information som kan vara bra att känna till...",
-          sender: "PetCare",
-          isUnread: true,
-        },
-      ],
+      messages: [],
     };
     //Validera
     const validation = RegisterUserSchema.safeParse(newUser);
@@ -85,56 +82,31 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
   };
 
   useEffect(() => {
-    if (draftUser) {
-      setEmailInput(draftUser.email || "");
-      setPasswordInput(draftUser.password || "");
-      setNameInput(draftUser.name || "");
-      setSurnameInput(draftUser.surname || "");
-      setAdressInput(draftUser.street || "");
-      setPostalCodeInput(draftUser.postalCode || "");
-      setCityInput(draftUser.city || "");
-      setPhoneInput(draftUser.phone || "");
+    if (currentUser) {
+      setNameInput(currentUser.name);
+      setSurnameInput(currentUser.surname);
+      setAdressInput(currentUser.street);
+      setPostalCodeInput(currentUser.postalCode);
+      setCityInput(currentUser.city);
+      setPhoneInput(currentUser.phone || "");
+      setEmailInput(currentUser.email);
+      setPasswordInput(currentUser.password);
     }
     return () => {
       if (setSuccessAddNewUser) {
         setSuccessAddNewUser(false);
       }
     };
-  }, [draftUser]);
+  }, [currentUser]);
 
   return (
     <div className="UpdateUserForm">
       <form onSubmit={submit} className="InputForm flex flex-col gap-3">
         <div>
-          <h2>Inloggningsuppgifter</h2>
-          <div>
-            <p className=" text-lg font-bold">Epost</p>
-            <input
-              className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
-              type="text"
-              value={emailInput}
-              onChange={(e) => setEmailInput(e.target.value)}
-            />
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
-          </div>
-          <div>
-            <p className=" text-lg font-bold">Lösenord</p>
-            <input
-              className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%] "
-              type="text"
-              value={passwordInput}
-              onChange={(e) => setPasswordInput(e.target.value)}
-            />
-            {errors.password && (
-              <p className="text-red-500">{errors.password}</p>
-            )}
-          </div>
-        </div>
+          <h2 className="font-bold text-xl ">Personuppgifter</h2>
 
-        <div>
-          <h2>Personuppgifter</h2>
           <div>
-            <p className=" text-lg font-bold">Namn</p>
+            <p className=" font-bold">Namn</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
               type="text"
@@ -145,8 +117,9 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
             />
             {errors.name && <p className="text-red-500">{errors.name}</p>}
           </div>
+
           <div>
-            <p className=" text-lg font-bold">Efternamn</p>
+            <p className=" font-bold">Efternamn</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
               type="text"
@@ -155,9 +128,8 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
             />
             {errors.surname && <p className="text-red-500">{errors.surname}</p>}
           </div>
-
           <div>
-            <p className=" text-lg font-bold">Adress</p>
+            <p className=" font-bold">Adress</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
               type="text"
@@ -167,7 +139,7 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
             {errors.street && <p className="text-red-500">{errors.street}</p>}
           </div>
           <div>
-            <p className=" text-lg font-bold">Postnummer</p>
+            <p className=" font-bold">Postnummer</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-20"
               type="text"
@@ -179,7 +151,7 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
             )}
           </div>
           <div>
-            <p className=" text-lg font-bold">Stad</p>
+            <p className=" font-bold">Stad</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
               type="text"
@@ -189,7 +161,7 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
             {errors.city && <p className="text-red-500">{errors.city}</p>}
           </div>
           <div>
-            <p className=" text-lg font-bold">Telefonnummer</p>
+            <p className=" font-bold">Telefonnummer</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
               type="text"
@@ -198,8 +170,31 @@ const UpdateUserForm = ({ setSuccessAddNewUser }: UpdateUserFormProps) => {
             />
             {errors.phone && <p className="text-red-500">{errors.phone}</p>}
           </div>
+
+          <h2 className="font-bold text-xl mt-10">Inloggningsuppgifter</h2>
+          <div>
+            <p className=" font-bold">Epost</p>
+            <input
+              className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+              type="text"
+              value={emailInput}
+              onChange={(e) => setEmailInput(e.target.value)}
+            />
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
+          </div>
+          <div>
+            <p className=" font-bold">Lösenord</p>
+            <input
+              className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%] "
+              type="text"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+            />
+            {errors.password && (
+              <p className="text-red-500">{errors.password}</p>
+            )}
+          </div>
         </div>
-        {/* Nu måste man klicka på knappen för att fälten skall sparas, byta till att de sparas vid klick utanför? SELFSAVE? */}
         <SaveButton
           icon={<ArrowForward />}
           label="Spara"
