@@ -30,6 +30,7 @@ export const mockUsers: User[] = [
         isUnread: true,
       },
     ],
+    isLoggedIn: false,
   },
   {
     _id: "1",
@@ -52,6 +53,7 @@ export const mockUsers: User[] = [
         isUnread: true,
       },
     ],
+    isLoggedIn: false,
   },
   {
     _id: "2",
@@ -74,6 +76,7 @@ export const mockUsers: User[] = [
         isUnread: true,
       },
     ],
+    isLoggedIn: false,
   },
 ];
 

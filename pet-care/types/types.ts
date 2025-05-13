@@ -11,6 +11,7 @@ export interface User {
   phone?: string | undefined;
   pets?: string[]; //Husdjurets id
   messages: Message[];
+  isLoggedIn: boolean;
 }
 
 export interface UsersState {
@@ -34,7 +35,7 @@ export interface Message {
 
 /*****CurrentUser*****/
 export interface AuthState {
-  currentUser: (User & { isLoggedIn: boolean }) | null;
+  currentUser: User | null;
 }
 
 /*****Pet*****/

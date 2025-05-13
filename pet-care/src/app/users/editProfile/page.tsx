@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -30,6 +30,12 @@ const EditProfile = () => {
     );
   };
 
+  useEffect(() => {
+    return () => {
+      setEdit(false);
+    };
+  }, [currentUser]);
+
   return (
     <>
       {currentUser ? (
@@ -52,10 +58,6 @@ const EditProfile = () => {
                   {edit ? (
                     <div>
                       <UpdateUserForm currentUser={currentUser} />
-                      <PetCareButton
-                        label="Toggla tillbaka"
-                        onClick={() => toggleEdit()}
-                      />
                     </div>
                   ) : (
                     <div className="flex flex-col gap-2 lg:border-r-2">

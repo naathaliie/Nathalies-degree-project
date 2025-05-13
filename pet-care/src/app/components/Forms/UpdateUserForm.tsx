@@ -2,11 +2,12 @@
 import React, { SetStateAction, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { User } from "../../../../types/types";
-import ArrowForward from "@mui/icons-material/ArrowForward";
+import SaveIcon from "@mui/icons-material/Save";
 import { RegisterUserSchema } from "@/zodSchemas/RegisterUserSchema";
 import SaveButton from "../Buttons/SaveButton";
-import { setDraftUser } from "@/lib/features/users/usersSlice";
 import { v4 as uuidv4 } from "uuid";
+import { updateCurentUser } from "@/lib/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 //setSuccessAddNewUser kan skickas med om man från föräldrakomponenten vill veta om en ny user sparades eller inte
 //Skapa i så fall nedan i föräldra komponenten
 //const [successAddNewUser, setSuccessAddNewUser] = useState<boolean>(false);
@@ -24,7 +25,7 @@ const UpdateUserForm = ({
 }: UpdateUserFormProps) => {
   const dispatch = useAppDispatch();
   const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
-  const draftUser = useAppSelector((state) => state.users.draftUser);
+  const router = useRouter();
 
   //Validering av inputfält
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -42,8 +43,8 @@ const UpdateUserForm = ({
     setErrors({}); // Töm gamla fel BÖR DENNA LIGGA LÄNGST UPP I SUBMIT?
 
     //Fält som skall valideras
-    const newUser: User = {
-      _id: uuidv4(),
+    const updatedUser: User = {
+      _id: currentUser?._id || "011011011",
       email: emailInput,
       password: passwordInput,
       name: nameInput,
@@ -53,9 +54,10 @@ const UpdateUserForm = ({
       city: cityInput,
       phone: phoneInput,
       messages: [],
+      isLoggedIn: true,
     };
     //Validera
-    const validation = RegisterUserSchema.safeParse(newUser);
+    const validation = RegisterUserSchema.safeParse(updatedUser);
 
     if (!validation.success) {
       const newErrors: { [key: string]: string } = {};
@@ -72,13 +74,14 @@ const UpdateUserForm = ({
       return;
     }
 
-    console.log("ny användare: ", newUser);
+    console.log("uppdaterad användare: ", updatedUser);
 
-    dispatch(setDraftUser(newUser));
+    dispatch(updateCurentUser(updatedUser));
     setSaveButtonState(true);
     if (setSuccessAddNewUser) {
       setSuccessAddNewUser(true);
     }
+    router.push("/users/editProfile");
   };
 
   useEffect(() => {
@@ -196,7 +199,7 @@ const UpdateUserForm = ({
           </div>
         </div>
         <SaveButton
-          icon={<ArrowForward />}
+          endIcon={<SaveIcon fontSize="small" />}
           label="Spara"
           state={saveButtonState}
           setState={setSaveButtonState}

@@ -26,8 +26,11 @@ const authSlice = createSlice({
       };
     },
     logout: (state) => {
-      //logout: Återställer currentUser till null.
       state.currentUser = null;
+    },
+    updateCurentUser: (state, action: PayloadAction<User>) => {
+      state.currentUser = action.payload;
+      //Ska ta den nya info och byta ut på currentuser
     },
     /* Samma funktion är även på currentUser, ska du ändra här? Ändra där också */
     setMarkAsRead: (state, action: PayloadAction<number>) => {
@@ -46,6 +49,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCurrentUser, logout, setMarkAsRead } = authSlice.actions;
+export const { setCurrentUser, logout, setMarkAsRead, updateCurentUser } =
+  authSlice.actions;
 
 export default authSlice.reducer;
