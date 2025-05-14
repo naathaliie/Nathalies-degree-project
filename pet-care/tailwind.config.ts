@@ -11,9 +11,20 @@ export default {
   theme: {
     extend: {
       animation: {
+        bounceOnce: "bounceOnce 1s ease-out 2",
         shake: "shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97)",
       },
       keyframes: {
+        bounceOnce: {
+          "0%, 100%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0.8,0,1,1)",
+          },
+          "50%": {
+            transform: "translateY(-25%)",
+            animationTimingFunction: "cubic-bezier(0,0,0.2,1)",
+          },
+        },
         shake: {
           "10%, 90%": {
             transform: "translate3d(-1px, 0, 0)",

@@ -80,7 +80,7 @@ const UsersPage = () => {
                           </p>
                         </div>
                         <div className=" ">
-                          <p>
+                          <p className=" animate-bounceOnce">
                             {message.isUnread ? (
                               <MarkEmailUnreadIcon fontSize="small" />
                             ) : (
