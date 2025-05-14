@@ -7,7 +7,11 @@ type UspCardProps = {
 
 const UspCard = ({ title, text }: UspCardProps) => {
   return (
-    <div className=" relative border-2 border-petCare-sapphireTeal-dark flex flex-col text-center gap-4 py-5 px-2 w-80 min-h-44">
+    <div
+      className="relative border-2 border-petCare-sapphireTeal-dark 
+    flex flex-col text-center gap-4 py-5 px-2 w-80 min-h-44 
+    rounded-md   shadow-[8px_8px_15px_rgba(14,76,86,0.50)]"
+    >
       <img
         src="/pawByMe.svg"
         width={40}
@@ -21,3 +25,11 @@ const UspCard = ({ title, text }: UspCardProps) => {
 };
 
 export default UspCard;
+
+/* 6px är för x-förskjutningen (den förskjuter skuggan åt höger).
+
+6px är för y-förskjutningen (den kan justeras beroende på hur mycket du vill ha den nedåt eller uppåt).
+
+20px är suddigheten på skuggan.
+
+rgba(0,0,0,0.2) är skuggans färg med genomskinlighet. */
