@@ -17,7 +17,7 @@ const UspList = () => {
     },
   ];
   return (
-    <div className=" w-full pt-10 pb-10 pl-16 pr-16 text-petCare-sapphireTeal-dark flex justify-center items-center gap-7 flex-col md:flex-row flex-wrap">
+    <div className=" w-full py-20 pl-16 pr-16 text-petCare-sapphireTeal-dark flex justify-center items-center gap-7 flex-col md:flex-row flex-wrap">
       {uspListItems.map((item, index) => {
         return <UspCard key={index} title={item.title} text={item.text} />;
       })}
