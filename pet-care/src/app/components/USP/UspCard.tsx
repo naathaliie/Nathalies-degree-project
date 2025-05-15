@@ -25,11 +25,3 @@ const UspCard = ({ title, text }: UspCardProps) => {
 };
 
 export default UspCard;
-
-/* 6px är för x-förskjutningen (den förskjuter skuggan åt höger).
-
-6px är för y-förskjutningen (den kan justeras beroende på hur mycket du vill ha den nedåt eller uppåt).
-
-20px är suddigheten på skuggan.
-
-rgba(0,0,0,0.2) är skuggans färg med genomskinlighet. */
