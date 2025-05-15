@@ -22,24 +22,13 @@ const TopBar = () => {
   };
 
   return (
-    <div className="TopBar w-full h-2/3 flex items-center justify-between px-7 text-petCare-sapphireTeal-dark xl:w-4/5 p-4">
+    <div className=" w-full h-2/3 flex items-center justify-between px-1 md:px-32 3xl:px-10 text-petCare-sapphireTeal-dark xl:w-4/5">
       <div>
         <Link href={"/"}>
-          <Image src={logo} alt="logo-image" className="w-[40%] h-[40%]" />
+          <Image src={logo} alt="logo-image" className="w-20 h-20" />
         </Link>
       </div>
       <div className="flex gap-10">
-        {currentUser?.isLoggedIn && (
-          <div>
-            <Link
-              href={"/users/"}
-              className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
-            >
-              <UserCircleIcon className="size-6" />
-              <p>Mina sidor</p>
-            </Link>
-          </div>
-        )}
         {!currentUser?.isLoggedIn ? (
           <div>
             <Link
@@ -51,21 +40,22 @@ const TopBar = () => {
             </Link>
           </div>
         ) : (
-          <Link
-            href={"/"}
-            onClick={() => handleLogOut()}
-            className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
-          >
-            <ArrowRightStartOnRectangleIcon className="size-6 " />
-            <p>Logga ut</p>
-          </Link>
+          <div>
+            <Link
+              href={"/users/"}
+              className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
+            >
+              <UserCircleIcon className="size-6" />
+              <p>Mina sidor</p>
+            </Link>
+          </div>
         )}
         <Link
           href={"/contactUs"}
           className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
         >
           <PhoneIcon className="size-6" />
-          <p>Kontakta oss</p>
+          <p>Kontakt</p>
         </Link>
       </div>
     </div>
