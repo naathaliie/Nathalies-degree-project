@@ -20,7 +20,7 @@ const TextWithBackground = () => {
           veterinärbesöket.
         </p>
         <p>
-          Ring oss gärna på <b>0707 - 12 34 56</b> om du undrar över något.
+          Ring oss på <b>0707 - 12 34 56</b> om du undrar över något.
         </p>
       </div>
     </div>
