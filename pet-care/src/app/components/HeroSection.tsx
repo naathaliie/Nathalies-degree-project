@@ -31,25 +31,25 @@ const HeroSection = () => {
   const pawPrint = () => {
     switch (pet) {
       case "Hund":
-        return "dog"
+        return "dog";
       case "Katt":
-        return "cat"
-    case "Häst":
-        return "horse"
-    case "Smådjur":
-        return "mixPrints"
+        return "cat";
+      case "Häst":
+        return "horse";
+      case "Smådjur":
+        return "mixPrints";
       default:
-        return "dog"
+        return "dog";
     }
   };
 
   return (
-    <div className=" relative bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 w-full py-10 px-16 text-petCare-sapphireTeal-dark flex justify-center items-center">
-      <div className="w-2/3 flex flex-col">
-      <img
+    <div className=" bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 w-full py-10 px-16 text-petCare-sapphireTeal-dark flex justify-center items-center">
+      <div className=" relative w-2/3 flex flex-col">
+        <img
           src={`/pawPrints/${pawPrint()}.svg`}
           alt="pawPrint"
-          className="absolute top-0 right-10 w-56 h-56"
+          className="absolute  md:right-[-160] lg:right-[-100] xl:right-[-10] w-56 h-56 hidden md:block"
         />
 
         <div>
