@@ -3,9 +3,10 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import DehazeIcon from "@mui/icons-material/Dehaze";
+import { NavbarMenuItem } from "../../../types/types";
 
 type HamburgerMenuProps = {
-  menuItems: string[];
+  menuItems: NavbarMenuItem[];
 };
 
 const HamburgerMenu = ({ menuItems }: HamburgerMenuProps) => {
@@ -38,7 +39,7 @@ const HamburgerMenu = ({ menuItems }: HamburgerMenuProps) => {
         {menuItems.map((item, index) => {
           return (
             <MenuItem key={index} onClick={handleClose}>
-              {item}
+              {item.title}
             </MenuItem>
           );
         })}

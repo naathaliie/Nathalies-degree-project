@@ -70,3 +70,7 @@ export interface HealthInfo {
   notes: string;
   place: string;
 }
+
+/*****NavBar Menu item*****/
+
+export type NavbarMenuItem = { title: string; route: string };

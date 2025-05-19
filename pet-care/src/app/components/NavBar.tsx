@@ -1,26 +1,41 @@
 "use client";
 import React from "react";
-import { RootState } from "@/lib/store";
-import { useSelector } from "react-redux";
 import HamburgerMenu from "./HamburgerMenu";
+import Link from "next/link";
+import { NavbarMenuItem } from "../../../types/types";
 
 const NavBar = () => {
-  const navItems: string[] = [
-    "Alternativ 1",
-    "Alternativ 2",
-    "Alternativ 3",
-    "Alternativ 4",
-    "Alternativ 5",
+  const navItemss: string[] = ["Tips & råd", "Vanliga frågor", "Om oss"];
+  const navItems: NavbarMenuItem[] = [
+    {
+      title: "Tips & råd",
+      route: "tipsAndAdvice",
+    },
+    {
+      title: "Vanliga frågor",
+      route: "questionAndAnswer",
+    },
+    {
+      title: "Om oss",
+      route: "about",
+    },
   ];
+
+  //Fortsätt med att försöka få till dynamiska routes så att du hamnar på en "egen sida" för varje item i navbaren s
+
   return (
     <nav className="relative w-full h-1/3 flex justify-center items-center bg-petCare-sapphireTeal-dark text-white">
       <div className="hidden sm:block">
-        <div className=" flex items-center">
-          <ul className="flex gap-5">
-            {navItems.map((item, index) => {
-              return <li key={index}>{item}</li>;
-            })}
-          </ul>
+        <div className=" flex items-center gap-5">
+          {navItems.map((item, index) => {
+            return (
+              <Link href={`/info/${item.route}`} key={index}>
+                <div className=" hover:underline underline-offset-8 decoration-2 font-bold">
+                  {item.title}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
       <div className="block sm:hidden absolute right-2 top-[15%] ">
