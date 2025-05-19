@@ -32,7 +32,7 @@ const LogInPage = () => {
   }, []);
 
   return (
-    <main className="LogInPage flex flex-col justify-center items-center m-5 min-h-[70vh]">
+    <main className="LogInPage flex flex-col justify-center items-center m-5 min-h-screen">
       <h2>Logga in</h2>
       <h3>Användare från redux</h3>
       <h3>Nuvarande inloggad är : {currentUser && currentUser.name}</h3>
