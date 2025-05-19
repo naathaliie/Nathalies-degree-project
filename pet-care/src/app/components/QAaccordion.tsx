@@ -16,7 +16,7 @@ const QAaccordion = ({ accordionData }: AccordionProps) => {
     <div>
       {accordionData.map((q) => {
         return (
-          <Accordion>
+          <Accordion key={q.q}>
             <AccordionSummary
               expandIcon={
                 <ArrowDownwardIcon
