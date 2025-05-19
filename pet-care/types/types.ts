@@ -74,3 +74,19 @@ export interface HealthInfo {
 /*****NavBar Menu item*****/
 
 export type NavbarMenuItem = { title: string; route: string };
+
+/*****Question and answer*****/
+
+export type QA = {
+  q: string;
+  a: string;
+};
+
+/*****UspListImgData*****/
+
+export type UspListImgData = {
+  img: string;
+  imageDescription: string;
+  title: string;
+  text: string;
+};
