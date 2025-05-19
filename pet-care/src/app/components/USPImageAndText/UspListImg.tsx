@@ -16,7 +16,7 @@ const UspListImg = () => {
       text: "Vanligast, och farligast, är att katter blir bitna i framtassarna. Här berättar vi mer om hur du gör om din katt blivit huggormsbiten.",
     },
     {
-      img: "/images/horseWitheBlaze.jpg",
+      img: "/images/horseBrown.jpg",
       imageDescription: "Bunny",
       title: "Fång hos häst",
       text: "Fång hos häst är en vanlig sjukdom speciellt på somrarna, där inflammation i hovens lamellager leder till stor smärta. Läs mer om fång här.",
