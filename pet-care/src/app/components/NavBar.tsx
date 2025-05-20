@@ -21,10 +21,8 @@ const NavBar = () => {
     },
   ];
 
-  //Fortsätt med att försöka få till dynamiska routes så att du hamnar på en "egen sida" för varje item i navbaren s
-
   return (
-    <nav className="relative w-full h-1/3 flex justify-center items-center bg-petCare-sapphireTeal-dark text-white">
+    <nav className="relative w-full h-11 flex justify-center items-center bg-petCare-sapphireTeal-dark text-white">
       <div className="hidden sm:block">
         <div className=" flex items-center gap-5">
           {navItems.map((item, index) => {
@@ -38,7 +36,7 @@ const NavBar = () => {
           })}
         </div>
       </div>
-      <div className="block sm:hidden absolute right-2 top-[15%] ">
+      <div className="block sm:hidden absolute right-2  ">
         <HamburgerMenu menuItems={navItems} />
       </div>
     </nav>

@@ -202,7 +202,7 @@ const RegisterUserForm = ({ setSuccessAddNewUser }: RegisterUserFormProps) => {
         {/* Nu måste man klicka på knappen för att fälten skall sparas, byta till att de sparas vid klick utanför? SELFSAVE? */}
         <SaveButton
           icon={<ArrowForward />}
-          label="Spara"
+          label="Nästa"
           state={saveButtonState}
           setState={setSaveButtonState}
           onClick={submit}

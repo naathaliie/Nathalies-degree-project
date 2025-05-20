@@ -13,7 +13,7 @@ const NewUserPage = () => {
   );
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   return (
-    <div className="NewUserPage bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 p-5 min-h-[70vh] text-petCare-sapphireTeal-dark">
+    <div className="NewUserPage bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 p-5 min-h-screen text-petCare-sapphireTeal-dark">
       {currentUser ? (
         <h1>
           Lägga till ett nytt husdjur när du är inloggad gör du via mina sidor

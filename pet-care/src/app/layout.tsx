@@ -21,16 +21,14 @@ export default function RootLayout({
       <StoreProvider>
         {/* För att hämta all mockdata */}
         <GetMockData />
-        <body
-          className=" antialiased min-h-screen flex flex-col mx-auto w-full
-         3xl:w-3/4"
-        >
-          <header className="flex flex-col justify-center items-center h-36">
+        <body className=" antialiased flex flex-col mx-auto 3xl:w-3/4">
+
+          <header>
             <TopBar />
             <NavBar />
           </header>
 
-          <main className="flex-grow  min-h-screen">
+          <main>
             <MyPageNav />
             {children}
           </main>

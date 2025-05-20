@@ -136,7 +136,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
         </div>
         <SaveButton
           icon={<ArrowForward />}
-          label="Spara "
+          label="Nästa"
           state={SaveButtonState}
           setState={setSaveButtonState}
           onClick={submit}
