@@ -4,7 +4,7 @@ import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
 import StoreProvider from "./StoreProvider";
 import MyPageNav from "./components/MyPageNav";
-import GetMockData from "./components/MockData/GetMockData";
+import GetMockData from "../lib/initializers/GetMockData";
 
 export const metadata: Metadata = {
   title: "PetCare",
@@ -22,7 +22,6 @@ export default function RootLayout({
         {/* För att hämta all mockdata */}
         <GetMockData />
         <body className=" antialiased flex flex-col mx-auto 3xl:w-3/4">
-
           <header>
             <TopBar />
             <NavBar />
