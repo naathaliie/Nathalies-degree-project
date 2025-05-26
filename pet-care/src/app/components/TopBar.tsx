@@ -13,41 +13,43 @@ const TopBar = () => {
   const currentUser = useSelector((state: RootState) => state.auth.currentUser);
 
   return (
-    <div className="w-full flex items-center justify-between text-petCare-sapphireTeal-dark px-16 py-2">
-      <div>
-        <Link href={"/"}>
-          <Image src={logo} alt="logo-image" className="w-24 h-" />
-        </Link>
-      </div>
-      <div className="flex gap-10">
-        {!currentUser?.isLoggedIn ? (
-          <div>
-            <Link
-              href={"/login"}
-              className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
-            >
-              <UserIcon className="size-6 " />
-              <p>Logga in</p>
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <Link
-              href={"/users/"}
-              className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
-            >
-              <UserCircleIcon className="size-6" />
-              <p>Mina sidor</p>
-            </Link>
-          </div>
-        )}
-        <Link
-          href={"/contactUs"}
-          className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
-        >
-          <PhoneIcon className="size-6" />
-          <p>Kontakt</p>
-        </Link>
+    <div className="w-full flex  justify-center text-petCare-sapphireTeal-dark px-16 py-2">
+      <div className="w-2/3 flex items-center justify-between">
+        <div>
+          <Link href={"/"}>
+            <Image src={logo} alt="logo-image" className="w-24 h-" />
+          </Link>
+        </div>
+        <div className="flex gap-10">
+          {!currentUser?.isLoggedIn ? (
+            <div>
+              <Link
+                href={"/login"}
+                className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
+              >
+                <UserIcon className="size-6 " />
+                <p>Logga in</p>
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link
+                href={"/users/"}
+                className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
+              >
+                <UserCircleIcon className="size-6" />
+                <p>Mina sidor</p>
+              </Link>
+            </div>
+          )}
+          <Link
+            href={"/contactUs"}
+            className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
+          >
+            <PhoneIcon className="size-6" />
+            <p>Kontakt</p>
+          </Link>
+        </div>
       </div>
     </div>
   );
