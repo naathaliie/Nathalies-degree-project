@@ -1,22 +1,59 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import PetCareButton from "../Buttons/PetCareButton";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { setCurrentUser } from "@/lib/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-  let userNameRef = useRef<HTMLInputElement>(null);
-  let passwordRef = useRef<HTMLInputElement>(null);
+  const userNameRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+
+  const allUsers = useAppSelector((state) => state.users.users);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const findUser = (username: string, password: string) => {
+    const user = allUsers.find((user) => {
+      if (user.email === username) {
+        if (user.password === password) {
+          return user;
+        }
+        alert("Felaktigt lösenord, försök igen");
+        return null;
+      }
+      alert("Felaktigt användarnamn, försök igen");
+      return null;
+    });
+    return user;
+  };
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault(); //Stoppar sidomladdningen
-    const userName = userNameRef.current?.value;
+
+    const username = userNameRef.current?.value;
     const password = passwordRef.current?.value;
-    console.log(userName);
+
+    console.log(username);
     console.log(password);
 
-    // Tömmer input-fälten genom att sätta deras värde till en tom sträng
-    if (userNameRef.current) userNameRef.current.value = "";
-    if (passwordRef.current) passwordRef.current.value = "";
+    if (username && password) {
+      console.log("Inne i kontroll av usernam och password");
+      const userToLoggIn = findUser(username, password);
+
+      if (userToLoggIn) {
+        console.log("kommer jg hit?");
+        dispatch(setCurrentUser(userToLoggIn));
+
+        router.push("/users");
+      }
+    } else {
+      alert(
+        "Du måste fylla i användarnamn och lösenord för att kunna logga in"
+      );
+    }
   };
+
   return (
     <div className=" sm:w-[35rem] bg-petCare-myWhite border-2 border-petCare-sapphireTeal-dark rounded-md p-10 m-10 text-petCare-sapphireTeal-dark">
       <form onSubmit={submit} className="flex flex-col gap-5">
@@ -35,12 +72,13 @@ const LoginForm = () => {
           </label>
           <input
             ref={passwordRef}
+            type="string"
             name="password"
             className="h-8 text-lg border-2 border-petCare-sapphireTeal-dark rounded-md p-4"
           />
         </div>
         <div className=" self-center">
-          <PetCareButton label="Logga in" />
+          <PetCareButton type="submit" label="Logga in" />
         </div>
       </form>
     </div>
