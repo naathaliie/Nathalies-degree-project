@@ -7,7 +7,7 @@ import { frontPageUspListMockData } from "@/data/uspListData";
 
 export default function HomePage() {
   return (
-    <main className="HomePage">
+    <main>
       <ImageAndText />
       <HeroSection />
       <UspList />
