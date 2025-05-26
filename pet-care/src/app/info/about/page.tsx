@@ -17,7 +17,7 @@ const About = () => {
     },
   ];
   return (
-    <div className="LogInPage bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex min-h-screen flex-col items-center">
+    <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center pb-5">
       <div className="w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
         <div className="flex flex-col gap-2 ml-10">
           <h1 className="text-xl font-semibold sm:text-3xl md:text-5xl">
