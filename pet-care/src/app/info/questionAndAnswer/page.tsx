@@ -1,11 +1,5 @@
 "use client";
 import React from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { questionAndAnswerMockData } from "../../../data/questionAndAnswerMockData";
 import QAaccordion from "@/app/components/QAaccordion";
 
@@ -20,7 +14,7 @@ const QuestionAndAnswer = () => {
               Vanliga frågor
             </h1>
             <h3 className="text-sm md:text-xl">
-              Här hittar du svar på vanliga frågor
+              Här hittar du svar på några vanliga frågor
             </h3>
           </div>
         </div>

@@ -28,7 +28,14 @@ const QAaccordion = ({ accordionData }: AccordionProps) => {
               aria-controls="panel1-content"
               id={q.q}
             >
-              <Typography component="span" sx={{ fontSize: "1.5rem" }}>
+              <Typography
+                component="span"
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "var(--petCare-sapphireTeal-dark)",
+                  fontWeight: "bold",
+                }}
+              >
                 {q.q}
               </Typography>
             </AccordionSummary>
