@@ -9,16 +9,16 @@ import { RootState } from "@/lib/store";
 import { useAppDispatch } from "@/lib/hooks";
 import { setCurrentUser } from "@/lib/features/auth/authSlice";
 import { useRouter } from "next/navigation";
-import { getUsers } from "@/api/users";
 import { getTestUsers } from "@/lib/features/users/usersSlice";
 import PetCareButton from "../components/Buttons/PetCareButton";
+import { useBreakpoints } from "@/hooks/useBreakpoints";
 
 const LogInPage = () => {
-  const currentUser = useSelector((state: RootState) => state.auth.currentUser);
   const router = useRouter();
-
+  const { isLargeScreen } = useBreakpoints();
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state.users.users);
+  const currentUser = useSelector((state: RootState) => state.auth.currentUser);
 
   const setLoggedInUser = (user: User) => {
     dispatch(setCurrentUser(user));
@@ -30,18 +30,30 @@ const LogInPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center mt-[5%]">
-      <div>
-        <LoginForm />
-      </div>
-      <div className="flex flex-wrap justify-center gap-2 m-7">
-        {users.map((user: User) => (
-          <PetCareButton
-            key={user._id}
-            label={user.name}
-            onClick={() => setLoggedInUser(user)}
+    <div className="  relative flex items-center justify-center mt-24 mb-5">
+      {isLargeScreen && (
+        <div className="absolute lg:left-[-100] xl:left-[-50] h-full flex justify-center items-center">
+          <img
+            src="/images/8630162.png"
+            alt="dog"
+            className=" h-[15rem] md:h-[20rem] w-auto"
           />
-        ))}{" "}
+        </div>
+      )}
+
+      <div className="  h-full flex flex-col items-center justify-center">
+        <div>
+          <LoginForm />
+        </div>
+        <div className="flex flex-wrap  gap-2">
+          {users.map((user: User) => (
+            <PetCareButton
+              key={user._id}
+              label={user.name}
+              onClick={() => setLoggedInUser(user)}
+            />
+          ))}{" "}
+        </div>
       </div>
     </div>
   );
