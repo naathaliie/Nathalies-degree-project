@@ -13,7 +13,7 @@ const TopBar = () => {
   const currentUser = useSelector((state: RootState) => state.auth.currentUser);
 
   return (
-    <div className="w-full flex  justify-center text-petCare-sapphireTeal-dark px-16 py-2">
+    <div className="w-full flex justify-around sm:justify-center text-petCare-sapphireTeal-dark px-0 sm:px-16 py-2">
       <div className="w-2/3 flex items-center justify-between">
         <div>
           <Link href={"/"}>
