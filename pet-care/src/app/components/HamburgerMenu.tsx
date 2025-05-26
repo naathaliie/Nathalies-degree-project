@@ -4,6 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import { NavbarMenuItem } from "../../../types/types";
+import Link from "next/link";
 
 type HamburgerMenuProps = {
   menuItems: NavbarMenuItem[];
@@ -39,7 +40,11 @@ const HamburgerMenu = ({ menuItems }: HamburgerMenuProps) => {
         {menuItems.map((item, index) => {
           return (
             <MenuItem key={index} onClick={handleClose}>
-              {item.title}
+              <Link href={`/info/${item.route}`} key={index}>
+                <div className=" hover:underline underline-offset-8 decoration-2 font-bold">
+                  {item.title}
+                </div>
+              </Link>
             </MenuItem>
           );
         })}
