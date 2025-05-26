@@ -17,7 +17,7 @@ const TopBar = () => {
       <div className="w-2/3 flex items-center justify-between">
         <div>
           <Link href={"/"}>
-            <Image src={logo} alt="logo-image" className="w-24 h-" />
+            <Image src={logo} alt="logo-image" className="h-12 w-auto" />
           </Link>
         </div>
         <div className="flex gap-10">
