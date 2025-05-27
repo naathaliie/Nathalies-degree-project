@@ -10,7 +10,7 @@ const NotFoundPage = () => {
     router.push("/");
   };
   return (
-    <div className="flex flex-col gap-5 justify-center align-middle items-center h-screen">
+    <div className="flex flex-col gap-5 justify-center align-middle items-center py-[15%]">
       <h1>Hoppsan sidan hittades inte!</h1>
       <PetCareButton label="Tillbaka" onClick={handleOnClick} />
     </div>
