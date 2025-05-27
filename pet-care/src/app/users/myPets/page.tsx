@@ -3,12 +3,15 @@ import React from "react";
 import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks";
 import ErrorNeedToBeLoggedIn from "@/app/components/ErrorNeedToBeLoggedIn";
+import { useRouter } from "next/navigation";
 
 const MyPetsPage = () => {
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
   );
   const allPets = useAppSelector((state: RootState) => state.pets.pets);
+
+  const router = useRouter();
 
   const currentUsersPets = allPets.filter((p) => {
     if (p.ownerId === currentUser?._id) {
@@ -17,7 +20,7 @@ const MyPetsPage = () => {
   });
 
   const handleClickOnPet = (id: string, name: string) => {
-    alert("Du klickade på husdjur med id: " + id + " Med namn: " + name);
+    router.push(`/users/myPets/${id}`);
   };
 
   return (
@@ -35,8 +38,8 @@ const MyPetsPage = () => {
             </div>
           </div>
 
-          <div className="bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
-            <div className="w-full flex gap-5 flex-wrap ">
+          <div className=" grid grid-cols-2 bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark ">
+            <div className=" bg-red-300">
               {currentUsersPets.map((pet) => {
                 return (
                   <div
@@ -52,6 +55,7 @@ const MyPetsPage = () => {
                 );
               })}
             </div>
+            <div className="bg-sky-300">hej</div>
           </div>
         </div>
       ) : (
