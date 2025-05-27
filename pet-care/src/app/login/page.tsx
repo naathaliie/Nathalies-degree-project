@@ -1,11 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import "../globals.css";
+import React, { useEffect } from "react";
 import LoginForm from "../components/Forms/LoginForm";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "@/lib/hooks";
 import { User } from "../../../types/types";
-import { RootState } from "@/lib/store";
 import { useAppDispatch } from "@/lib/hooks";
 import { setCurrentUser } from "@/lib/features/auth/authSlice";
 import { useRouter } from "next/navigation";
@@ -18,7 +15,6 @@ const LogInPage = () => {
   const { isLargeScreen } = useBreakpoints();
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state.users.users);
-  const currentUser = useSelector((state: RootState) => state.auth.currentUser);
 
   const setLoggedInUser = (user: User) => {
     dispatch(setCurrentUser(user));
