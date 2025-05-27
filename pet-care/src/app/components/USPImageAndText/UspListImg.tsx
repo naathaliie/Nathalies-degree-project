@@ -16,7 +16,7 @@ const UspListImg = ({ uspListImgData }: UspListImgProps) => {
             img={item.img}
             imgDescription={item.imageDescription}
             title={item.title}
-            text={item.text}
+            informativeText={item.informativeText ? item.informativeText : ""}
           />
         );
       })}

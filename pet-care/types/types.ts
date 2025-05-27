@@ -85,8 +85,13 @@ export type QA = {
 /*****UspListImgData*****/
 
 export type UspListImgData = {
+  category: "FrontPageUsp" | "TipsAndAdviceUsp";
   img: string;
   imageDescription: string;
   title: string;
-  text: string;
+  informativeText?: string;
+  text: {
+    subTitle: string;
+    subText: string;
+  };
 };
