@@ -1,9 +1,13 @@
 "use client";
 import UspListImg from "@/app/components/USPImageAndText/UspListImg";
-import { tipsAndAdviceUspListMockData } from "@/data/uspListData";
+import { uspListMockData } from "@/data/uspListData";
 import React from "react";
 
 const TipsAndAdvice = () => {
+  const uspListImgData = uspListMockData.filter((item) => {
+    return item.category === "TipsAndAdviceUsp";
+  });
+
   return (
     <>
       <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center pb-5">
@@ -22,7 +26,7 @@ const TipsAndAdvice = () => {
         <div className="bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
           <div className="w-full flex flex-col">
             <div className="">
-              <UspListImg uspListImgData={tipsAndAdviceUspListMockData} />
+              <UspListImg uspListImgData={uspListImgData} />
             </div>
           </div>
         </div>
