@@ -25,6 +25,8 @@ const UsersPage = () => {
     }
   });
 
+  console.log("pets", currentUser?.pets);
+
   const openMessage = (userID: string, messageIndex: number) => {
     if (currentUser) {
       console.log(
@@ -108,7 +110,12 @@ const UsersPage = () => {
                 <div className="flex gap-3 m-2">
                   {currentUsersPets?.map((pet) => {
                     return (
-                      <Avatar sx={{ backgroundColor: "purple" }} key={pet._id}>
+                      <Avatar
+                        sx={{
+                          backgroundColor: "var(--petCare-sapphireTeal-dark)",
+                        }}
+                        key={pet._id}
+                      >
                         {pet.name[0]}
                       </Avatar>
                     );
