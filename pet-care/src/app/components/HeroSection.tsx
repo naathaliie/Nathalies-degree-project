@@ -6,7 +6,6 @@ import { setSelectedPet } from "@/lib/features/pets/petsSlice";
 import { ChoosablePets, choosablePetsArray } from "../../../types/types";
 import { ToggleButtonGroup, ToggleButton, Button } from "@mui/material";
 import ArrowForward from "@mui/icons-material/ArrowForward";
-import { ForwardIcon } from "@heroicons/react/24/solid";
 
 const HeroSection = () => {
   const router = useRouter();
