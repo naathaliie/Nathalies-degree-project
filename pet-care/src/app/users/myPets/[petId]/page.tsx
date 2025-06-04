@@ -3,29 +3,28 @@ import SaveButton from "@/app/components/Buttons/SaveButton";
 import { useAppSelector } from "@/lib/hooks";
 import { useParams } from "next/navigation";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import RemovePetModal from "@/app/components/RemovePetModal";
 
 export default function petDetails() {
   const { petId } = useParams() as { petId: string };
   const allPets = useAppSelector((state) => state.pets.pets);
   const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const foundPet = allPets.find((p) => {
     return p._id === petId || null;
   });
 
-  console.log("petImg= ", foundPet?.img);
-
-  const handleOnClick = () => {
-    return alert("Ta bort hund");
-  };
-
   const removePet = () => {
-    //Här ska saveButtonState appiceras
-    alert(
-      "Skapa funktion som tar bort husdjur, kanske även en popup som frågar om du verkligen vill ta bort"
-    );
+    setOpenModal(true);
   };
+
+  useEffect(() => {
+    return () => {
+      setOpenModal(false);
+    };
+  }, []);
 
   return (
     <>
@@ -33,7 +32,7 @@ export default function petDetails() {
         <div className="m-5">
           <div className=" col-span-1 border-r-2 border-petCare-sapphireTeal-superLight mt-5">
             <div className=" flex text-petCare-sapphireTeal-dark py-5">
-              <div className="flex flex-col ml-10">
+              <div className="flex flex-col ml-10 mb-14">
                 <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
                   {foundPet.name}
                 </h1>
@@ -74,6 +73,11 @@ export default function petDetails() {
               ></img>
             </div>
           </div>
+          <RemovePetModal
+            modalState={openModal}
+            petId={foundPet._id}
+            setModalState={setOpenModal}
+          />
         </div>
       ) : (
         <div> Hoppsan något gick fel, försök igen</div>
