@@ -22,15 +22,6 @@ const petsSlice = createSlice({
     getTestPets: (state) => {
       state.pets;
     },
-    setDraftPet: (state, action: PayloadAction<Pet>) => {
-      state.draftPet = action.payload;
-    },
-    getDraftPet: (state) => {
-      state.draftPet;
-    },
-    deleteDraftPet: (state) => {
-      state.draftPet = null;
-    },
     addNewPet: (state, action: PayloadAction<Pet>) => {
       state.pets.push(action.payload);
     },
@@ -40,8 +31,9 @@ const petsSlice = createSlice({
     removeSelectedPet: (state) => {
       state.selectedPet = null;
     },
-    removePet: (state, action: PayloadAction<{ id: string }>) => {
+    deletePet: (state, action: PayloadAction<{ id: string }>) => {
       state.pets = state.pets.filter((pet) => pet._id !== action.payload.id);
+      console.log("radera husdjur via slice");
     },
   },
   //ExtraReducers för hantering mot DB
@@ -66,10 +58,8 @@ export const {
   addNewPet,
   setSelectedPet,
   setPets,
-  setDraftPet,
-  getDraftPet,
-  deleteDraftPet,
   removeSelectedPet,
+  deletePet,
 } = petsSlice.actions;
 
 export default petsSlice.reducer;
