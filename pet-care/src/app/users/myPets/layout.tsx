@@ -40,9 +40,15 @@ export default function PetsLayout({
                 <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
                   Mina husdjur
                 </h1>
-                <h3 className="text-sm md:text-xl">
+                <h3 className="text-sm md:text-xl mb-5">
                   Här kan du se alla dina registrerade husdjur
                 </h3>
+                <PetCareButton
+                  label="Lägg til husdjur"
+                  icon={<AddCircleIcon />}
+                  onClick={() => handleAddPet()}
+                  size="small"
+                />
               </div>
             </div>
             <aside className="flex gap-7  flex-wrap bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 mx-7 text-petCare-sapphireTeal-dark">
@@ -60,11 +66,6 @@ export default function PetsLayout({
                   </div>
                 );
               })}
-              <PetCareButton
-                label="Lägg til husdjur"
-                icon={<AddCircleIcon />}
-                onClick={() => handleAddPet()}
-              />
             </aside>
           </div>
           <main className="col-span-2">
