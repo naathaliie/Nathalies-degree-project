@@ -6,11 +6,13 @@ import { setSelectedPet } from "@/lib/features/pets/petsSlice";
 import { ChoosablePets, choosablePetsArray } from "../../../types/types";
 import { ToggleButtonGroup, ToggleButton, Button } from "@mui/material";
 import ArrowForward from "@mui/icons-material/ArrowForward";
+import { useAppSelector } from "@/lib/hooks";
 
 const HeroSection = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [pet, setPet] = useState<ChoosablePets | null>(null);
+  const currentUser = useAppSelector((state) => state.auth.currentUser);
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -22,6 +24,11 @@ const HeroSection = () => {
   const handleRegistration = () => {
     if (pet) {
       dispatch(setSelectedPet(pet));
+      if (currentUser) {
+        router.push("/users/myPets/addPet");
+        return;
+      }
+
       router.push("/login");
       setPet(null); // Rensar
     }
