@@ -161,7 +161,7 @@ const UsersPage = () => {
             <div>
               <Calendar pets={currentUsersPets} />
             </div>
-            <QuestionModal openModal={addNewPet} />
+            {addNewPet && <QuestionModal openModal={addNewPet} />}
           </div>
         </div>
       ) : (
