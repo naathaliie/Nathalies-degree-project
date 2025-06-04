@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { getTestUsers } from "@/lib/features/users/usersSlice";
 import PetCareButton from "../components/Buttons/PetCareButton";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
+import Link from "next/link";
 
 const LogInPage = () => {
   const router = useRouter();
@@ -41,14 +42,22 @@ const LogInPage = () => {
         <div>
           <LoginForm />
         </div>
-        <div className="flex flex-wrap  gap-2">
-          {users.map((user: User) => (
-            <PetCareButton
-              key={user._id}
-              label={user.name}
-              onClick={() => setLoggedInUser(user)}
-            />
-          ))}{" "}
+        <div className="flex flex-col gap-3">
+          <div>
+            Har du inget konto? Registrera dig{" "}
+            <Link href={"/users/new"}>
+              <b>här</b>
+            </Link>
+          </div>
+          <div className="flex flex-wrap  gap-2">
+            {users.map((user: User) => (
+              <PetCareButton
+                key={user._id}
+                label={user.name}
+                onClick={() => setLoggedInUser(user)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
