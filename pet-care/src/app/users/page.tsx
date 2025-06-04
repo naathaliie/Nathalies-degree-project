@@ -138,7 +138,11 @@ const UsersPage = () => {
                   <div className="flex gap-3 m-2">
                     {currentUsersPets?.map((pet) => {
                       return (
-                        <Link href={`/users/myPets/${pet._id}`} key={pet._id}>
+                        <Link
+                          href={`/users/myPets/${pet._id}`}
+                          key={pet._id}
+                          className="transition-transform duration-300 hover:scale-110"
+                        >
                           <Avatar
                             sx={{
                               backgroundColor:
