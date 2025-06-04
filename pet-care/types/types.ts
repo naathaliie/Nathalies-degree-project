@@ -39,6 +39,15 @@ export interface AuthState {
 }
 
 /*****Pet*****/
+
+type PetEvent = {
+  _id: string;
+  date: string;
+  title: string;
+  information?: string;
+  label: "Veterinär" | "Pälsvård" | "Övrigt";
+};
+
 export interface Pet {
   _id: string;
   ownerId: string;
@@ -47,6 +56,7 @@ export interface Pet {
   breed: string;
   gender: string;
   img?: string;
+  events?: PetEvent[];
 }
 
 export interface PetsState {

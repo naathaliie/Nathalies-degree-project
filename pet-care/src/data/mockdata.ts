@@ -10,6 +10,15 @@ export const mockPets: Pet[] = [
     breed: "Labrador",
     gender: choosablePetsArray[0],
     img: "/images/dogspa.jpg",
+    events: [
+      {
+        _id: "001",
+        date: "2025-06-13",
+        title: "Vaccination",
+        information: "Vaccination mot valpsjukan",
+        label: "Veterinär",
+      },
+    ],
   },
   {
     _id: "12",
@@ -18,6 +27,15 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[1],
     breed: "Siames",
     gender: "Hona",
+    events: [
+      {
+        _id: "002",
+        date: "2025-06-01",
+        title: "Vaccination",
+        information: "Kloklippning",
+        label: "Pälsvård",
+      },
+    ],
   },
   {
     _id: "13",
