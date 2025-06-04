@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RootState } from "@/lib/store";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ import ErrorNeedToBeLoggedIn from "../components/ErrorNeedToBeLoggedIn";
 import Link from "next/link";
 import Calendar from "../components/Calendar";
 import { Pet } from "../../../types/types";
+import QuestionModal from "../components/QuestionModal";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -21,6 +22,18 @@ const UsersPage = () => {
   );
   console.log("currentUser = ", currentUser);
   const allPets = useAppSelector((state: RootState) => state.pets.pets);
+
+  //Kollar om vi har ett selectedPet från HeroSecion om att man vill lägga till ett nytt husdjur
+  const test = useAppSelector((state) => state.pets.selectedPet);
+
+  const selectedPetFromStore: boolean = useAppSelector((state) =>
+    state.pets.selectedPet ? true : false
+  );
+
+  console.log("Har vi ett selected pet: ", test);
+  console.log("Har vi ett selected pet from store: ", selectedPetFromStore);
+
+  const [addNewPet, setAddNewPet] = useState<boolean>(false);
 
   const currentUsersPets: Pet[] | null = allPets.filter((p) => {
     if (p.ownerId === currentUser?._id) {
@@ -47,6 +60,16 @@ const UsersPage = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (selectedPetFromStore) {
+      setAddNewPet(true);
+    }
+
+    return () => {
+      setAddNewPet(false);
+    };
+  }, [selectedPetFromStore]);
 
   return (
     <>
@@ -138,6 +161,7 @@ const UsersPage = () => {
             <div>
               <Calendar pets={currentUsersPets} />
             </div>
+            <QuestionModal openModal={addNewPet} />
           </div>
         </div>
       ) : (
