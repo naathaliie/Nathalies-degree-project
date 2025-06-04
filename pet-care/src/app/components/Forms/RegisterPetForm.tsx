@@ -6,11 +6,12 @@ import {
   choosablePetsArray,
   Pet,
 } from "../../../../types/types";
-import { setDraftPet, setSelectedPet } from "@/lib/features/pets/petsSlice";
+import { addNewPet, removeSelectedPet } from "@/lib/features/pets/petsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { RegisterPetSchema } from "@/zodSchemas/RegisterPetSchema";
 import SaveButton from "../Buttons/SaveButton";
 import ArrowForward from "@mui/icons-material/ArrowForward";
+import { useRouter } from "next/navigation";
 
 type RegisterPetFormProps = {
   setSuccessAddNewPet?: React.Dispatch<SetStateAction<boolean>>;
@@ -18,13 +19,16 @@ type RegisterPetFormProps = {
 
 const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
   const selectedPet = useAppSelector((state) => state.pets.selectedPet);
-  const draftPet = useAppSelector((state) => state.pets.draftPet);
-  const draftUser = useAppSelector((state) => state.users.draftUser);
+  const currentUser = useAppSelector((state) => state.auth.currentUser);
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
 
   //Validering av inputfälten
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [speciesInput, setSpeciesInput] = useState<ChoosablePets>(
+    selectedPet ? selectedPet : choosablePetsArray[0]
+  );
   const [nameInput, setNameInput] = useState("");
   const [breedInput, setBreedInput] = useState("");
   const [genderInput, setGenderInput] = useState("");
@@ -33,49 +37,52 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
     e.preventDefault();
     setErrors({});
 
-    const newPet: Pet = {
-      _id: uuidv4(),
-      ownerId: draftUser?._id || "000",
-      name: nameInput,
-      species: selectedPet || choosablePetsArray[0],
-      breed: breedInput,
-      gender: genderInput,
-    };
+    if (currentUser) {
+      const newPet: Pet = {
+        _id: uuidv4(),
+        ownerId: currentUser._id,
+        name: nameInput,
+        species: speciesInput,
+        breed: breedInput,
+        gender: genderInput,
+      };
 
-    const validation = RegisterPetSchema.safeParse(newPet);
+      const validation = RegisterPetSchema.safeParse(newPet);
 
-    if (!validation.success) {
-      const newErrors: { [key: string]: string } = {};
-      validation.error.errors.forEach((error) => {
-        if (error.path[0]) {
-          newErrors[error.path[0]] = error.message;
-        }
-      });
-      setErrors(newErrors);
-      setSaveButtonState(false);
-      if (setSuccessAddNewPet) {
-        setSuccessAddNewPet(false);
+      if (!validation.success) {
+        console.log("Något går fel men vad?", validation.data);
+        const newErrors: { [key: string]: string } = {};
+        console.log("vad är new errors? ", newErrors);
+        validation.error.errors.forEach((error) => {
+          if (error.path[0]) {
+            newErrors[error.path[0]] = error.message;
+          }
+        });
+
+        setErrors(newErrors);
+        setSaveButtonState(false);
+        return;
       }
-      return;
-    }
 
-    dispatch(setDraftPet(newPet));
-    setSaveButtonState(true);
-    if (setSuccessAddNewPet) {
-      setSuccessAddNewPet(true);
+      dispatch(addNewPet(newPet));
+
+      setSaveButtonState(true);
+
+      dispatch(removeSelectedPet());
+
+      router.push(`/users/myPets/${newPet._id}`);
     }
+    return null;
   };
 
   useEffect(() => {
-    if (draftPet) {
-      setNameInput(draftPet.name || "");
-      setBreedInput(draftPet.breed || "");
-      setGenderInput(draftPet.gender || "");
+    if (selectedPet) {
     }
     return () => {
       if (setSuccessAddNewPet) {
         setSuccessAddNewPet(false);
       }
+      dispatch(removeSelectedPet());
     };
   }, [selectedPet]);
 
@@ -85,8 +92,8 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
         <div>
           <p className=" text-lg font-bold">Typ av husdjur</p>
           <select
-            value={selectedPet || choosablePetsArray[0]}
-            onChange={(e) => setSelectedPet(e.target.value as ChoosablePets)}
+            value={speciesInput}
+            onChange={(e) => setSpeciesInput(e.target.value as ChoosablePets)}
             className=" border-2 border-petCare-sapphireTeal-dark"
           >
             {choosablePetsArray.map((pet, i) => {
@@ -136,7 +143,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
         </div>
         <SaveButton
           icon={<ArrowForward />}
-          label="Nästa"
+          label="Spara"
           state={SaveButtonState}
           setState={setSaveButtonState}
           onClick={submit}
