@@ -35,7 +35,7 @@ const QuestionModal = ({ openModal }: QuestionModalProps) => {
   const handleAddNewPet = () => {
     dispatch(removeSelectedPet());
 
-    router.push("/users/myPets");
+    router.push("/users/myPets/addPet");
   };
 
   const handleClose = () => {
