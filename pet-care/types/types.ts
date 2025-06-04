@@ -46,6 +46,7 @@ export interface Pet {
   species: ChoosablePets | null;
   breed: string;
   gender: string;
+  img?: string;
 }
 
 export interface PetsState {

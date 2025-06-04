@@ -9,6 +9,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Labrador",
     gender: choosablePetsArray[0],
+    img: "/images/dogspa.jpg",
   },
   {
     _id: "12",
