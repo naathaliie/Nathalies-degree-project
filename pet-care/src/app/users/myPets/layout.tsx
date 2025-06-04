@@ -5,6 +5,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { RootState } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function PetsLayout({
   children,
@@ -43,12 +44,14 @@ export default function PetsLayout({
                 <h3 className="text-sm md:text-xl mb-5">
                   Här kan du se alla dina registrerade husdjur
                 </h3>
-                <PetCareButton
-                  label="Lägg til husdjur"
-                  icon={<AddCircleIcon />}
-                  onClick={() => handleAddPet()}
-                  size="small"
-                />
+                <Tooltip title="Klicka här för att registrera ett nytt husdjur">
+                  <PetCareButton
+                    label="Lägg till"
+                    icon={<AddCircleIcon />}
+                    onClick={() => handleAddPet()}
+                    size="small"
+                  />
+                </Tooltip>
               </div>
             </div>
             <aside className="flex gap-7  flex-wrap bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 mx-7 text-petCare-sapphireTeal-dark">
@@ -68,9 +71,7 @@ export default function PetsLayout({
               })}
             </aside>
           </div>
-          <main className="col-span-2">
-            {children} {/* Här visas detaljer eller "välj ett djur" */}
-          </main>
+          <main className="col-span-2">{children}</main>
         </div>
       ) : (
         <div>
