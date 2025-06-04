@@ -1,6 +1,4 @@
 "use client";
-import RegisterPetForm from "@/app/components/Forms/RegisterPetForm";
-import RegisterUserForm from "@/app/components/Forms/RegisterUserForm";
 import { RootState } from "@/lib/store";
 import React from "react";
 import { choosablePetsArray } from "../../../../types/types";
