@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useEffect, useState } from "react";
 import RemovePetModal from "@/app/components/RemovePetModal";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function petDetails() {
   const { petId } = useParams() as { petId: string };
@@ -53,14 +54,16 @@ export default function petDetails() {
                   </div>
                   <div>
                     <div className="flex flex-col gap-2">
-                      <SaveButton
-                        label="Radera "
-                        icon={<DeleteIcon fontSize="small" />}
-                        state={SaveButtonState}
-                        setState={setSaveButtonState}
-                        size="small"
-                        onClick={() => removePet()}
-                      />
+                      <Tooltip title="Tryck här om du vill ta bort husdjuret (du blir tillfrågad med Ja eller Nej).">
+                        <SaveButton
+                          label="Radera "
+                          icon={<DeleteIcon fontSize="small" />}
+                          state={SaveButtonState}
+                          setState={setSaveButtonState}
+                          size="small"
+                          onClick={() => removePet()}
+                        />
+                      </Tooltip>
                     </div>
                   </div>
                 </div>
