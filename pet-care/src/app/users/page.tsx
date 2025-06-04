@@ -11,6 +11,7 @@ import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 import ErrorNeedToBeLoggedIn from "../components/ErrorNeedToBeLoggedIn";
 import Link from "next/link";
 import Calendar from "../components/Calendar";
+import { Pet } from "../../../types/types";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -21,10 +22,11 @@ const UsersPage = () => {
   console.log("currentUser = ", currentUser);
   const allPets = useAppSelector((state: RootState) => state.pets.pets);
 
-  const currentUsersPets = allPets.filter((p) => {
+  const currentUsersPets: Pet[] | null = allPets.filter((p) => {
     if (p.ownerId === currentUser?._id) {
       return p;
     }
+    return null;
   });
 
   console.log("pets", currentUser?.pets);
@@ -109,25 +111,32 @@ const UsersPage = () => {
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
                   Dina registrerade husdjur
                 </h2>
-                <div className="flex gap-3 m-2">
-                  {currentUsersPets?.map((pet) => {
-                    return (
-                      <Link href={`/users/myPets/${pet._id}`} key={pet._id}>
-                        <Avatar
-                          sx={{
-                            backgroundColor: "var(--petCare-sapphireTeal-dark)",
-                          }}
-                        >
-                          {pet.name[0]}
-                        </Avatar>
-                      </Link>
-                    );
-                  })}
-                </div>
+                {currentUsersPets ? (
+                  <div className="flex gap-3 m-2">
+                    {currentUsersPets?.map((pet) => {
+                      return (
+                        <Link href={`/users/myPets/${pet._id}`} key={pet._id}>
+                          <Avatar
+                            sx={{
+                              backgroundColor:
+                                "var(--petCare-sapphireTeal-dark)",
+                            }}
+                          >
+                            {pet.name[0]}
+                          </Avatar>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div>
+                    <p>Du har inga registrerade husdjur</p>
+                  </div>
+                )}
               </div>
             </div>
             <div>
-              <Calendar />
+              <Calendar pets={currentUsersPets} />
             </div>
           </div>
         </div>
