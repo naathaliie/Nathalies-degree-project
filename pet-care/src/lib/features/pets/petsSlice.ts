@@ -37,8 +37,11 @@ const petsSlice = createSlice({
     setSelectedPet: (state, action: PayloadAction<ChoosablePets>) => {
       state.selectedPet = action.payload;
     },
+    removeSelectedPet: (state) => {
+      state.selectedPet = null;
+    },
     removePet: (state, action: PayloadAction<{ id: string }>) => {
-      state.pets = state.pets.filter((pet) => pet.id !== action.payload.id);
+      state.pets = state.pets.filter((pet) => pet._id !== action.payload.id);
     },
   },
   //ExtraReducers för hantering mot DB
@@ -66,6 +69,7 @@ export const {
   setDraftPet,
   getDraftPet,
   deleteDraftPet,
+  removeSelectedPet,
 } = petsSlice.actions;
 
 export default petsSlice.reducer;
