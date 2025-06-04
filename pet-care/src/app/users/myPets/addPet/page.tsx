@@ -8,9 +8,8 @@ const AddPet = () => {
         <div className=" flex text-petCare-sapphireTeal-dark py-5">
           <div className="flex flex-col ml-10">
             <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
-              hej
+              Registrera nytt husdjur
             </h1>
-            <p>hello</p>
           </div>
         </div>
         <div className="grid grid-cols-2 grid-flow-col bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 mx-7 text-petCare-sapphireTeal-dark">
