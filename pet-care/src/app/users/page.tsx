@@ -10,6 +10,7 @@ import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
 import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 import ErrorNeedToBeLoggedIn from "../components/ErrorNeedToBeLoggedIn";
 import Link from "next/link";
+import Calendar from "../components/Calendar";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -126,7 +127,7 @@ const UsersPage = () => {
               </div>
             </div>
             <div>
-              <div>Här kommer en kalender</div>
+              <Calendar />
             </div>
           </div>
         </div>
