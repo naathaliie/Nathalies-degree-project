@@ -1,8 +1,10 @@
 "use client";
+import PetCareButton from "@/app/components/Buttons/PetCareButton";
 import ErrorNeedToBeLoggedIn from "@/app/components/ErrorNeedToBeLoggedIn";
 import { useAppSelector } from "@/lib/hooks";
 import { RootState } from "@/lib/store";
 import { useRouter } from "next/navigation";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 export default function PetsLayout({
   children,
@@ -23,6 +25,10 @@ export default function PetsLayout({
 
   const handleClickOnPet = (id: string) => {
     router.push(`/users/myPets/${id}`);
+  };
+
+  const handleAddPet = () => {
+    router.push(`/users/myPets/addPet`);
   };
   return (
     <>
@@ -54,6 +60,11 @@ export default function PetsLayout({
                   </div>
                 );
               })}
+              <PetCareButton
+                label="Lägg til husdjur"
+                icon={<AddCircleIcon />}
+                onClick={() => handleAddPet()}
+              />
             </aside>
           </div>
           <main className="col-span-2">
