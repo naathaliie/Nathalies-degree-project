@@ -1,8 +1,83 @@
-export default async function petDetails({
-  params,
-}: {
-  params: Promise<{ petId: string }>;
-}) {
-  const petId = (await params).petId;
-  return <h1>PetDetails about: {petId}</h1>;
+"use client";
+import SaveButton from "@/app/components/Buttons/SaveButton";
+import { useAppSelector } from "@/lib/hooks";
+import { useParams } from "next/navigation";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
+
+export default function petDetails() {
+  const { petId } = useParams() as { petId: string };
+  const allPets = useAppSelector((state) => state.pets.pets);
+  const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
+
+  const foundPet = allPets.find((p) => {
+    return p._id === petId || null;
+  });
+
+  console.log("petImg= ", foundPet?.img);
+
+  const handleOnClick = () => {
+    return alert("Ta bort hund");
+  };
+
+  const removePet = () => {
+    //Här ska saveButtonState appiceras
+    alert(
+      "Skapa funktion som tar bort husdjur, kanske även en popup som frågar om du verkligen vill ta bort"
+    );
+  };
+
+  return (
+    <>
+      {foundPet ? (
+        <div className="m-5">
+          <div className=" col-span-1 border-r-2 border-petCare-sapphireTeal-superLight mt-5">
+            <div className=" flex text-petCare-sapphireTeal-dark py-5">
+              <div className="flex flex-col ml-10">
+                <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
+                  {foundPet.name}
+                </h1>
+                <p>{foundPet.species}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 grid-flow-col bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 mx-7 text-petCare-sapphireTeal-dark">
+              <div>
+                <div className="flex flex-col gap-7  flex-wrap">
+                  <div>
+                    <h2 className=" font-bold text-lg">Ras:</h2>
+                    <p>{foundPet.breed}</p>
+                  </div>
+
+                  <div>
+                    <h2 className=" font-bold text-lg">Kön:</h2>
+                    <p>{foundPet.gender}</p>
+                  </div>
+                  <div>
+                    <div className="flex flex-col gap-2">
+                      <SaveButton
+                        label="Radera "
+                        icon={<DeleteIcon fontSize="small" />}
+                        state={SaveButtonState}
+                        setState={setSaveButtonState}
+                        size="small"
+                        onClick={() => removePet()}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <img
+                src={foundPet.img ? foundPet.img : "/images/noImgFound.png"}
+                width={40}
+                alt={"Bild av husdjur"}
+                className=" h-52 w-72 object-cover rounded-3xl"
+              ></img>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div> Hoppsan något gick fel, försök igen</div>
+      )}
+    </>
+  );
 }
