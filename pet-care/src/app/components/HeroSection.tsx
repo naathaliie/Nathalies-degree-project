@@ -23,7 +23,7 @@ const HeroSection = () => {
   const handleRegistration = () => {
     if (pet) {
       dispatch(setSelectedPet(pet));
-      router.push("/users/new");
+      router.push("/login");
       setPet(null); // Rensar
     }
   };
