@@ -9,6 +9,7 @@ import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
 import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 import ErrorNeedToBeLoggedIn from "../components/ErrorNeedToBeLoggedIn";
+import Link from "next/link";
 
 const UsersPage = () => {
   const router = useRouter();
@@ -110,14 +111,15 @@ const UsersPage = () => {
                 <div className="flex gap-3 m-2">
                   {currentUsersPets?.map((pet) => {
                     return (
-                      <Avatar
-                        sx={{
-                          backgroundColor: "var(--petCare-sapphireTeal-dark)",
-                        }}
-                        key={pet._id}
-                      >
-                        {pet.name[0]}
-                      </Avatar>
+                      <Link href={`/users/myPets/${pet._id}`} key={pet._id}>
+                        <Avatar
+                          sx={{
+                            backgroundColor: "var(--petCare-sapphireTeal-dark)",
+                          }}
+                        >
+                          {pet.name[0]}
+                        </Avatar>
+                      </Link>
                     );
                   })}
                 </div>
