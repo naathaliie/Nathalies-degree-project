@@ -24,7 +24,7 @@ const LogInPage = () => {
   return (
     <div className="  relative flex items-center justify-center mt-24 mb-5">
       {isLargeScreen && (
-        <div className="absolute lg:left-[-100] xl:left-[-50] h-full flex justify-center items-center">
+        <div className="absolute lg:left-[-100px] xl:left-[-50px] h-full flex justify-center items-center">
           <img
             src="/images/8630162.png"
             alt="dog"
