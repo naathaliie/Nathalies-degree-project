@@ -58,8 +58,10 @@ const QuestionModal = ({ openModal }: QuestionModalProps) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Vill du fortsätta att lägga till ett nytt husdjur?
           </Typography>
-          <PetCareButton label="Ja" onClick={() => handleAddNewPet()} />
-          <PetCareButton label="Nej" onClick={() => handleClose()} />
+          <div className="flex gap-5 mt-5">
+            <PetCareButton label="Ja" onClick={() => handleAddNewPet()} />
+            <PetCareButton label="Nej" onClick={() => handleClose()} />
+          </div>
         </Box>
       </Modal>
     </div>
