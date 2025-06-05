@@ -55,11 +55,11 @@ const HeroSection = () => {
         <img
           src={`/pawPrints/${pawPrint()}.svg`}
           alt="pawPrint"
-          className="absolute  md:right-[-160] lg:right-[-100] xl:right-[-10] w-56 h-56 hidden md:block"
+          className="absolute  md:right-[-160px] lg:right-[-100px] xl:right-[-10px] w-56 h-56 hidden md:block"
         />
 
         <div>
-          <h1 className="text-4xl font-bold ">Ta hand om din bästa vän!</h1>
+          <h1 className="text-4xl font-bold ">Ta hand om din bästa vän HEJ!</h1>
           <p className="text-xl">
             Registrera ditt husdjur och få hjälp med vård och inköp
           </p>
