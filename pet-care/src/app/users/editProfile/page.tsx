@@ -10,7 +10,7 @@ const EditProfile = () => {
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
   );
-  const [edit, setEdit] = useState<Boolean>(false);
+  const [edit, setEdit] = useState<boolean>(false);
 
   const toggleEdit = () => {
     setEdit(!edit);

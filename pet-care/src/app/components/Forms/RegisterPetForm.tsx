@@ -82,7 +82,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
       }
       dispatch(removeSelectedPet());
     };
-  }, [selectedPet]);
+  }, [selectedPet, dispatch, setSuccessAddNewPet]);
 
   return (
     <div className="RegisterPetForm">

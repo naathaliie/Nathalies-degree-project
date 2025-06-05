@@ -67,7 +67,7 @@ const Calendar = ({ pets }: CalendarProps) => {
                     width: 14,
                     height: 14,
                     borderRadius: "50%",
-                    backgroundColor: "#0e7490", // petrolfärg
+                    backgroundColor: "#0e7490",
                     color: "#fff",
                     fontSize: "10px",
                     display: "flex",
@@ -103,7 +103,7 @@ const Calendar = ({ pets }: CalendarProps) => {
     if (pets && pets.length > 0) {
       handleMonthChange(dayjs());
     }
-  }, [pets]);
+  }, [pets, handleMonthChange]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -114,6 +114,7 @@ const Calendar = ({ pets }: CalendarProps) => {
         slots={{
           day: CustomDay,
         }}
+        // @ts-ignore
         slotProps={{
           day: {
             highlightedMap,
