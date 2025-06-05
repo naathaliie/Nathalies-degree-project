@@ -6,9 +6,14 @@ import Link from "next/link";
 import { useAppDispatch } from "@/lib/hooks";
 import { logout } from "@/lib/features/auth/authSlice";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/navigation";
+import SaveButton from "./Buttons/SaveButton";
+import PetCareButton from "./Buttons/PetCareButton";
+import { Button } from "@mui/material";
 
 const MyPageNav = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const currentUser = useSelector((state: RootState) => state.auth.currentUser);
   const navItems = [
@@ -24,14 +29,13 @@ const MyPageNav = () => {
       titel: "Redigera profil",
       href: "/users/editProfile",
     },
-    {
-      titel: "Logga ut",
-      href: "",
-    },
   ];
 
   const handleLogOut = () => {
-    dispatch(logout());
+    setTimeout(() => {
+      router.push("/");
+      dispatch(logout());
+    }, 1500);
   };
 
   return (
@@ -41,19 +45,6 @@ const MyPageNav = () => {
           <div className=" flex items-center">
             <div className="flex gap-5">
               {navItems.map((item, index) => {
-                if (item.titel === "Logga ut") {
-                  return (
-                    <Link
-                      href={"/"}
-                      key={index}
-                      onClick={() => handleLogOut()}
-                      className="flex items-center text-petCare-sapphireTeal-dark hover:text-petCare-myWhite"
-                    >
-                      <p className=" text-xs sm:text-base">Logga ut</p>
-                      <ArrowRightStartOnRectangleIcon className="size-5 sm:size-6 " />
-                    </Link>
-                  );
-                }
                 return (
                   <Link
                     href={item.href}
@@ -64,6 +55,13 @@ const MyPageNav = () => {
                   </Link>
                 );
               })}
+              <button
+                className="flex items-center text-petCare-sapphireTeal-dark hover:text-petCare-myWhite"
+                onClick={() => handleLogOut()}
+              >
+                <p className=" text-xs sm:text-base">Logga ut</p>
+                <ArrowRightStartOnRectangleIcon className="size-5 sm:size-6 " />
+              </button>
             </div>
           </div>
         </nav>
