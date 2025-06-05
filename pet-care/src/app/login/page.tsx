@@ -44,9 +44,9 @@ const LogInPage = () => {
         </div>
         <div className="flex flex-col gap-3">
           <div>
-            Har du inget konto? Registrera dig{" "}
+            Har du inget konto? Registrera dig
             <Link href={"/users/new"}>
-              <b>här</b>
+              <b> här</b>
             </Link>
           </div>
           <div className="flex flex-wrap  gap-2">
