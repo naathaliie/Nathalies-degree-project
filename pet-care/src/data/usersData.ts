@@ -5,9 +5,9 @@ import { User } from "../../types/types";
 export const mockUsers: User[] = [
   {
     _id: "0",
-    email: "anna@example.com",
+    email: "elli@example.com",
     password: "password123",
-    name: "Anna",
+    name: "Elli",
     surname: "Johansson",
     street: "Storgatan 1",
     city: "Stockholm",
@@ -33,9 +33,9 @@ export const mockUsers: User[] = [
   },
   {
     _id: "1",
-    email: "lars@example.com",
+    email: "Pontus@example.com",
     password: "password456",
-    name: "Lars",
+    name: "Pontus",
     surname: "Svensson",
     street: "Lilla vägen 3",
     city: "Göteborg",
@@ -61,9 +61,9 @@ export const mockUsers: User[] = [
   },
   {
     _id: "2",
-    email: "maria@example.com",
+    email: "Lillian@example.com",
     password: "password789",
-    name: "Maria",
+    name: "Lillian",
     surname: "Andersson",
     street: "Bergvägen 7",
     city: "Malmö",
