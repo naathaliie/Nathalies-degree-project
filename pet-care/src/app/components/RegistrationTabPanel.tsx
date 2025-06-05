@@ -42,7 +42,6 @@ function a11yProps(index: number) {
 }
 
 export default function RegistrationTabPanel() {
-  //Validering av inputfält
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const [emailInput, setEmailInput] = useState("");
@@ -66,10 +65,9 @@ export default function RegistrationTabPanel() {
   };
 
   const submit = (e: React.FormEvent) => {
-    e.preventDefault(); //Stoppar att sidan laddas om
+    e.preventDefault();
     setErrors({});
 
-    //Fält som skall valideras
     const newUser: User = {
       _id: uuidv4(),
       email: emailInput,
@@ -90,7 +88,6 @@ export default function RegistrationTabPanel() {
           isUnread: true,
         },
       ],
-      isLoggedIn: false,
     };
 
     const validation = RegisterUserSchema.safeParse(newUser);

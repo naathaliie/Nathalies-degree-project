@@ -2,11 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { RootState } from "@/lib/store";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
-import { setMessageMarkAsRead } from "@/lib/features/users/usersSlice";
 import { setMarkAsRead } from "@/lib/features/auth/authSlice";
 import ErrorNeedToBeLoggedIn from "../components/ErrorNeedToBeLoggedIn";
 import Link from "next/link";
@@ -15,23 +13,15 @@ import { Pet } from "../../../types/types";
 import QuestionModal from "../components/QuestionModal";
 
 const UsersPage = () => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
   );
-  console.log("currentUser = ", currentUser);
   const allPets = useAppSelector((state: RootState) => state.pets.pets);
-
-  //Kollar om vi har ett selectedPet från HeroSecion om att man vill lägga till ett nytt husdjur
-  const test = useAppSelector((state) => state.pets.selectedPet);
 
   const selectedPetFromStore: boolean = useAppSelector((state) =>
     state.pets.selectedPet ? true : false
   );
-
-  console.log("Har vi ett selected pet: ", test);
-  console.log("Har vi ett selected pet from store: ", selectedPetFromStore);
 
   const [addNewPet, setAddNewPet] = useState<boolean>(false);
 
@@ -42,22 +32,10 @@ const UsersPage = () => {
     return null;
   });
 
-  console.log("pets", currentUser?.pets);
-
   const openMessage = (userID: string, messageIndex: number) => {
     if (currentUser) {
-      console.log(
-        "Meddelandet först: ",
-        currentUser?.messages[messageIndex].isUnread
-      );
       alert("Här ska meddelande med id: " + messageIndex + " öppnas upp");
-      //Nu tar vi bort markeringen från både currentUser och usern med samma id som currentUser. bra/dåligt???????
-      /*       dispatch(setMessageMarkAsRead({ userID, messageIndex }));
-       */ dispatch(setMarkAsRead(messageIndex));
-      console.log(
-        "Meddelandet sedan",
-        currentUser?.messages[messageIndex].isUnread
-      );
+      dispatch(setMarkAsRead(messageIndex));
     }
   };
 

@@ -50,9 +50,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
       const validation = RegisterPetSchema.safeParse(newPet);
 
       if (!validation.success) {
-        console.log("Något går fel men vad?", validation.data);
         const newErrors: { [key: string]: string } = {};
-        console.log("vad är new errors? ", newErrors);
         validation.error.errors.forEach((error) => {
           if (error.path[0]) {
             newErrors[error.path[0]] = error.message;

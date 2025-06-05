@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import PetCareButton from "../Buttons/PetCareButton";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { setCurrentUser } from "@/lib/features/auth/authSlice";
@@ -29,20 +29,15 @@ const LoginForm = () => {
   };
 
   const submit = (event: React.FormEvent) => {
-    event.preventDefault(); //Stoppar sidomladdningen
+    event.preventDefault();
 
     const username = userNameRef.current?.value;
     const password = passwordRef.current?.value;
 
-    console.log(username);
-    console.log(password);
-
     if (username && password) {
-      console.log("Inne i kontroll av usernam och password");
       const userToLoggIn = findUser(username, password);
 
       if (userToLoggIn) {
-        console.log("kommer jg hit?");
         dispatch(setCurrentUser(userToLoggIn));
 
         router.push("/users");

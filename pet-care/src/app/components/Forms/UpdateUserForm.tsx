@@ -18,7 +18,6 @@ const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
   const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
   const router = useRouter();
 
-  //Validering av inputfält
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -34,7 +33,6 @@ const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
     setErrors({});
 
     if (currentUser) {
-      //Fält som skall valideras
       const updatedUser: User = {
         _id: currentUser._id,
         email: emailInput,
@@ -46,9 +44,8 @@ const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
         city: cityInput,
         phone: phoneInput,
         messages: currentUser.messages,
-        isLoggedIn: true,
       };
-      //Validera
+
       const validation = RegisterUserSchema.safeParse(updatedUser);
 
       if (!validation.success) {
@@ -62,8 +59,6 @@ const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
         setSaveButtonState(false);
         return;
       }
-
-      console.log("uppdaterad användare: ", updatedUser);
 
       dispatch(updateCurrentUser(updatedUser));
       dispatch(updateUser(updatedUser));

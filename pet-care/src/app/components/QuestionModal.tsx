@@ -24,9 +24,7 @@ const style = {
 };
 
 const QuestionModal = ({ openModal }: QuestionModalProps) => {
-  console.log("Vad ör OpenModal ifrån Modalen?: ", openModal);
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
 
   const router = useRouter();
   const dispatch = useAppDispatch();

@@ -2,7 +2,6 @@ import React from "react";
 
 const TextWithBackground = () => {
   return (
-    //Lägg till färgen i tailwind så att den inite är statisk
     <div className="bg-[#C5E3E9]  w-full py-20 pl-16 pr-16 text-petCare-sapphireTeal-dark flex flex-col justify-center items-center ">
       <div className="w-2/3  flex flex-col gap-5 justify-center items-center ">
         <h1 className="font-bold text-2xl">

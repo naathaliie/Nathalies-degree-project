@@ -5,19 +5,12 @@ import { useAppSelector } from "@/lib/hooks";
 import UpdateUserForm from "@/app/components/Forms/UpdateUserForm";
 import ErrorNeedToBeLoggedIn from "@/app/components/ErrorNeedToBeLoggedIn";
 import PetCareButton from "@/app/components/Buttons/PetCareButton";
-import SaveButton from "@/app/components/Buttons/SaveButton";
 
 const EditProfile = () => {
-  const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
   );
-  const allPets = useAppSelector((state: RootState) => state.pets.pets);
   const [edit, setEdit] = useState<Boolean>(false);
-
-  const currentUsersPets = allPets.filter(
-    (p) => p.ownerId === currentUser?._id
-  );
 
   const toggleEdit = () => {
     setEdit(!edit);

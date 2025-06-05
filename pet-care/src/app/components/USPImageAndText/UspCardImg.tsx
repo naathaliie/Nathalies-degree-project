@@ -20,8 +20,6 @@ const UspCardImg = ({
   const router = useRouter();
 
   const handleClick = (title: string) => {
-    //När man klickar ska man komma till sidan /tips/titel
-    console.log("Du vill läsa titeln: ", title);
     router.push(`/tips/${title}`);
   };
   return (

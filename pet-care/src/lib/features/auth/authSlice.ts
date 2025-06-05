@@ -22,7 +22,6 @@ const authSlice = createSlice({
         phone: action.payload.phone,
         pets: action.payload.pets,
         messages: action.payload.messages,
-        isLoggedIn: true,
       };
     },
     logout: (state) => {
@@ -30,9 +29,7 @@ const authSlice = createSlice({
     },
     updateCurrentUser: (state, action: PayloadAction<User>) => {
       state.currentUser = action.payload;
-      //Ska ta den nya info och byta ut på currentuser
     },
-    /* Samma funktion är även på currentUser, ska du ändra här? Ändra där också */
     setMarkAsRead: (state, action: PayloadAction<number>) => {
       if (state.currentUser) {
         const index = action.payload;

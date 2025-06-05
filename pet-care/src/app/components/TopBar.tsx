@@ -21,7 +21,7 @@ const TopBar = () => {
           </Link>
         </div>
         <div className="flex gap-10">
-          {!currentUser?.isLoggedIn ? (
+          {!currentUser ? (
             <div>
               <Link
                 href={"/login"}

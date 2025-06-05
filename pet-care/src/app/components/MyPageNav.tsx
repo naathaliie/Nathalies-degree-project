@@ -36,7 +36,7 @@ const MyPageNav = () => {
 
   return (
     <>
-      {currentUser?.isLoggedIn && (
+      {currentUser && (
         <nav className="NavBar w-full p-2 flex justify-center bg-petCare-sapphireTeal-light text-white">
           <div className=" flex items-center">
             <div className="flex gap-5">

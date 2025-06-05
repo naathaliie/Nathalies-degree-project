@@ -3,12 +3,6 @@ import { User, UsersState } from "../../../../types/types";
 
 const initialState: UsersState = {
   users: [],
-  draftUser: null,
-  loading: {
-    getUsers: false,
-    postNewUser: false,
-  },
-  error: null,
 };
 
 const usersSlice = createSlice({
@@ -33,23 +27,21 @@ const usersSlice = createSlice({
         return user;
       });
     },
-    setMessageMarkAsRead:
-      /* Samma funktion är även på currentUser, ska du ändra här? Ändra där också */ (
-        state,
-        action: PayloadAction<{ userID: string; messageIndex: number }>
-      ) => {
-        //vi behöver skicka in användarID och vilket meddelande
-        const thisUser = state.users.find((user) => {
-          return user._id === action.payload.userID;
-        });
-        if (!thisUser) return;
+    setMessageMarkAsRead: (
+      state,
+      action: PayloadAction<{ userID: string; messageIndex: number }>
+    ) => {
+      const thisUser = state.users.find((user) => {
+        return user._id === action.payload.userID;
+      });
+      if (!thisUser) return;
 
-        const thisMessage = thisUser?.messages[action.payload.messageIndex];
+      const thisMessage = thisUser?.messages[action.payload.messageIndex];
 
-        if (!thisMessage) return;
+      if (!thisMessage) return;
 
-        thisMessage.isUnread = false;
-      },
+      thisMessage.isUnread = false;
+    },
   },
 });
 

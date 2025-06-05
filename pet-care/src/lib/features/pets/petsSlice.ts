@@ -3,10 +3,7 @@ import { ChoosablePets, Pet, PetsState } from "../../../../types/types";
 
 const initialState: PetsState = {
   pets: [],
-  draftPet: null,
   selectedPet: null,
-  loading: false,
-  error: null,
 };
 
 const petsSlice = createSlice({
@@ -31,7 +28,6 @@ const petsSlice = createSlice({
     },
     deletePet: (state, action: PayloadAction<{ id: string }>) => {
       state.pets = state.pets.filter((pet) => pet._id !== action.payload.id);
-      console.log("radera husdjur via slice");
     },
   },
 });

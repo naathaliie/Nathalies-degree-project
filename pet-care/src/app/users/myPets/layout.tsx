@@ -7,11 +7,7 @@ import { useRouter } from "next/navigation";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Tooltip from "@mui/material/Tooltip";
 
-export default function PetsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const PetsLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const currentUser = useAppSelector(
     (state: RootState) => state.auth.currentUser
@@ -80,4 +76,6 @@ export default function PetsLayout({
       )}
     </>
   );
-}
+};
+
+export default PetsLayout;

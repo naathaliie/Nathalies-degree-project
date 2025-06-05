@@ -5,7 +5,6 @@ import Link from "next/link";
 import { NavbarMenuItem } from "../../../types/types";
 
 const NavBar = () => {
-  const navItemss: string[] = ["Tips & råd", "Vanliga frågor", "Om oss"];
   const navItems: NavbarMenuItem[] = [
     {
       title: "Tips & råd",

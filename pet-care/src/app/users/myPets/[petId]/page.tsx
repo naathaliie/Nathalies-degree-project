@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import RemovePetModal from "@/app/components/RemovePetModal";
 import Tooltip from "@mui/material/Tooltip";
 
-export default function petDetails() {
+const PetDetails = () => {
   const { petId } = useParams() as { petId: string };
   const allPets = useAppSelector((state) => state.pets.pets);
   const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
@@ -87,4 +87,5 @@ export default function petDetails() {
       )}
     </>
   );
-}
+};
+export default PetDetails;

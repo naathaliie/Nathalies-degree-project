@@ -9,19 +9,12 @@ export interface User {
   city: string;
   postalCode: string;
   phone?: string | undefined;
-  pets?: string[]; //Husdjurets id
+  pets?: string[];
   messages: Message[];
-  isLoggedIn: boolean;
 }
 
 export interface UsersState {
   users: User[];
-  draftUser: User | null;
-  loading: {
-    getUsers: boolean;
-    postNewUser: boolean;
-  };
-  error: string | null;
 }
 
 /*****Message*****/
@@ -61,13 +54,10 @@ export interface Pet {
 
 export interface PetsState {
   pets: Pet[];
-  draftPet: Pet | null;
   selectedPet: ChoosablePets | null;
-  loading: boolean;
-  error: string | null;
 }
 
-export const choosablePetsArray = ["Hund", "Katt", "Häst", "Smådjur"] as const; // Här lägger vi till fler djur vid behov
+export const choosablePetsArray = ["Hund", "Katt", "Häst", "Smådjur"] as const;
 
 export type ChoosablePets = (typeof choosablePetsArray)[number];
 

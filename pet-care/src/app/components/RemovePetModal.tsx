@@ -30,12 +30,10 @@ const RemovePetModal: React.FC<RemovePetModalProps> = ({
   petId,
   setModalState,
 }) => {
-  const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleDelete = () => {
-    console.log("Du klickade på handleDelete (nej)");
     dispatch(deletePet({ id: petId }));
     router.push("/users/myPets");
   };
