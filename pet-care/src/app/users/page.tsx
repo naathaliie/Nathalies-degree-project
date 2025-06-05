@@ -59,8 +59,8 @@ const UsersPage = () => {
                 Välkommen {currentUser.name}!
               </h1>
               <h3 className="text-sm md:text-xl">
-                Här kan du se dina husdjur, lägga till ett nytt husdjur och
-                massor mer!
+                Här kan du se dina meddelanden, dina husdjur, inbokade besök och
+                mycket mer!
               </h3>
             </div>
           </div>
@@ -112,7 +112,7 @@ const UsersPage = () => {
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
                   Husdjur
                 </h2>
-                {currentUsersPets.length < 0 ? (
+                {currentUsersPets.length > 0 ? (
                   <div className="flex flex-wrap gap-3 my-4 overflow-auto">
                     {currentUsersPets?.map((pet) => {
                       return (
