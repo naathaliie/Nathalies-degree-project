@@ -43,6 +43,7 @@ function a11yProps(index: number) {
 
 export default function RegistrationTabPanel() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -67,6 +68,7 @@ export default function RegistrationTabPanel() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
+    setIsLoading(true);
 
     const newUser: User = {
       _id: uuidv4(),
@@ -100,28 +102,30 @@ export default function RegistrationTabPanel() {
         }
       });
       setErrors(newErrors);
+      setIsLoading(false);
       setSaveButtonState(false);
       return;
     }
 
     dispatch(addNewUser(newUser));
     dispatch(setCurrentUser(newUser));
-    setSaveButtonState(true);
     setTimeout(() => {
+      setIsLoading(false);
+      setSaveButtonState(true);
       router.push("/users");
-    }, 5000);
+    }, 2000);
   };
 
   return (
-    <div className="flex">
-      <Box sx={{ width: "80%" }}>
+    <div className="flex flex-col sm:flex-row overflow-auto">
+      <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="registrate tabs"
           >
-            <Tab label="Inloggningsuppgifter" {...a11yProps(0)} />
+            <Tab label="Användare" {...a11yProps(0)} />
             <Tab label="Personuppgifter" {...a11yProps(1)} disabled={false} />
           </Tabs>
         </Box>
@@ -232,6 +236,7 @@ export default function RegistrationTabPanel() {
           size="small"
           endIcon={<CheckIcon />}
           onClick={submit}
+          loading={isLoading}
         />
       </div>
     </div>

@@ -26,6 +26,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
 
   //Validering av inputfälten
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [speciesInput, setSpeciesInput] = useState<ChoosablePets>(
     selectedPet ? selectedPet : choosablePetsArray[0]
   );
@@ -36,6 +37,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
+    setIsLoading(true);
 
     if (currentUser) {
       const newPet: Pet = {
@@ -56,19 +58,19 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
             newErrors[error.path[0]] = error.message;
           }
         });
-
+        setIsLoading(false);
         setErrors(newErrors);
         setSaveButtonState(false);
         return;
       }
 
-      dispatch(addNewPet(newPet));
-
-      setSaveButtonState(true);
-
-      dispatch(removeSelectedPet());
-
-      router.push(`/users/myPets/${newPet._id}`);
+      setTimeout(() => {
+        dispatch(addNewPet(newPet));
+        setIsLoading(false);
+        setSaveButtonState(true);
+        dispatch(removeSelectedPet());
+        router.push(`/users/myPets/${newPet._id}`);
+      }, 1500);
     }
     return null;
   };
@@ -144,6 +146,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
           label="Registrera"
           state={SaveButtonState}
           setState={setSaveButtonState}
+          loading={isLoading}
           onClick={submit}
         />
       </form>
