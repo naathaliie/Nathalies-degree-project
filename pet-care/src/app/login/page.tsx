@@ -37,15 +37,15 @@ const LogInPage = () => {
         <div>
           <LoginForm />
         </div>
-        <div className="flex flex-col gap-3">
-          <div>
+        <div className="flex flex-col gap-3 ">
+          <div className="text-center">
             Har du inget konto? Registrera dig
             <Link href={"/users/new"}>
               <b> här</b>
             </Link>
           </div>
           <p className="text-center mt-7 sm:mt-0 font-bold">Testanvändare</p>
-          <div className="flex flex-wrap gap-2 ">
+          <div className="flex flex-wrap align-middle justify-center gap-2 mx-5 sm:mx-0 ">
             {users.map((user: User) => (
               <PetCareButton
                 key={user._id}

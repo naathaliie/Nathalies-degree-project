@@ -19,7 +19,7 @@ const TipsPage = () => {
           <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center pb-5">
             <div className="w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
               <div className="flex flex-col sm:ml-10">
-                <h1 className="font-semibold text-xl sm:text-3xl ">
+                <h1 className="font-semibold text-2xl sm:text-3xl ">
                   {foundTitle.title}
                 </h1>
               </div>
@@ -32,7 +32,7 @@ const TipsPage = () => {
                     <img
                       src={foundTitle.img}
                       alt={foundTitle.imageDescription}
-                      className="w-full h-full md:h-[30rem] object-scale-down "
+                      className="w-full h-full md:h-[30rem] object-scale-down mt-5"
                     />
                   </div>
                   <div className="flex flex-col gap-6">

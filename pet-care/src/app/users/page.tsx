@@ -112,7 +112,7 @@ const UsersPage = () => {
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
                   Husdjur
                 </h2>
-                {currentUsersPets ? (
+                {currentUsersPets.length < 0 ? (
                   <div className="flex flex-wrap gap-3 my-4 overflow-auto">
                     {currentUsersPets?.map((pet) => {
                       return (
@@ -135,7 +135,13 @@ const UsersPage = () => {
                   </div>
                 ) : (
                   <div>
-                    <p>Du har inga registrerade husdjur</p>
+                    <p>Du har inga registrerade husdjur ännu.</p>
+                    <p>
+                      Klicka{" "}
+                      <Link href={"/users/myPets/addPet"}>
+                        <b>Här</b> för att registrera
+                      </Link>
+                    </p>
                   </div>
                 )}
               </div>
