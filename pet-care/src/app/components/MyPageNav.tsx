@@ -7,9 +7,6 @@ import { useAppDispatch } from "@/lib/hooks";
 import { logout } from "@/lib/features/auth/authSlice";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
-import SaveButton from "./Buttons/SaveButton";
-import PetCareButton from "./Buttons/PetCareButton";
-import { Button } from "@mui/material";
 
 const MyPageNav = () => {
   const dispatch = useAppDispatch();
