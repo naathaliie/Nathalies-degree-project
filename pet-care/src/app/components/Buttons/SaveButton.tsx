@@ -6,7 +6,7 @@ import DoneIcon from "@mui/icons-material/Done";
 interface SaveButtonProps extends ButtonProps {
   icon?: React.ReactNode; // Valfri ikon
   endIcon?: React.ReactNode; // Välj denna ikon om du har en label
-  label?: string; // Texten på knappen
+  label?: string;
   state: boolean | null;
   setState: React.Dispatch<SetStateAction<boolean | null>>;
 }
