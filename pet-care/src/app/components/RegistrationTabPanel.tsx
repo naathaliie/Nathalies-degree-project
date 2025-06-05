@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import RegisterUserForm from "./Forms/RegisterUserForm";
-import RegisterPetForm from "./Forms/RegisterPetForm";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import SaveButton from "./Buttons/SaveButton";
-import ArrowForward from "@mui/icons-material/ArrowForward";
+import { useAppDispatch } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
-import {
-  addNewUser,
-  deleteDraftUser,
-  setDraftUser,
-} from "@/lib/features/users/usersSlice";
-import { addNewPet, deleteDraftPet } from "@/lib/features/pets/petsSlice";
+import CheckIcon from "@mui/icons-material/Check";
+import { User } from "../../../types/types";
+import { v4 as uuidv4 } from "uuid";
+import { RegisterUserSchema } from "@/zodSchemas/RegisterUserSchema";
+import { addNewUser } from "@/lib/features/users/usersSlice";
 import { setCurrentUser } from "@/lib/features/auth/authSlice";
+import SaveButton from "./Buttons/SaveButton";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,92 +42,201 @@ function a11yProps(index: number) {
 }
 
 export default function RegistrationTabPanel() {
+  //Validering av inputfält
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
+  const [nameInput, setNameInput] = useState("");
+  const [surnameInput, setSurnameInput] = useState("");
+  const [adressInput, setAdressInput] = useState("");
+  const [postalCodeInput, setPostalCodeInput] = useState("");
+  const [cityInput, setCityInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+
   const router = useRouter();
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState(0);
-  const [successAddNewUser, setSuccessAddNewUser] = useState<boolean>(false);
-  const [successAddNewPet, setSuccessAddNewPet] = useState<boolean>(false);
   const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
-
-  const draftUser = useAppSelector((state) => state.users.draftUser);
-  const draftPet = useAppSelector((state) => state.pets.draftPet);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
-  const registrateNewUser = () => {
-    if (draftUser && draftPet) {
-      //Sparar användaren som currentUser
-      dispatch(setCurrentUser(draftUser));
-      //sparar användare och husdjur
-      dispatch(addNewUser(draftUser));
-      dispatch(addNewPet(draftPet));
-      //Går till den nyskapade användarens sida
-      router.push("/users");
-      //Återsället draftpet och draftUser
-      dispatch(deleteDraftUser());
-      dispatch(deleteDraftPet());
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault(); //Stoppar att sidan laddas om
+    setErrors({});
+
+    //Fält som skall valideras
+    const newUser: User = {
+      _id: uuidv4(),
+      email: emailInput,
+      password: passwordInput,
+      name: nameInput,
+      surname: surnameInput,
+      street: adressInput,
+      postalCode: postalCodeInput,
+      city: cityInput,
+      phone: phoneInput,
+      messages: [
+        {
+          title: "Välkommen",
+          subTitle: "Hej och varmt välkommen till oss på PetCare!",
+          message:
+            "Här kommer lite information som kan vara bra att känna till...",
+          sender: "PetCare",
+          isUnread: true,
+        },
+      ],
+      isLoggedIn: false,
+    };
+
+    const validation = RegisterUserSchema.safeParse(newUser);
+
+    if (!validation.success) {
+      const newErrors: { [key: string]: string } = {};
+      validation.error.errors.forEach((error) => {
+        if (error.path[0]) {
+          newErrors[error.path[0]] = error.message;
+        }
+      });
+      setErrors(newErrors);
+      setSaveButtonState(false);
+      return;
     }
+
+    dispatch(addNewUser(newUser));
+    dispatch(setCurrentUser(newUser));
+    setSaveButtonState(true);
+    setTimeout(() => {
+      router.push("/users");
+    }, 5000);
   };
 
-  useEffect(() => {
-    if (successAddNewUser) {
-      setValue(1);
-    }
-    if (successAddNewPet) {
-      setValue(2);
-    }
-
-    return () => {
-      setSuccessAddNewPet(false);
-      setSuccessAddNewUser(false);
-    };
-  }, [successAddNewUser, successAddNewPet]);
-
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="registrate tabs"
-        >
-          <Tab label="Om dig" {...a11yProps(0)} />
-          <Tab label="Ditt husdjur" {...a11yProps(1)} disabled={!draftUser} />
-          <Tab
-            label="Registrera"
-            {...a11yProps(2)}
-            disabled={!draftPet || !draftUser}
-          />
-        </Tabs>
+    <div className="flex">
+      <Box sx={{ width: "80%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="registrate tabs"
+          >
+            <Tab label="Inloggningsuppgifter" {...a11yProps(0)} />
+            <Tab label="Personuppgifter" {...a11yProps(1)} disabled={false} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <div>
+            <h2>Inloggningsuppgifter</h2>
+            <div>
+              <p className=" text-lg font-bold">Epost</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+                type="text"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+              />
+              {errors.email && <p className="text-red-500">{errors.email}</p>}
+            </div>
+            <div>
+              <p className=" text-lg font-bold">Lösenord</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%] "
+                type="text"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+              />
+              {errors.password && (
+                <p className="text-red-500">{errors.password}</p>
+              )}
+            </div>
+          </div>
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <div>
+            <h2>Personuppgifter</h2>
+            <div>
+              <p className=" text-lg font-bold">Namn</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+                type="text"
+                value={nameInput}
+                onChange={(e) => {
+                  setNameInput(e.target.value);
+                }}
+              />
+              {errors.name && <p className="text-red-500">{errors.name}</p>}
+            </div>
+            <div>
+              <p className=" text-lg font-bold">Efternamn</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+                type="text"
+                value={surnameInput}
+                onChange={(e) => setSurnameInput(e.target.value)}
+              />
+              {errors.surname && (
+                <p className="text-red-500">{errors.surname}</p>
+              )}
+            </div>
+            <div>
+              <p className=" text-lg font-bold">Adress</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+                type="text"
+                value={adressInput}
+                onChange={(e) => setAdressInput(e.target.value)}
+              />
+              {errors.street && <p className="text-red-500">{errors.street}</p>}
+            </div>
+            <div>
+              <p className=" text-lg font-bold">Postnummer</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-20"
+                type="text"
+                value={postalCodeInput}
+                onChange={(e) => setPostalCodeInput(e.target.value)}
+              />
+              {errors.postalCode && (
+                <p className="text-red-500">{errors.postalCode}</p>
+              )}
+            </div>
+            <div>
+              <p className=" text-lg font-bold">Stad</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+                type="text"
+                value={cityInput}
+                onChange={(e) => setCityInput(e.target.value)}
+              />
+              {errors.city && <p className="text-red-500">{errors.city}</p>}
+            </div>
+            <div>
+              <p className=" text-lg font-bold">Telefonnummer</p>
+              <input
+                className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%]"
+                type="text"
+                value={phoneInput}
+                onChange={(e) => setPhoneInput(e.target.value)}
+              />
+              {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+            </div>
+          </div>
+        </CustomTabPanel>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <RegisterUserForm setSuccessAddNewUser={setSuccessAddNewUser} />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <RegisterPetForm setSuccessAddNewPet={setSuccessAddNewPet} />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        {draftPet && draftUser ? (
-          <>
-            <h2>
-              Toppen, alla uppgifter är ifyllda! <br />
-              Klicka på knappen för att slutföra din registrering.
-            </h2>
-            <SaveButton
-              icon={<ArrowForward />}
-              label="Slutför registrering "
-              state={SaveButtonState}
-              setState={setSaveButtonState}
-              onClick={registrateNewUser}
-            />
-          </>
-        ) : (
-          "Något gick fel "
-        )}
-      </CustomTabPanel>
-    </Box>
+      <div className="">
+        <SaveButton
+          state={SaveButtonState}
+          setState={setSaveButtonState}
+          label="Skapa användare"
+          size="small"
+          endIcon={<CheckIcon />}
+          onClick={submit}
+        />
+      </div>
+    </div>
   );
 }

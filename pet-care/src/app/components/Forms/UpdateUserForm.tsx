@@ -1,28 +1,19 @@
 "use client";
-import React, { SetStateAction, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch } from "@/lib/hooks";
 import { User } from "../../../../types/types";
 import SaveIcon from "@mui/icons-material/Save";
 import { RegisterUserSchema } from "@/zodSchemas/RegisterUserSchema";
 import SaveButton from "../Buttons/SaveButton";
-import { v4 as uuidv4 } from "uuid";
-import { updateCurentUser } from "@/lib/features/auth/authSlice";
+import { updateCurrentUser } from "@/lib/features/auth/authSlice";
 import { useRouter } from "next/navigation";
-//setSuccessAddNewUser kan skickas med om man från föräldrakomponenten vill veta om en ny user sparades eller inte
-//Skapa i så fall nedan i föräldra komponenten
-//const [successAddNewUser, setSuccessAddNewUser] = useState<boolean>(false);
+import { updateUser } from "@/lib/features/users/usersSlice";
 
 type UpdateUserFormProps = {
-  setSuccessAddNewUser?: React.Dispatch<SetStateAction<boolean>>;
   currentUser?: User;
 };
 
-//FORTSÄTT HÄR
-//HUR ska man spara sina uppdaterada uppgifter? Vilken knapp osv?
-const UpdateUserForm = ({
-  setSuccessAddNewUser,
-  currentUser,
-}: UpdateUserFormProps) => {
+const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
   const dispatch = useAppDispatch();
   const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
   const router = useRouter();
@@ -39,49 +30,46 @@ const UpdateUserForm = ({
   const [phoneInput, setPhoneInput] = useState("");
 
   const submit = (e: React.FormEvent) => {
-    e.preventDefault(); //Stoppar att sidan laddas om
-    setErrors({}); // Töm gamla fel BÖR DENNA LIGGA LÄNGST UPP I SUBMIT?
+    e.preventDefault();
+    setErrors({});
 
-    //Fält som skall valideras
-    const updatedUser: User = {
-      _id: currentUser?._id || "011011011",
-      email: emailInput,
-      password: passwordInput,
-      name: nameInput,
-      surname: surnameInput,
-      street: adressInput,
-      postalCode: postalCodeInput,
-      city: cityInput,
-      phone: phoneInput,
-      messages: [],
-      isLoggedIn: true,
-    };
-    //Validera
-    const validation = RegisterUserSchema.safeParse(updatedUser);
+    if (currentUser) {
+      //Fält som skall valideras
+      const updatedUser: User = {
+        _id: currentUser._id,
+        email: emailInput,
+        password: passwordInput,
+        name: nameInput,
+        surname: surnameInput,
+        street: adressInput,
+        postalCode: postalCodeInput,
+        city: cityInput,
+        phone: phoneInput,
+        messages: currentUser.messages,
+        isLoggedIn: true,
+      };
+      //Validera
+      const validation = RegisterUserSchema.safeParse(updatedUser);
 
-    if (!validation.success) {
-      const newErrors: { [key: string]: string } = {};
-      validation.error.errors.forEach((error) => {
-        if (error.path[0]) {
-          newErrors[error.path[0]] = error.message;
-        }
-      });
-      setErrors(newErrors);
-      setSaveButtonState(false);
-      if (setSuccessAddNewUser) {
-        setSuccessAddNewUser(false);
+      if (!validation.success) {
+        const newErrors: { [key: string]: string } = {};
+        validation.error.errors.forEach((error) => {
+          if (error.path[0]) {
+            newErrors[error.path[0]] = error.message;
+          }
+        });
+        setErrors(newErrors);
+        setSaveButtonState(false);
+        return;
       }
-      return;
-    }
 
-    console.log("uppdaterad användare: ", updatedUser);
+      console.log("uppdaterad användare: ", updatedUser);
 
-    dispatch(updateCurentUser(updatedUser));
-    setSaveButtonState(true);
-    if (setSuccessAddNewUser) {
-      setSuccessAddNewUser(true);
+      dispatch(updateCurrentUser(updatedUser));
+      dispatch(updateUser(updatedUser));
+      setSaveButtonState(true);
+      router.push("/users/editProfile");
     }
-    router.push("/users/editProfile");
   };
 
   useEffect(() => {
@@ -95,11 +83,7 @@ const UpdateUserForm = ({
       setEmailInput(currentUser.email);
       setPasswordInput(currentUser.password);
     }
-    return () => {
-      if (setSuccessAddNewUser) {
-        setSuccessAddNewUser(false);
-      }
-    };
+    return () => {};
   }, [currentUser]);
 
   return (
