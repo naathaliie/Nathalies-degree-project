@@ -51,6 +51,12 @@ export const mockUsers: User[] = [
         sender: "PetCare",
         isUnread: true,
       },
+      {
+        title: "Expo 2025 - Reptilmässa",
+        message: "Älskar du reptiler?",
+        sender: "Expo Malmö",
+        isUnread: true,
+      },
     ],
   },
   {
