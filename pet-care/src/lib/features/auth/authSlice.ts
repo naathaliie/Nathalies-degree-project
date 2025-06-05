@@ -28,7 +28,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.currentUser = null;
     },
-    updateCurentUser: (state, action: PayloadAction<User>) => {
+    updateCurrentUser: (state, action: PayloadAction<User>) => {
       state.currentUser = action.payload;
       //Ska ta den nya info och byta ut på currentuser
     },
@@ -49,7 +49,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCurrentUser, logout, setMarkAsRead, updateCurentUser } =
+export const { setCurrentUser, logout, setMarkAsRead, updateCurrentUser } =
   authSlice.actions;
 
 export default authSlice.reducer;
