@@ -20,7 +20,6 @@ const authSlice = createSlice({
         city: action.payload.city,
         postalCode: action.payload.postalCode,
         phone: action.payload.phone,
-        pets: action.payload.pets,
         messages: action.payload.messages,
       };
     },
