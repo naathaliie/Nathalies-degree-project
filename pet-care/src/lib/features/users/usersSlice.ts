@@ -23,17 +23,16 @@ const usersSlice = createSlice({
     getTestUsers: (state) => {
       state.users;
     },
-    setDraftUser: (state, action: PayloadAction<User>) => {
-      state.draftUser = action.payload;
-    },
-    getDraftUser: (state) => {
-      state.draftUser;
-    },
-    deleteDraftUser: (state) => {
-      state.draftUser = null;
-    },
     addNewUser: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
+    },
+    updateUser: (state, action: PayloadAction<User>) => {
+      state.users = state.users.map((user) => {
+        if (user._id === action.payload._id) {
+          return action.payload;
+        }
+        return user;
+      });
     },
     setMessageMarkAsRead:
       /* Samma funktion är även på currentUser, ska du ändra här? Ändra där också */ (
@@ -91,9 +90,7 @@ export const {
   setUsers,
   getTestUsers,
   addNewUser,
-  setDraftUser,
-  getDraftUser,
-  deleteDraftUser,
+  updateUser,
   setMessageMarkAsRead,
 } = usersSlice.actions;
 
