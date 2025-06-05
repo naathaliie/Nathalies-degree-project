@@ -122,9 +122,12 @@ const UsersPage = () => {
                           className="transition-transform duration-300 hover:scale-110"
                         >
                           <Avatar
+                            src={pet.img}
                             sx={{
                               backgroundColor:
                                 "var(--petCare-sapphireTeal-dark)",
+                              width: 56,
+                              height: 56,
                             }}
                           >
                             {pet.name[0]}

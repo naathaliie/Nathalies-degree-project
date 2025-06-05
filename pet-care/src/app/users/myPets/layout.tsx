@@ -6,6 +6,7 @@ import { RootState } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Tooltip from "@mui/material/Tooltip";
+import { Avatar } from "@mui/material";
 
 const PetsLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -58,9 +59,16 @@ const PetsLayout = ({ children }: { children: React.ReactNode }) => {
                     className="border-2 p-4 w-40  flex flex-col justify-between items-center gap-5 transition-transform duration-300 hover:scale-110"
                     onClick={() => handleClickOnPet(pet._id)}
                   >
-                    <p className=" flex items-center justify-center bg-petCare-sapphireTeal-superLight rounded-full w-20 h-20 ">
-                      Bild
-                    </p>
+                    <Avatar
+                      src={pet.img}
+                      sx={{
+                        backgroundColor: "var(--petCare-sapphireTeal-dark)",
+                        width: 100,
+                        height: 100,
+                      }}
+                    >
+                      {pet.name[0]}
+                    </Avatar>
                     <p>{pet.name}</p>
                   </div>
                 );
