@@ -59,7 +59,7 @@ const HeroSection = () => {
         />
 
         <div>
-          <h1 className="text-4xl font-bold ">Ta hand om din bästa vän HEJ!</h1>
+          <h1 className="text-4xl font-bold ">Ta hand om din bästa vän!</h1>
           <p className="text-xl">
             Registrera ditt husdjur och få hjälp med vård och inköp
           </p>
