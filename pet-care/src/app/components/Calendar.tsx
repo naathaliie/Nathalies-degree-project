@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DateCalendar,
   PickersDay,
@@ -67,6 +67,7 @@ const Calendar = ({ pets }: CalendarProps) => {
                     width: 14,
                     height: 14,
                     borderRadius: "50%",
+                    backgroundColor: "#0e7490",
                     color: "#fff",
                     fontSize: "10px",
                     display: "flex",
@@ -91,21 +92,18 @@ const Calendar = ({ pets }: CalendarProps) => {
     );
   }
 
-  const handleMonthChange = useCallback(
-    (date: Dayjs) => {
-      setIsLoading(true);
-      const map = getHighlightedDaysMap(date);
-      setHighlightedMap(map);
-      setIsLoading(false);
-    },
-    [pets]
-  );
+  const handleMonthChange = (date: Dayjs) => {
+    setIsLoading(true);
+    const map = getHighlightedDaysMap(date);
+    setHighlightedMap(map);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     if (pets && pets.length > 0) {
       handleMonthChange(dayjs());
     }
-  }, [pets, handleMonthChange]);
+  }, [pets]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -116,7 +114,6 @@ const Calendar = ({ pets }: CalendarProps) => {
         slots={{
           day: CustomDay,
         }}
-        // @ts-ignore
         slotProps={{
           day: {
             highlightedMap,
