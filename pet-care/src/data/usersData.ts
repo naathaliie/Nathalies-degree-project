@@ -13,7 +13,6 @@ export const mockUsers: User[] = [
     city: "Stockholm",
     postalCode: "11122",
     phone: "0701234567",
-    pets: ["11", "12"],
     messages: [
       {
         title: "Välkommen",
@@ -41,7 +40,6 @@ export const mockUsers: User[] = [
     city: "Göteborg",
     postalCode: "41345",
     phone: "0702345678",
-    pets: ["13"],
     messages: [
       {
         title: "Välkommen",
@@ -61,15 +59,14 @@ export const mockUsers: User[] = [
   },
   {
     _id: "2",
-    email: "Lillian@example.com",
+    email: "Johanna@example.com",
     password: "password789",
-    name: "Lillian",
+    name: "Johanna",
     surname: "Andersson",
     street: "Bergvägen 7",
     city: "Malmö",
     postalCode: "21137",
     phone: "0703456789",
-    pets: ["14", "15", "16"],
     messages: [
       {
         title: "Välkommen",
@@ -77,6 +74,12 @@ export const mockUsers: User[] = [
         message:
           "Här kommer lite information som kan vara bra att känna till...",
         sender: "PetCare",
+        isUnread: true,
+      },
+      {
+        title: "Glöm inte bort din rabatt på kloklipp",
+        message: "Glöm inte bort att använda din intjänade rabatt hos oss...",
+        sender: "Hundens Hälsa AB",
         isUnread: true,
       },
     ],

@@ -9,7 +9,6 @@ export interface User {
   city: string;
   postalCode: string;
   phone?: string | undefined;
-  pets?: string[];
   messages: Message[];
 }
 
