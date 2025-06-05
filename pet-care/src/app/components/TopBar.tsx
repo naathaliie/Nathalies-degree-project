@@ -14,10 +14,10 @@ const TopBar = () => {
 
   return (
     <div className="w-full flex justify-around sm:justify-center text-petCare-sapphireTeal-dark px-0 sm:px-16 py-2">
-      <div className="w-2/3 flex items-center justify-between">
+      <div className="px-2 sm:px-0 w-full sm:w-2/3 flex items-center justify-between">
         <div>
           <Link href={"/"}>
-            <Image src={logo} alt="logo-image" className="h-12 w-auto" />
+            <Image src={logo} alt="logo-image" className="h-7 sm:h-12 w-auto" />
           </Link>
         </div>
         <div className="flex gap-10">
@@ -27,8 +27,8 @@ const TopBar = () => {
                 href={"/login"}
                 className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
               >
-                <UserIcon className="size-6 " />
-                <p>Logga in</p>
+                <UserIcon className="size-5 sm:size-6" />
+                <p className=" text-xs sm:text-base">Logga in</p>
               </Link>
             </div>
           ) : (
@@ -37,8 +37,8 @@ const TopBar = () => {
                 href={"/users/"}
                 className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
               >
-                <UserCircleIcon className="size-6" />
-                <p>Mina sidor</p>
+                <UserCircleIcon className="size-5 sm:size-6" />
+                <p className=" text-xs sm:text-base">Mina sidor</p>
               </Link>
             </div>
           )}
@@ -46,8 +46,8 @@ const TopBar = () => {
             href={"/contactUs"}
             className="flex flex-col items-center active:text-petCare-sapphireTeal-main"
           >
-            <PhoneIcon className="size-6" />
-            <p>Kontakt</p>
+            <PhoneIcon className="size-5 sm:size-6" />
+            <p className=" text-xs sm:text-base">Kontakt</p>
           </Link>
         </div>
       </div>

@@ -126,7 +126,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
           {errors.breed && <p className="text-red-500">{errors.breed}</p>}
         </div>
 
-        <div>
+        <div className="mb-5">
           <p className=" text-lg font-bold">Kön</p>
           <select
             onChange={(e) => setGenderInput(e.target.value)}
@@ -140,8 +140,8 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
           {errors.gender && <p className="text-red-500">{errors.gender}</p>}
         </div>
         <SaveButton
-          icon={<ArrowForward />}
-          label="Spara"
+          endIcon={<ArrowForward />}
+          label="Registrera"
           state={SaveButtonState}
           setState={setSaveButtonState}
           onClick={submit}

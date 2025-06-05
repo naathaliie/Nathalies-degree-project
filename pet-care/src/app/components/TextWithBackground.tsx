@@ -2,9 +2,9 @@ import React from "react";
 
 const TextWithBackground = () => {
   return (
-    <div className="bg-[#C5E3E9]  w-full py-20 pl-16 pr-16 text-petCare-sapphireTeal-dark flex flex-col justify-center items-center ">
-      <div className="w-2/3  flex flex-col gap-5 justify-center items-center ">
-        <h1 className="font-bold text-2xl">
+    <div className="bg-[#C5E3E9] w-full py-20 px-7 sm:px-16 text-petCare-sapphireTeal-dark flex flex-col justify-center items-center ">
+      <div className=" w-full sm:w-2/3  flex flex-col gap-5 justify-center items-center ">
+        <h1 className="font-bold text-lg sm:text-2xl">
           Samlingsplatsen för alla husdjursägare!
         </h1>
         <p>
@@ -18,7 +18,7 @@ const TextWithBackground = () => {
           finns samlat och att vi påminner dig om kloklippningen eller
           veterinärbesöket.
         </p>
-        <p>
+        <p className="text-center sm:text-start">
           Ring oss på <b>0707 - 12 34 56</b> om du undrar över något.
         </p>
       </div>

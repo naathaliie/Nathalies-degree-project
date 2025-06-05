@@ -9,7 +9,7 @@ const QuestionAndAnswer = () => {
     <>
       <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center">
         <div className="w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
-          <div className="flex flex-col gap-2 ml-10">
+          <div className="flex flex-col gap-2 ml-2 sm:ml-10">
             <h1 className="text-xl font-semibold sm:text-3xl md:text-5xl">
               Vanliga frågor
             </h1>
@@ -19,7 +19,7 @@ const QuestionAndAnswer = () => {
           </div>
         </div>
 
-        <div className="bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
+        <div className="bg-petCare-myWhite rounded-lg sm:px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
           <div className="w-full flex flex-col">
             <div>
               <QAaccordion accordionData={questionAndAnswers} />

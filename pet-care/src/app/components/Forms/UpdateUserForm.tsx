@@ -164,7 +164,7 @@ const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
             />
             {errors.email && <p className="text-red-500">{errors.email}</p>}
           </div>
-          <div>
+          <div className="mb-5">
             <p className=" font-bold">Lösenord</p>
             <input
               className=" border-2 border-petCare-sapphireTeal-dark w-[90%] sm:w-[60%] md:w-[90%] lg:w-[60%] xl:max-w-[50%] "

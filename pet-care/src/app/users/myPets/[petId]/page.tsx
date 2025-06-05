@@ -30,17 +30,17 @@ const PetDetails = () => {
   return (
     <>
       {foundPet ? (
-        <div className="m-5">
-          <div className=" col-span-1 border-r-2 border-petCare-sapphireTeal-superLight mt-5">
-            <div className=" flex text-petCare-sapphireTeal-dark py-5">
-              <div className="flex flex-col ml-10 mb-14">
+        <div className="md:m-5">
+          <div className="col-span-1 md:mt-5">
+            <div className=" flex text-petCare-sapphireTeal-dark py-2 md:py-5">
+              <div className="flex flex-col ml-10 my-5 md:mb-14">
                 <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
                   {foundPet.name}
                 </h1>
                 <p>{foundPet.species}</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 grid-flow-col bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 mx-7 text-petCare-sapphireTeal-dark">
+            <div className=" flex flex-col-reverse md:grid md:grid-cols-2 md:grid-flow-col bg-petCare-myWhite rounded-lg px-10 py-5 mx-3 mb-5  md:mx-7 text-petCare-sapphireTeal-dark">
               <div>
                 <div className="flex flex-col gap-7  flex-wrap">
                   <div>
@@ -72,7 +72,7 @@ const PetDetails = () => {
                 src={foundPet.img ? foundPet.img : "/images/noImgFound.png"}
                 width={40}
                 alt={"Bild av husdjur"}
-                className=" h-52 w-72 object-cover rounded-3xl"
+                className=" h-52 w-72 object-cover rounded-3xl pb-5 md:pb-0"
               ></img>
             </div>
           </div>

@@ -26,8 +26,8 @@ const EditProfile = () => {
     <>
       {currentUser ? (
         <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center pb-5">
-          <div className="w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
-            <div className="flex flex-col gap-2 ml-10">
+          <div className="w-full sm:w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
+            <div className="flex flex-col gap-2 ml-5 sm:ml-10">
               <h1 className="text-xl font-semibold sm:text-3xl md:text-5xl">
                 Redigera profil
               </h1>
@@ -37,7 +37,7 @@ const EditProfile = () => {
             </div>
           </div>
 
-          <div className="bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
+          <div className="bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 m-2 w-full sm:w-3/4 h-auto text-petCare-sapphireTeal-dark">
             <div className="w-full flex flex-col">
               <div>
                 {edit ? (
@@ -82,7 +82,7 @@ const EditProfile = () => {
                       <h2 className="font-bold">Lösenord</h2>
                       <p>{currentUser.password}</p>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center mt-5">
                       <PetCareButton
                         label="Redigera uppgifter"
                         onClick={() => toggleEdit()}

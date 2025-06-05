@@ -10,7 +10,7 @@ const ImageAndText = () => {
           className=" w-full h-[30rem] object-cover"
         />
         <div className=" absolute text-petCare-myWhite">
-          <h1 className=" font-bold text-5xl md:text-7xl">
+          <h1 className=" font-bold text-3xl sm:text-5xl md:text-7xl">
             Välkommen till Petcare!
           </h1>
         </div>

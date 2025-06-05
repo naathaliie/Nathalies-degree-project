@@ -22,7 +22,7 @@ const LogInPage = () => {
   };
 
   return (
-    <div className="  relative flex items-center justify-center mt-24 mb-5">
+    <div className=" relative flex items-center justify-center sm:mt-24 p-16 sm:p-0">
       {isLargeScreen && (
         <div className="absolute lg:left-[-100px] xl:left-[-50px] h-full flex justify-center items-center">
           <img
@@ -44,7 +44,8 @@ const LogInPage = () => {
               <b> här</b>
             </Link>
           </div>
-          <div className="flex flex-wrap  gap-2">
+          <p className="text-center mt-7 sm:mt-0 font-bold">Testanvändare</p>
+          <div className="flex flex-wrap gap-2 ">
             {users.map((user: User) => (
               <PetCareButton
                 key={user._id}

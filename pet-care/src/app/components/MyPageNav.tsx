@@ -49,8 +49,8 @@ const MyPageNav = () => {
                       onClick={() => handleLogOut()}
                       className="flex items-center text-petCare-sapphireTeal-dark hover:text-petCare-myWhite"
                     >
-                      <p>Logga ut</p>
-                      <ArrowRightStartOnRectangleIcon className="size-6 " />
+                      <p className=" text-xs sm:text-base">Logga ut</p>
+                      <ArrowRightStartOnRectangleIcon className="size-5 sm:size-6 " />
                     </Link>
                   );
                 }
@@ -58,7 +58,7 @@ const MyPageNav = () => {
                   <Link
                     href={item.href}
                     key={index}
-                    className=" hover:text-petCare-sapphireTeal-dark"
+                    className=" hover:text-petCare-sapphireTeal-dark text-xs sm:text-base"
                   >
                     {item.titel}
                   </Link>

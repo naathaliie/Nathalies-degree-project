@@ -30,10 +30,10 @@ const PetsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {currentUser ? (
-        <div className="  bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 grid grid-cols-3 ">
-          <div className=" col-span-1 border-r-2 border-petCare-sapphireTeal-superLight mt-5">
-            <div className=" flex text-petCare-sapphireTeal-dark py-5">
-              <div className="flex flex-col gap-2 ml-10">
+        <div className=" bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col md:grid grid-cols-2 md:grid-flow-col md:grid-cols-3 ">
+          <div className="col-span-1 border-b-2 md:border-r-2 md:border-b-0 border-petCare-sapphireTeal-superLight mt-5">
+            <div className="flex text-petCare-sapphireTeal-dark py-5">
+              <div className="flex flex-col gap-2 ml-5 sm:ml-10">
                 <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
                   Mina husdjur
                 </h1>
@@ -50,7 +50,7 @@ const PetsLayout = ({ children }: { children: React.ReactNode }) => {
                 </Tooltip>
               </div>
             </div>
-            <aside className="flex gap-7  flex-wrap bg-petCare-myWhite rounded-lg px-10 pb-10 pt-5 mx-7 text-petCare-sapphireTeal-dark">
+            <aside className="flex flex-row md:flex-wrap border-2 gap-4 md:gap-7 overflow-auto bg-petCare-myWhite rounded-lg px-6 md:px-10 mb-7 py-7 m-2 md:mx-7 text-petCare-sapphireTeal-dark ">
               {currentUsersPets.map((pet) => {
                 return (
                   <div

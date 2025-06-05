@@ -50,8 +50,8 @@ const HeroSection = () => {
   };
 
   return (
-    <div className=" bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 w-full py-10 px-16 text-petCare-sapphireTeal-dark flex justify-center items-center">
-      <div className=" relative w-2/3 flex flex-col">
+    <div className=" bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 w-full py-10 px-5 sm:px-16 text-petCare-sapphireTeal-dark flex justify-center items-center">
+      <div className=" relative w-full sm:w-2/3 flex flex-col">
         <img
           src={`/pawPrints/${pawPrint()}.svg`}
           alt="pawPrint"
