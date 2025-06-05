@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import LoginForm from "../components/Forms/LoginForm";
 import { useAppSelector } from "@/lib/hooks";
 import { User } from "../../../types/types";
 import { useAppDispatch } from "@/lib/hooks";
 import { setCurrentUser } from "@/lib/features/auth/authSlice";
 import { useRouter } from "next/navigation";
-import { getTestUsers } from "@/lib/features/users/usersSlice";
 import PetCareButton from "../components/Buttons/PetCareButton";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
 import Link from "next/link";
@@ -21,10 +20,6 @@ const LogInPage = () => {
     dispatch(setCurrentUser(user));
     router.push("/users");
   };
-
-  useEffect(() => {
-    dispatch(getTestUsers());
-  }, []);
 
   return (
     <div className="  relative flex items-center justify-center mt-24 mb-5">

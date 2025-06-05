@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   DateCalendar,
   PickersDay,
@@ -67,7 +67,6 @@ const Calendar = ({ pets }: CalendarProps) => {
                     width: 14,
                     height: 14,
                     borderRadius: "50%",
-                    backgroundColor: "#0e7490",
                     color: "#fff",
                     fontSize: "10px",
                     display: "flex",
@@ -92,12 +91,15 @@ const Calendar = ({ pets }: CalendarProps) => {
     );
   }
 
-  const handleMonthChange = (date: Dayjs) => {
-    setIsLoading(true);
-    const map = getHighlightedDaysMap(date);
-    setHighlightedMap(map);
-    setIsLoading(false);
-  };
+  const handleMonthChange = useCallback(
+    (date: Dayjs) => {
+      setIsLoading(true);
+      const map = getHighlightedDaysMap(date);
+      setHighlightedMap(map);
+      setIsLoading(false);
+    },
+    [pets]
+  );
 
   useEffect(() => {
     if (pets && pets.length > 0) {

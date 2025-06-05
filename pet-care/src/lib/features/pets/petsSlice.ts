@@ -14,9 +14,6 @@ const petsSlice = createSlice({
     setPets: (state, action: PayloadAction<Pet[]>) => {
       state.pets = action.payload;
     },
-    getTestPets: (state) => {
-      state.pets;
-    },
     addNewPet: (state, action: PayloadAction<Pet>) => {
       state.pets.push(action.payload);
     },

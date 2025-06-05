@@ -9,12 +9,8 @@ const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    /* Det som behöver sparas lokalt */
     setUsers: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload;
-    },
-    getTestUsers: (state) => {
-      state.users;
     },
     addNewUser: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
@@ -45,12 +41,7 @@ const usersSlice = createSlice({
   },
 });
 
-export const {
-  setUsers,
-  getTestUsers,
-  addNewUser,
-  updateUser,
-  setMessageMarkAsRead,
-} = usersSlice.actions;
+export const { setUsers, addNewUser, updateUser, setMessageMarkAsRead } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;
