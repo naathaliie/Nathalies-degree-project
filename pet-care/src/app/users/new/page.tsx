@@ -1,9 +1,6 @@
 "use client";
-import { RootState } from "@/lib/store";
 import React from "react";
-import { choosablePetsArray } from "../../../../types/types";
 import RegistrationTabPanel from "@/app/components/RegistrationTabPanel";
-import { useAppSelector } from "@/lib/hooks";
 
 const NewUserPage = () => {
   return (

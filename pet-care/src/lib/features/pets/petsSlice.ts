@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ChoosablePets, Pet, PetsState } from "../../../../types/types";
-import { getPets } from "@/api/pets";
-import { act } from "react";
 
 const initialState: PetsState = {
   pets: [],
@@ -35,22 +33,6 @@ const petsSlice = createSlice({
       state.pets = state.pets.filter((pet) => pet._id !== action.payload.id);
       console.log("radera husdjur via slice");
     },
-  },
-  //ExtraReducers för hantering mot DB
-  extraReducers: (builder) => {
-    builder
-      .addCase(getPets.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getPets.fulfilled, (state, action) => {
-        state.loading = false;
-        state.pets = action.payload;
-      })
-      .addCase(getPets.rejected, (state, action) => {
-        state.loading = false;
-        state.error =
-          action.error.message || "Ett fel uppstod vid hämtning av husdjur";
-      });
   },
 });
 
