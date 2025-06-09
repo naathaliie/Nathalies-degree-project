@@ -31,7 +31,7 @@ const About = () => {
           <div className="flex flex-col">
             <div>
               <img
-                src="/images/kittens.jpg"
+                src="/images/petsAndOwner.jpg"
                 alt="kittens"
                 className="w-full h-[10rem] pb-5 sm:pb-0 sm:h-[30rem] object-scale-down "
               />

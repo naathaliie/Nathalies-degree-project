@@ -7,9 +7,9 @@ export const mockPets: Pet[] = [
     ownerId: "0",
     name: "Pelle",
     species: choosablePetsArray[0],
-    breed: "Labrador",
+    breed: "Fransk bulldog",
     gender: choosablePetsArray[0],
-    img: "/images/dogspa.jpg",
+    img: "/images/pets/cutieDog.jpg",
     events: [
       {
         _id: "001",
@@ -27,7 +27,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[1],
     breed: "Siames",
     gender: "Hona",
-    img: "/images/siames.jpg",
+    img: "/images/pets/siames.jpg",
     events: [
       {
         _id: "002",
@@ -45,7 +45,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[3],
     breed: "Vädur",
     gender: "Hane",
-    img: "/images/lennart.jpg",
+    img: "/images/pets/lennart.jpg",
     events: [
       {
         _id: "007",
@@ -63,7 +63,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[3],
     breed: "Undulat",
     gender: "Hona",
-    img: "/images/majsan.jpg",
+    img: "/images/pets/majsan.jpg",
     events: [
       {
         _id: "007",
@@ -81,7 +81,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Beagle",
     gender: "Hona",
-    img: "/images/bella.jpg",
+    img: "/images/pets/bella.jpg",
     events: [
       {
         _id: "008",
@@ -99,7 +99,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[3],
     breed: "Majsorm",
     gender: "Hane",
-    img: "/images/conrad.jpg",
+    img: "/images/pets/conrad.jpg",
     events: [
       {
         _id: "008",
@@ -117,7 +117,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Pappillon/Chihuahua",
     gender: "Hona",
-    img: "/images/luna.jpg",
+    img: "/images/pets/luna.jpg",
     events: [
       {
         _id: "054",
@@ -135,7 +135,7 @@ export const mockPets: Pet[] = [
     species: choosablePetsArray[0],
     breed: "Chihuahua/Pomerian",
     gender: "Hona",
-    img: "/images/ivy.jpg",
+    img: "/images/pets/ivy.jpg",
     events: [
       {
         _id: "055",

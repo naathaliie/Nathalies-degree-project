@@ -4,7 +4,7 @@ export const uspListMockData: UspListImgData[] = [
   //FrontPageData
   {
     category: "FrontPageUsp",
-    img: "/images/swimmingDog.jpg",
+    img: "/images/uspFrontPage/swimmingDog.jpg",
     imageDescription: "Hund badar i sjö",
     title: "Låt hunden bada säkert i sommar",
     informativeText:
@@ -17,7 +17,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "FrontPageUsp",
-    img: "/images/summerCat.jpg",
+    img: "/images/uspFrontPage/summerCat.jpg",
     imageDescription: "Katt i solen",
     title: "Kattens sommarsäkerhet",
     informativeText:
@@ -30,7 +30,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "FrontPageUsp",
-    img: "/images/summerHorses.jpg",
+    img: "/images/uspFrontPage/summerHorses.jpg",
     imageDescription: "Tre hästar på en äng",
     title: "Fång hos häst",
     informativeText:
@@ -44,7 +44,7 @@ export const uspListMockData: UspListImgData[] = [
   //TipsAndAdviceData
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/dogSpa.jpg",
+    img: "/images/uspTipsAdvice/dogSpa.jpg",
     imageDescription: "Pälsvård hund",
     title: "Så borstar du din hund rätt",
     informativeText:
@@ -57,7 +57,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/horseCare.jpg",
+    img: "/images/uspTipsAdvice/horseCare.jpg",
     imageDescription: "Hästskötsel",
     title: "Smarta rutiner för hästskötsel",
     informativeText:
@@ -70,7 +70,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/cuteBunny.jpg",
+    img: "/images/uspTipsAdvice/cuteBunny.jpg",
     imageDescription: "Kaninunge",
     title: "Skapa ett tryggt hem för kaniner",
     informativeText:
@@ -83,7 +83,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/puppyLeash.jpg",
+    img: "/images/uspTipsAdvice/puppyLeash.jpg",
     imageDescription: "Hundvalp och koppel",
     title: "Träningstips för valpar",
     informativeText:
@@ -96,7 +96,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/playingKitten.jpg",
+    img: "/images/uspTipsAdvice/playingKitten.jpg",
     imageDescription: "Lekande kattunge",
     title: "Inomhusaktivering för katt",
     informativeText:
@@ -109,7 +109,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/saddle.jpg",
+    img: "/images/uspTipsAdvice/saddle.jpg",
     imageDescription: "Hästsadel",
     title: "Så undviker du sadeltvång",
     informativeText:
@@ -122,7 +122,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/dogVet.jpg",
+    img: "/images/uspTipsAdvice/dogVet.jpg",
     imageDescription: "Katt och hund",
     title: "Första hjälpen för hundar",
     informativeText:
@@ -135,7 +135,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/chinchilla.jpg",
+    img: "/images/uspTipsAdvice/chinchilla.jpg",
     imageDescription: "Chinchilla",
     title: "Så inreder du för en chinchilla",
     informativeText:
@@ -148,7 +148,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/outDoorCat.jpg",
+    img: "/images/uspTipsAdvice/outDoorCat.jpg",
     imageDescription: "Katt på altan",
     title: "Bygg en säker kattgård",
     informativeText:
@@ -161,7 +161,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/horseFlynet.jpg",
+    img: "/images/uspTipsAdvice/horseFlynet.jpg",
     imageDescription: "Häst i sommargrönska",
     title: "Flugskydd för häst – så väljer du rätt",
     informativeText:
@@ -174,7 +174,7 @@ export const uspListMockData: UspListImgData[] = [
   },
   {
     category: "TipsAndAdviceUsp",
-    img: "/images/guineaPig.jpg",
+    img: "/images/uspTipsAdvice/guineaPig.jpg",
     imageDescription: "Marsvin",
     title: "Vardagsmotion för smådjur",
     informativeText:
