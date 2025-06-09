@@ -9,6 +9,9 @@ import GetMockData from "../lib/initializers/GetMockData";
 export const metadata: Metadata = {
   title: "PetCare",
   description: "PetCare hjälper dig...",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
