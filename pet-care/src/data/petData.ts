@@ -5,7 +5,7 @@ export const mockPets: Pet[] = [
   {
     _id: "11",
     ownerId: "0",
-    name: "Fido",
+    name: "Pelle",
     species: choosablePetsArray[0],
     breed: "Labrador",
     gender: choosablePetsArray[0],
