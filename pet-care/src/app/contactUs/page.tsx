@@ -31,7 +31,7 @@ const ContactUsPage = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center gap-12 md:gap-7 flex-col md:flex-row flex-wrap bg-petCare-myWhite rounded-lg px-2 sm:px-10 pb-10 pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
+      <div className=" w-full sm:w-3/4 flex justify-center items-center gap-8 md:gap-7 flex-col md:flex-row flex-wrap bg-petCare-myWhite rounded-lg px-2 sm:px-10 pb-10 pt-5 m-2 h-auto text-petCare-sapphireTeal-dark">
         {contactWays.map((contact, i) => (
           <div
             key={i}

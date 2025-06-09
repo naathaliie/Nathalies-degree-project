@@ -25,7 +25,7 @@ const TipsPage = () => {
               </div>
             </div>
 
-            <div className="bg-petCare-myWhite rounded-lg px-2 pt-0 sm:px-10 pb-10 sm:pt-5 m-2 w-3/4 h-auto text-petCare-sapphireTeal-dark">
+            <div className="bg-petCare-myWhite rounded-lg px-2 pt-0 sm:px-10 pb-10 sm:pt-5 m-2 w-full sm:w-3/4 h-auto text-petCare-sapphireTeal-dark">
               <div className="w-full flex flex-col">
                 <div className="flex flex-col gap-5">
                   <div>
