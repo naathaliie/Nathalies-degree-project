@@ -11,6 +11,9 @@ import dayjs, { Dayjs } from "dayjs";
 import { Pet } from "../../../types/types";
 import { Badge } from "@mui/material";
 
+//Du kan skicka in ett pet, en array av pets eller ingenting.
+//Skickar du inte in något blir det som en vanlig tom kalender
+
 type CalendarProps = {
   pets?: Pet[];
   pet?: Pet;
@@ -24,7 +27,6 @@ const Calendar = ({ pets, pet }: CalendarProps) => {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  // Normalisera till en array av pets
   const allPets = pet ? [pet] : pets ?? [];
 
   const getHighlightedDaysMap = (date: Dayjs): HighlightedDaysMap => {
@@ -93,6 +95,7 @@ const Calendar = ({ pets, pet }: CalendarProps) => {
   }
 
   const handleMonthChange = (date: Dayjs) => {
+    if (allPets.length === 0) return;
     setIsLoading(true);
     const map = getHighlightedDaysMap(date);
     setHighlightedMap(map);
@@ -110,15 +113,14 @@ const Calendar = ({ pets, pet }: CalendarProps) => {
       <DateCalendar
         loading={isLoading}
         onMonthChange={handleMonthChange}
-        renderLoading={() => <DayCalendarSkeleton />}
-        slots={{
-          day: CustomDay,
-        }}
-        slotProps={{
-          day: {
-            highlightedMap,
-          } as any,
-        }}
+        {...(allPets.length > 0
+          ? {
+              // Endast om pets finns
+              renderLoading: () => <DayCalendarSkeleton />,
+              slots: { day: CustomDay },
+              slotProps: { day: { highlightedMap } as any },
+            }
+          : {})}
         sx={{ color: "var(--petCare-sapphireTeal-dark)" }}
       />
     </LocalizationProvider>
