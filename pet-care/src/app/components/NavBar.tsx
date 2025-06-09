@@ -8,7 +8,7 @@ const NavBar = () => {
   const navItems: NavbarMenuItem[] = [
     {
       title: "Våra tjänster",
-      route: "ourServices/CityVet",
+      route: "ourServices",
     },
     {
       title: "Tips & råd",
