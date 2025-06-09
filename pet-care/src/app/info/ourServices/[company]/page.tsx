@@ -6,7 +6,7 @@ import { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import Calendar from "@/app/components/Calendar";
 import { ourServicesData } from "@/data/ourServicesData";
-import BookEventModal from "@/app/components/BookEventModal";
+import PetCareModal from "@/app/components/PetCareModal";
 
 const CompanyDetails = () => {
   const { company } = useParams() as { company: string };
@@ -76,7 +76,11 @@ const CompanyDetails = () => {
           </div>
         </div>
       </div>
-      <BookEventModal modalState={openModal} setModalState={setOpenModal} />
+      <PetCareModal
+        text="Här kommer du kunna se lediga tider och göra bokningar i framtiden"
+        modalState={openModal}
+        setModalState={setOpenModal}
+      />
     </div>
   );
 };
