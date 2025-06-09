@@ -5,10 +5,10 @@ export const ourServicesData: OneService[] = [
   {
     _id: "1",
     typeOfServive: "Veterinär",
-    company: "Djurdoktorn Borås",
+    company: "Djurdoktorn",
     description: "Specialiserad på smådjur, vaccinationer och akutfall.",
     serviceItems: ["Vaccination", "Hälsokontroll", "Akutvård"],
-    img: "h",
+    img: "/images/littleHedgehog.jpg",
   },
   {
     _id: "2",
@@ -16,7 +16,7 @@ export const ourServicesData: OneService[] = [
     company: "CityVet",
     description: "Modern klinik för både hundar och katter.",
     serviceItems: ["Kastrering", "Röntgen", "Receptförnyelse"],
-    img: "h",
+    img: "/images/dogInVet.jpg",
   },
   {
     _id: "3",
@@ -24,7 +24,7 @@ export const ourServicesData: OneService[] = [
     company: "Vårdcentral för Djur",
     description: "Helhetshälsa för ditt husdjur i centrala Borås.",
     serviceItems: ["Blodprov", "Ultraljud", "Sårvård"],
-    img: "h",
+    img: "/images/catAtVet.jpg",
   },
 
   // Pälsvård
@@ -34,7 +34,7 @@ export const ourServicesData: OneService[] = [
     company: "Fluff & Fjun",
     description: "Skonsam klippning och bad för alla raser.",
     serviceItems: ["Kloklippning", "Bad", "Tovutredning"],
-    img: "h",
+    img: "/images/dogBath.jpg",
   },
   {
     _id: "5",
@@ -50,7 +50,7 @@ export const ourServicesData: OneService[] = [
     company: "Hund & Hår",
     description: "Personlig vård för hundens päls i alla väder.",
     serviceItems: ["Borsta ur", "Spa-behandling", "Örontvätt"],
-    img: "h",
+    img: "/images/dogBrush.jpg",
   },
 
   // Kurs
@@ -60,7 +60,7 @@ export const ourServicesData: OneService[] = [
     company: "Hundakademin",
     description: "Professionella kurser för valp, vuxen och problemhund.",
     serviceItems: ["Valpkurs", "Inkallning", "Hundmöten"],
-    img: "h",
+    img: "/images/hundakademin.jpg",
   },
   {
     _id: "8",
@@ -68,7 +68,7 @@ export const ourServicesData: OneService[] = [
     company: "Lydnad & Lek",
     description: "Lekfull träning för starkare band mellan dig och hunden.",
     serviceItems: ["Tricks", "Nosarbete", "Balansövningar"],
-    img: "h",
+    img: "/images/agility.jpg",
   },
   {
     _id: "9",
@@ -76,6 +76,6 @@ export const ourServicesData: OneService[] = [
     company: "Pawsitive Training",
     description: "Positiv förstärkning och belöningsbaserad träning.",
     serviceItems: ["Koppelträning", "Hundspråk", "Avancerad lydnad"],
-    img: "h",
+    img: "/images/dogLeash.jpg",
   },
 ];
