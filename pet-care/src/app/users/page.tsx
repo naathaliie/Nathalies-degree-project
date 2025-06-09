@@ -11,6 +11,7 @@ import Link from "next/link";
 import Calendar from "../components/Calendar";
 import { Pet } from "../../../types/types";
 import QuestionModal from "../components/QuestionModal";
+import PetCareModal from "../components/PetCareModal";
 
 const UsersPage = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +24,8 @@ const UsersPage = () => {
     state.pets.selectedPet ? true : false
   );
 
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
   const [addNewPet, setAddNewPet] = useState<boolean>(false);
 
   const currentUsersPets: Pet[] | null = allPets.filter((p) => {
@@ -33,10 +36,8 @@ const UsersPage = () => {
   });
 
   const openMessage = (userID: string, messageIndex: number) => {
-    if (currentUser) {
-      alert("Här ska meddelande med id: " + messageIndex + " öppnas upp");
-      dispatch(setMarkAsRead(messageIndex));
-    }
+    setOpenModal(true);
+    dispatch(setMarkAsRead(messageIndex));
   };
 
   useEffect(() => {
@@ -101,13 +102,7 @@ const UsersPage = () => {
                   })}
                 </div>
               </div>
-              <div>
-                <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
-                  Beställningar
-                </h2>
-                <div className="flex gap-3 m-2"> beställning 1</div>
-                <div className="flex gap-3 m-2"> beställning 2</div>
-              </div>
+
               <div>
                 <h2 className=" p-1 font-bold bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25">
                   Husdjur
@@ -157,6 +152,11 @@ const UsersPage = () => {
             </div>
             {addNewPet && <QuestionModal openModal={addNewPet} />}
           </div>
+          <PetCareModal
+            text="Här kommer du kunna se dina mail i framtiden"
+            modalState={openModal}
+            setModalState={setOpenModal}
+          />
         </div>
       ) : (
         <div>
