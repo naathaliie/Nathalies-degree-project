@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -24,7 +24,7 @@ const style = {
 };
 
 const QuestionModal = ({ openModal }: QuestionModalProps) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const router = useRouter();
   const dispatch = useAppDispatch();
