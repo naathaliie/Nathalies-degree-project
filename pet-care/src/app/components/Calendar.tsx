@@ -13,24 +13,25 @@ import { Badge } from "@mui/material";
 
 type CalendarProps = {
   pets?: Pet[];
+  pet?: Pet;
 };
 
 type HighlightedDaysMap = Map<number, { petName: string }[]>;
 
-const Calendar = ({ pets }: CalendarProps) => {
+const Calendar = ({ pets, pet }: CalendarProps) => {
   const [highlightedMap, setHighlightedMap] = useState<HighlightedDaysMap>(
     new Map()
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  // Skapar en Map med events per dag för alla pets
+  // Normalisera till en array av pets
+  const allPets = pet ? [pet] : pets ?? [];
+
   const getHighlightedDaysMap = (date: Dayjs): HighlightedDaysMap => {
     const map: HighlightedDaysMap = new Map();
 
-    if (!pets) return map;
-
-    pets.forEach((pet) => {
-      pet.events?.forEach((event) => {
+    allPets.forEach((p) => {
+      p.events?.forEach((event) => {
         const eventDate = dayjs(event.date);
         if (
           eventDate.month() === date.month() &&
@@ -38,7 +39,7 @@ const Calendar = ({ pets }: CalendarProps) => {
         ) {
           const day = eventDate.date();
           if (!map.has(day)) map.set(day, []);
-          map.get(day)?.push({ petName: pet.name });
+          map.get(day)?.push({ petName: p.name });
         }
       });
     });
@@ -46,7 +47,6 @@ const Calendar = ({ pets }: CalendarProps) => {
     return map;
   };
 
-  // Visar initialer för varje pet med event på en dag
   function CustomDay(
     props: PickersDayProps & { highlightedMap?: HighlightedDaysMap }
   ) {
@@ -100,10 +100,10 @@ const Calendar = ({ pets }: CalendarProps) => {
   };
 
   useEffect(() => {
-    if (pets && pets.length > 0) {
+    if (allPets.length > 0) {
       handleMonthChange(dayjs());
     }
-  }, [pets]);
+  }, [pets, pet]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
