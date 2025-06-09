@@ -42,7 +42,7 @@ export const ourServicesData: OneService[] = [
     company: "Salong Ruffsig",
     description: "Gör din hund redo för utställning eller vardag.",
     serviceItems: ["Trimming", "Tandborstning", "Föning"],
-    img: "h",
+    img: "/images/salongRuffsig.jpg",
   },
   {
     _id: "6",
