@@ -4,7 +4,8 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import PetCareButton from "./Buttons/PetCareButton";
 
-type BookEventModalProps = {
+type PetCareModalProps = {
+  text: string;
   modalState: boolean;
   setModalState: React.Dispatch<SetStateAction<boolean>>;
 };
@@ -21,7 +22,8 @@ const style = {
   p: 4,
 };
 
-const BookEventModal: React.FC<BookEventModalProps> = ({
+const PetCareModal: React.FC<PetCareModalProps> = ({
+  text,
   modalState,
   setModalState,
 }) => {
@@ -39,7 +41,7 @@ const BookEventModal: React.FC<BookEventModalProps> = ({
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Här kommer du kunna se lediga tider och göra bokningar i framtiden
+            {text}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Men det fungerar inte riktigt ännu <b className="text-4xl">🫶</b>
@@ -53,4 +55,4 @@ const BookEventModal: React.FC<BookEventModalProps> = ({
   );
 };
 
-export default BookEventModal;
+export default PetCareModal;
