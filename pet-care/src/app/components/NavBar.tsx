@@ -7,6 +7,10 @@ import { NavbarMenuItem } from "../../../types/types";
 const NavBar = () => {
   const navItems: NavbarMenuItem[] = [
     {
+      title: "Våra tjänster",
+      route: "ourServices",
+    },
+    {
       title: "Tips & råd",
       route: "tipsAndAdvice",
     },

@@ -65,10 +65,23 @@ export type ChoosablePets = (typeof choosablePetsArray)[number];
 export interface HealthInfo {
   petId: string;
   dateOfRegistration: Date;
-  type: "Veterinär" | "Pälsvård" | "Kurs";
+  type: OurServicesOptions;
   date: Date;
   notes: string;
   place: string;
+}
+
+/*****OurServices*****/
+
+export type OurServicesOptions = "Veterinär" | "Pälsvård" | "Kurs";
+
+export interface OneService {
+  _id: string;
+  typeOfServive: OurServicesOptions;
+  company: string;
+  description: string;
+  serviceItems: string[];
+  img?: string;
 }
 
 /*****NavBar Menu item*****/
