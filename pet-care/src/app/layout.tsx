@@ -7,8 +7,9 @@ import MyPageNav from "./components/MyPageNav";
 import GetMockData from "../lib/initializers/GetMockData";
 
 export const metadata: Metadata = {
-  title: "PetCare",
-  description: "PetCare hjälper dig...",
+  title: "PetCare - Din partner för husdjursvård",
+  description:
+    "PetCare hjälper dig att hålla ditt husdjur friskt och lyckligt. Planera veterinärbesök, få expertråd och hantera ditt husdjurs dagliga behov enkelt.",
   icons: {
     icon: "/favicon.png",
   },
