@@ -5,8 +5,8 @@ import { User } from "../../types/types";
 export const mockUsers: User[] = [
   {
     _id: "0",
-    email: "elli@example.com",
-    password: "password123",
+    email: "elli@hej.se",
+    password: "123",
     name: "Elli",
     surname: "Johansson",
     street: "Storgatan 1",

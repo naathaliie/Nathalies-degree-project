@@ -13,40 +13,29 @@ const LoginForm = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const findUser = (username: string, password: string) => {
-    const user = allUsers.find((user) => {
-      if (user.email === username) {
-        if (user.password === password) {
-          return user;
-        }
-        alert("Felaktigt lösenord, försök igen");
-        return null;
-      }
-      alert("Felaktigt användarnamn, försök igen");
-      return null;
-    });
-    return user;
-  };
-
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
 
     const username = userNameRef.current?.value;
     const password = passwordRef.current?.value;
 
-    if (username && password) {
-      const userToLoggIn = findUser(username, password);
+    const foundUser = allUsers.find((u) => {
+      return u.email === username ? u : null;
+    });
+    const foundPassword = allUsers.some((u) => {
+      return u.password === password;
+    });
 
-      if (userToLoggIn) {
-        dispatch(setCurrentUser(userToLoggIn));
-
-        router.push("/users");
-      }
-    } else {
-      alert(
-        "Du måste fylla i användarnamn och lösenord för att kunna logga in"
-      );
+    if (!foundUser) {
+      return alert("Användarnamnet hittades inte, försök igen");
     }
+
+    if (!foundPassword) {
+      return alert("Fel lösenord, försök igen");
+    }
+
+    dispatch(setCurrentUser(foundUser));
+    router.push("/users");
   };
 
   return (
