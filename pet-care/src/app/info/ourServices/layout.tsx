@@ -27,7 +27,7 @@ const OurServicesLayout = ({ children }: { children: React.ReactNode }) => {
     <div className=" bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col md:grid grid-cols-2 md:grid-flow-col md:grid-cols-3 ">
       <div className="col-span-1 border-b-2 md:border-r-2 md:border-b-0 border-petCare-sapphireTeal-superLight mt-5">
         <div className="flex text-petCare-sapphireTeal-dark py-5">
-          <div className="flex flex-col gap-2 ml-5 sm:ml-10">
+          <div className="flex flex-col gap-2 mx-5 sm:ml-10">
             <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
               Våra tjänster
             </h1>

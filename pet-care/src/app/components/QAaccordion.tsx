@@ -31,9 +31,12 @@ const QAaccordion = ({ accordionData }: AccordionProps) => {
               <Typography
                 component="span"
                 sx={{
-                  fontSize: "1.5rem",
+                  fontSize: "1.2rem",
                   color: "var(--petCare-sapphireTeal-dark)",
                   fontWeight: "bold",
+                  "@media (max-width: 640px)": {
+                    fontSize: "1rem", // Mindre textstorlek för skärmar < sm
+                  },
                 }}
               >
                 {q.q}

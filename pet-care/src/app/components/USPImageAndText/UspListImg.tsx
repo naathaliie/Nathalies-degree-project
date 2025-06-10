@@ -8,7 +8,7 @@ type UspListImgProps = {
 
 const UspListImg = ({ uspListImgData }: UspListImgProps) => {
   return (
-    <div className=" w-full bg-petCare-myWhite py-20 px-5 sm:px-16 text-petCare-sapphireTeal-dark flex justify-center items-center gap-12 md:gap-7 flex-col md:flex-row flex-wrap">
+    <div className=" w-full bg-petCare-myWhite py-10 px-5 sm:px-16 text-petCare-sapphireTeal-dark flex justify-center items-center gap-12 md:gap-7 flex-col md:flex-row flex-wrap">
       {uspListImgData.map((item, index) => {
         return (
           <UspCardImg

@@ -17,7 +17,7 @@ const TipsPage = () => {
       {foundTitle ? (
         <div>
           <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center pb-5">
-            <div className="w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
+            <div className="w-full sm:w-3/4 px-3 sm:px-0 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
               <div className="flex flex-col sm:ml-10">
                 <h1 className="font-semibold text-2xl sm:text-3xl ">
                   {foundTitle.title}

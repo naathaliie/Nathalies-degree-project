@@ -23,11 +23,12 @@ const ContactUsPage = () => {
 
   return (
     <div className="bg-gradient-to-r from-[#C5E3E9] to-[#F9FCFD] bg-opacity-25 flex flex-col items-center pb-5">
-      <div className=" w-full sm:w-3/4 h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
-        <div className="flex flex-col gap-2 ml-10">
+      <div className=" w-full sm:w-3/4 h-20 sm:h-36 flex flex-col justify-center text-petCare-sapphireTeal-dark">
+        <div className="flex flex-col gap-0 sm:gap-2 ml-10">
           <h1 className="text-xl font-semibold sm:text-3xl md:text-5xl">
             Kontakta oss
           </h1>
+          <p>Nedan finner du våra kontaktvägar</p>
         </div>
       </div>
 
