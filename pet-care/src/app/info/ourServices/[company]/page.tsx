@@ -25,13 +25,6 @@ const CompanyDetails = () => {
   return (
     <div className="md:m-5">
       <div>
-        <div className=" flex text-petCare-sapphireTeal-dark py-2 md:py-5">
-          <div className="flex flex-col ml-10 my-5 md:mb-14">
-            <h1 className="text-xl font-semibold sm:text-3xl md:text-3xl">
-              {foundCompany?.company}
-            </h1>
-          </div>
-        </div>
         <div className=" flex flex-col bg-petCare-myWhite rounded-lg px-10 py-5 mx-3 mb-5  md:mx-7 text-petCare-sapphireTeal-dark">
           {foundCompany?.img && (
             <div className="w-full mb-5 flex justify-center">
