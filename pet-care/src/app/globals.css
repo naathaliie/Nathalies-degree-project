@@ -16,37 +16,18 @@ body {
 }
 
 @layer base {
-  /*Bestämmer default fonten*/
   * {
     @apply font-sans;
   }
 
   :root {
-    --background: #f0f0f0; /* Ljusa bakgrundsfärgen */
-    --foreground: #333333; /* Ljusa textfärgen */
-    --radius: 10px; /* Global border-radius */
+    --background: #f0f0f0;
+    --foreground: #333333;
+    --radius: 10px;
   }
 
   body {
-    @apply text-black /*Bestämmer färg för all text i bodyn*/;
-  }
-
-  /* Dark mode KOMMER JAG ANVÄNDA DETTA????????????*/
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #121212; /* Mörk bakgrundsfärg */
-      --foreground: #ffffff; /* Mörk textfärg */
-
-      /* PetCare färger för dark mode */
-      --petCare-mainBlue: #1e92a9;
-      --petCare-darkBlue: #004082;
-      --petCare-myWhite: #fcfcfc;
-      --petCare-coal: #484446;
-      --petCare-sapphireTeal-dark: #0e4c56;
-      --petCare-sapphireTeal-main: #1e92a9;
-      --petCare-sapphireTeal-light: #84beca;
-      --petCare-sapphireTeal-superLight: #84beca;
-    }
+    @apply text-black;
   }
 }
 
