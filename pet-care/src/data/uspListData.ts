@@ -44,6 +44,19 @@ export const uspListMockData: UspListImgData[] = [
   //TipsAndAdviceData
   {
     category: "TipsAndAdviceUsp",
+    img: "/images/uspTipsAdvice/chinchilla.jpg",
+    imageDescription: "Chinchilla",
+    title: "Så inreder du för en chinchilla",
+    informativeText:
+      "Chinchillor är känsliga små djur som kräver rätt miljö. Här får du råd om temperatur, burinredning och daglig skötsel.",
+    text: {
+      subTitle: "Lugn och trygg miljö för din chinchilla",
+      subText:
+        "Chinchillor mår bäst i lugna, svala miljöer och behöver hyllor att hoppa på, sandbad för pälsvård och säkra tuggleksaker. Vi guidar dig i hur du inreder en optimal bur och skapar en trygg vardag för din lilla vän.",
+    },
+  },
+  {
+    category: "TipsAndAdviceUsp",
     img: "/images/uspTipsAdvice/dogSpa.jpg",
     imageDescription: "Pälsvård hund",
     title: "Så borstar du din hund rätt",
@@ -131,19 +144,6 @@ export const uspListMockData: UspListImgData[] = [
       subTitle: "När olyckan är framme – agera lugnt och snabbt",
       subText:
         "Småsår, stukningar eller insektsbett kan hända när ni är ute. Ha alltid ett litet första hjälpen-kit med i väskan och lär dig grundläggande vård som att rengöra sår, stoppa blödning och kontrollera andning. Det kan göra stor skillnad tills ni får tag på veterinär.",
-    },
-  },
-  {
-    category: "TipsAndAdviceUsp",
-    img: "/images/uspTipsAdvice/chinchilla.jpg",
-    imageDescription: "Chinchilla",
-    title: "Så inreder du för en chinchilla",
-    informativeText:
-      "Chinchillor är känsliga små djur som kräver rätt miljö. Här får du råd om temperatur, burinredning och daglig skötsel.",
-    text: {
-      subTitle: "Lugn och trygg miljö för din chinchilla",
-      subText:
-        "Chinchillor mår bäst i lugna, svala miljöer och behöver hyllor att hoppa på, sandbad för pälsvård och säkra tuggleksaker. Vi guidar dig i hur du inreder en optimal bur och skapar en trygg vardag för din lilla vän.",
     },
   },
   {
