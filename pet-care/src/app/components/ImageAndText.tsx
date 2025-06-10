@@ -11,7 +11,7 @@ const ImageAndText = () => {
         />
         <div className=" absolute text-petCare-myWhite">
           <h1 className=" font-bold text-3xl sm:text-5xl md:text-7xl">
-            Välkommen till Petcare!
+            Välkommen till PetCare!
           </h1>
         </div>
       </div>
