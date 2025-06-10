@@ -63,7 +63,7 @@ export default {
         roboto: ["Roboto"],
       },
       screens: {
-        "3xl": "2000px", // Ny breakpoint vid 2000px
+        "3xl": "2000px",
       },
       colors: {
         background: "var(--background)",
