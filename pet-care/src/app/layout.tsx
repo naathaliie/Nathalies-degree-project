@@ -23,7 +23,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StoreProvider>
-        {/* För att hämta all mockdata */}
         <GetMockData />
         <body className=" antialiased flex flex-col min-h-screen mx-auto 3xl:w-3/4">
           <header>

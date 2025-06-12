@@ -22,7 +22,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
+  const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
 
   //Validering av inputfälten
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -144,7 +144,7 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
         <SaveButton
           endIcon={<ArrowForward />}
           label="Registrera"
-          state={SaveButtonState}
+          state={saveButtonState}
           setState={setSaveButtonState}
           loading={isLoading}
           onClick={submit}

@@ -59,7 +59,7 @@ export default function RegistrationTabPanel() {
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState(0);
-  const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
+  const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -230,7 +230,7 @@ export default function RegistrationTabPanel() {
       </Box>
       <div className="">
         <SaveButton
-          state={SaveButtonState}
+          state={saveButtonState}
           setState={setSaveButtonState}
           label="Skapa användare"
           size="small"

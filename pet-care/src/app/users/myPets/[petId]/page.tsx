@@ -11,7 +11,7 @@ import Calendar from "@/app/components/Calendar";
 const PetDetails = () => {
   const { petId } = useParams() as { petId: string };
   const allPets = useAppSelector((state) => state.pets.pets);
-  const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null);
+  const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const foundPet = allPets.find((p) => {
@@ -56,7 +56,7 @@ const PetDetails = () => {
                     <SaveButton
                       label="Ta bort "
                       icon={<DeleteIcon fontSize="small" />}
-                      state={SaveButtonState}
+                      state={saveButtonState}
                       setState={setSaveButtonState}
                       size="small"
                       onClick={() => removePet()}

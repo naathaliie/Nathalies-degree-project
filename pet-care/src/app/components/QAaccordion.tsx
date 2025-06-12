@@ -35,7 +35,7 @@ const QAaccordion = ({ accordionData }: AccordionProps) => {
                   color: "var(--petCare-sapphireTeal-dark)",
                   fontWeight: "bold",
                   "@media (max-width: 640px)": {
-                    fontSize: "1rem", // Mindre textstorlek för skärmar < sm
+                    fontSize: "1rem",
                   },
                 }}
               >

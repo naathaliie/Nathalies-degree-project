@@ -14,7 +14,7 @@ interface SaveButtonProps extends ButtonProps {
 //Du kan skicka in loading/disabled/type/onClick/size osv som vanligt, jag har satt vissa attribut som default här icon och label är mandatory
 //För att använda success och error behöver du skicka med state från föräldrakomponenten - gärna enligt nedan struktur för att hålla det enhetligt
 //Föräldra komponenten behöver bara ha koll på när state ska bli true och false
-//const [SaveButtonState, setSaveButtonState] = useState<boolean | null>(null)
+//const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null)
 
 const SaveButton: React.FC<SaveButtonProps> = ({
   icon,
