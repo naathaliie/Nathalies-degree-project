@@ -1,7 +1,7 @@
 ## Pet Care
 This project was created by me, Nathalie Larsson, as my degree project during my education to become a frontend developer.
 
-The Web App is a user-friendly and responsive web application that simplifies the lives of pet owners by consolidating several essential functions in one place. The app allows users to create user profiles, pet profiles, add a new pet, remode a new pet and book services such as veterinary visits and grooming for their animals. The goal is to provide a comprehensive platform that combines health care, service booking, and relevant tips tailored for both new and experienced pet owners. The app is developed with a focus on mobile responsiveness and easy navigation.
+The Web App is a user-friendly and responsive web application that simplifies the lives of pet owners by consolidating several essential functions in one place. The app allows users to create user profiles, pet profiles, add a new pet, remove a pet and book services such as veterinary visits and grooming for their animals. The goal is to provide a comprehensive platform that combines health care, service booking, and relevant tips tailored for both new and experienced pet owners. The app is developed with a focus on mobile responsiveness and easy navigation.
 (Note that i did not have cross-browser in mind while developing so if it looks a bit wonky, please try another browser like (yes I know) chrome)
 
 ## Want to try? No problemo compadre ⭐
