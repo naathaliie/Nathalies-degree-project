@@ -6,7 +6,7 @@ import { uspListMockData } from "@/data/uspListData";
 const TipsPage = () => {
   const params = useParams();
   const rawTitle = params.title;
-  const decodedTitle = decodeURIComponent(rawTitle as string); // 👈 avkoda
+  const decodedTitle = decodeURIComponent(rawTitle as string); // avkoda
 
   const foundTitle = uspListMockData.find((item) => {
     return item.title === decodedTitle || null;

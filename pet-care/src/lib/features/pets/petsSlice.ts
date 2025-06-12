@@ -10,7 +10,6 @@ const petsSlice = createSlice({
   name: "pets",
   initialState,
   reducers: {
-    /* Det som behöver sparas lokalt */
     setPets: (state, action: PayloadAction<Pet[]>) => {
       state.pets = action.payload;
     },

@@ -4,14 +4,14 @@ import ErrorIcon from "@mui/icons-material/ErrorOutline";
 import DoneIcon from "@mui/icons-material/Done";
 
 interface SaveButtonProps extends ButtonProps {
-  icon?: React.ReactNode; // Valfri ikon
+  icon?: React.ReactNode;
   endIcon?: React.ReactNode; // Välj denna ikon om du har en label
   label?: string;
   state: boolean | null;
   setState: React.Dispatch<SetStateAction<boolean | null>>;
 }
 
-//Du kan skicka in loading/disabled/type/onClick/size osv som vanligt, jag har satt vissa attribut som default här icon och label är mandatory
+//Du kan skicka in loading/disabled/type/onClick/size osv som vanligt då inget weappar själva button-komponenten
 //För att använda success och error behöver du skicka med state från föräldrakomponenten - gärna enligt nedan struktur för att hålla det enhetligt
 //Föräldra komponenten behöver bara ha koll på när state ska bli true och false
 //const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null)

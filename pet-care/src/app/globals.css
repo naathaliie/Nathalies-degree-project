@@ -6,7 +6,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
 
-  /* PetCare färger för light mode */
   --petCare-myWhite: #fcfcfc;
   --petCare-coal: #484446;
   --petCare-sapphireTeal-dark: #166e7f;

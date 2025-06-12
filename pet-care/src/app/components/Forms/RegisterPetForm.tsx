@@ -24,7 +24,6 @@ const RegisterPetForm = ({ setSuccessAddNewPet }: RegisterPetFormProps) => {
   const router = useRouter();
   const [saveButtonState, setSaveButtonState] = useState<boolean | null>(null);
 
-  //Validering av inputfälten
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [speciesInput, setSpeciesInput] = useState<ChoosablePets>(

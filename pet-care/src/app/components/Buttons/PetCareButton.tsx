@@ -2,8 +2,8 @@ import React from "react";
 import { Button, ButtonProps } from "@mui/material";
 
 interface PetCareButtonProps extends ButtonProps {
-  icon?: React.ReactNode; // Valfri ikon
-  label: string; // Texten på knappen
+  icon?: React.ReactNode;
+  label: string;
 }
 
 //En vanlig knapp
