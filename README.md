@@ -19,9 +19,12 @@ If you don't have pnpm installed:
 (If you do have pnpm, skip this step)
 
 ```
- npm install -g pnpm
+npm install -g pnpm@latest-10
 ```
-
+or 
+```
+npm install -g pnpm
+```
 Then install dependencies:
 
 ```
